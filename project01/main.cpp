@@ -3,7 +3,8 @@
 
 int main()
 {
-    GField x(23, 2.5);
-    std::cout << x.getDegree() << std::endl;
+    GField x(2, 2.5);
+    std::cin >> x;
+    std::cout << x << std::endl;
     return 0;
 }

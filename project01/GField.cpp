@@ -3,6 +3,7 @@
 #include "GField.h"
 #include <cassert>
 #include <cmath>
+#include <iostream>
 // --------------------------------------------------------------------------------------
 // This file contains the implementation of the class GField.
 // --------------------------------------------------------------------------------------
@@ -24,7 +25,6 @@ GField::GField(long p, long l)
 
 bool GField::isPrime(long p)
 {
-    p = std::abs(p);
     if (p <= 1)
     {
         return false;
@@ -36,12 +36,12 @@ bool GField::isPrime(long p)
     return true;
 }
 
-GFNumber GField::gcd(GFNumber a, GFNumber b)
+GFNumber GField::gcd(GFNumber a, GFNumber b) const
 {
     return GFNumber();
 }
 
-GFNumber GField::createNumber(long k)
+GFNumber GField::createNumber (long k) const
 {
     return GFNumber();
 }
@@ -53,23 +53,27 @@ GField &GField::operator=(const GField &other)
     return *this;
 }
 
-std::ostream &operator<<(std::ostream &out, const GField &field)
+std::ostream& operator<<(std::ostream &out, const GField& field)
 {
-    //out <<
-    return out;
+    return (out << "GF(" << field.getChar() << "**" << field.getDegree() << ")");
 }
 
-std::istream &operator>>(std::istream &in, const GField &field)
+std::istream &operator>>(std::istream &in, GField &field)
 {
+    long ch, degree;
+    in >> ch >> degree;
+    assert(ch >= 1 && GField::isPrime(ch) && degree >=0);
+    field._p = ch;
+    field._l = degree;
     return in;
 }
 
 const bool GField::operator!=(const GField &other)
 {
-    return (this->_p != other._p || this->_l != other._l);
+    return (this->getOrder() != other.getOrder());
 }
 
 const bool GField::operator==(const GField &other)
 {
-    return (this->_p == other._p && this->_l == other._l);
+    return (this->getOrder() == other.getOrder());
 }

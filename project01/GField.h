@@ -44,19 +44,19 @@ public:
      * Getter for the char of the field.
      * @return the char of the field (long).
      */
-    const long& getChar(){return _p;}
+    const long& getChar() const{return _p;}
 
     /**
      * Getter for the degree of the field.
      * @return the degree of the field (long).
      */
-    const long& getDegree(){return _l;}
+    const long& getDegree() const{return _l;}
 
     /**
      * Getter for the order of the field.
      * @return  the order of the field (long).
      */
-    long getOrder(){return (long)pow(_p, _l);}
+    long getOrder() const{return (long)pow(_p, _l);}
 
     /**
      * This static method verifies that the number p is prime.
@@ -71,14 +71,14 @@ public:
      * @param b GFNumber instance.
      * @return GFNumber instance which is the gcd of a and b.
      */
-    GFNumber gcd(GFNumber a, GFNumber b);
+    GFNumber gcd(GFNumber a, GFNumber b) const;
 
     /**
      * This method creates a GFNumber from the GField.
      * @param k long number.
      * @return a GFNumber from GField.
      */
-    GFNumber createNumber(long k);
+    GFNumber createNumber(long k) const;
 
     /**
      * Operator overloading of "=".
@@ -117,8 +117,6 @@ public:
      * @param field GField refernce.
      * @return istream reference with the desire input.
      */
-    friend std::istream& operator>> (std::istream& in, const GField& field);
+    friend std::istream& operator>> (std::istream& in, GField& field);
 };
-
-
 #endif
