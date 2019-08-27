@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/cs/usr/yoav/semester03/cpp/cppProjects/project01/GFNumber.h
+
+/cs/usr/yoav/semester03/cpp/cppProjects/project01/GField.h
+cmath
+-
+iosfwd
+-
+GFNumber.h
+/cs/usr/yoav/semester03/cpp/cppProjects/project01/GFNumber.h
+
+/cs/usr/yoav/semester03/cpp/cppProjects/project01/main.cpp
+iostream
+-
+GField.h
+/cs/usr/yoav/semester03/cpp/cppProjects/project01/GField.h
+

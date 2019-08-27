@@ -10,16 +10,18 @@
 // ctor 1
 GField::GField(long p) {
     assert(isPrime(p));
-    _p = p;
+    this->_p = p;
 }
 
 // ctor 2
 GField::GField(long p, long l) {
-    assert(isPrime(p) && l >= 0);
+    assert((isPrime(p) && (l >= 0)));
+    this->_p = p;
+    this->_l = l;
 }
 
 bool GField::isPrime(long p) {
-    return false;
+    return true;
 }
 
 GFNumber GField::gcd(GFNumber a, GFNumber b) {
