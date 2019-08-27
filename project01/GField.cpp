@@ -1,9 +1,11 @@
 // GField.cpp
 
 #include "GField.h"
+#include "GFNumber.h"
 #include <cassert>
 #include <cmath>
 #include <iostream>
+
 // --------------------------------------------------------------------------------------
 // This file contains the implementation of the class GField.
 // --------------------------------------------------------------------------------------

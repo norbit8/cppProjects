@@ -1,10 +1,12 @@
 // GField.h
 
-#ifndef PROJECT01_GFIELD_H
-#define PROJECT01_GFIELD_H
+#ifndef GFIELD_H
+#define GFIELD_H
+
 #include <cmath>
 #include <iosfwd>
 #include "GFNumber.h"
+
 /**
  *  A GField class.
  *  This class represents a galois field.

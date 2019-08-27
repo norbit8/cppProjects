@@ -9,12 +9,16 @@
 /cs/usr/yoav/semester03/cpp/cppProjects/project01/GFNumber.cpp
 GFNumber.h
 /cs/usr/yoav/semester03/cpp/cppProjects/project01/GFNumber.h
+GField.h
+/cs/usr/yoav/semester03/cpp/cppProjects/project01/GField.h
 
 /cs/usr/yoav/semester03/cpp/cppProjects/project01/GFNumber.h
 
 /cs/usr/yoav/semester03/cpp/cppProjects/project01/GField.cpp
 GField.h
 /cs/usr/yoav/semester03/cpp/cppProjects/project01/GField.h
+GFNumber.h
+/cs/usr/yoav/semester03/cpp/cppProjects/project01/GFNumber.h
 cassert
 -
 cmath
@@ -27,8 +31,6 @@ cmath
 -
 iosfwd
 -
-GFNumber.h
-/cs/usr/yoav/semester03/cpp/cppProjects/project01/GFNumber.h
 
 /cs/usr/yoav/semester03/cpp/cppProjects/project01/main.cpp
 iostream

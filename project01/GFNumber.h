@@ -1,10 +1,11 @@
 // GFNumber.h
 
-#ifndef PROJECT01_GFNUMBER_H
-#define PROJECT01_GFNUMBER_H
 
-#include "GField.h"
+#ifndef GFNUMBER_H
+#define GFNUMBER_H
 
+
+class GField;
 /**
  *  A GFNumber class.
  *  This class represents a number from some GField.
@@ -16,8 +17,7 @@ public:
     GFNumber(){}
     GFNumber(long n){}
     GFNumber(long n, GField field){}
-
 };
 
 
-#endif //PROJECT01_GFNUMBER_H
+#endif //GFNUMBER_H
