@@ -8,6 +8,14 @@
 
 /cs/usr/yoav/semester03/cpp/cppProjects/project01/GFNumber.h
 
+/cs/usr/yoav/semester03/cpp/cppProjects/project01/GField.cpp
+GField.h
+/cs/usr/yoav/semester03/cpp/cppProjects/project01/GField.h
+cassert
+-
+cmath
+-
+
 /cs/usr/yoav/semester03/cpp/cppProjects/project01/GField.h
 cmath
 -

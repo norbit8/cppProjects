@@ -9,7 +9,8 @@
  *  A GField class.
  *  This class represents a galois field.
  */
-class GField {
+class GField
+{
 private:
     long _l; /** The degree of the field. */
     long _p; /** The char of the field. */

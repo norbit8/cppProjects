@@ -2,52 +2,74 @@
 
 #include "GField.h"
 #include <cassert>
-#define MINIMUM_
+#include <cmath>
 // --------------------------------------------------------------------------------------
 // This file contains the implementation of the class GField.
 // --------------------------------------------------------------------------------------
 
 // ctor 1
-GField::GField(long p) {
-    assert(isPrime(p));
+GField::GField(long p)
+{
+    assert(p >= 1 && isPrime(p));
     this->_p = p;
 }
 
 // ctor 2
-GField::GField(long p, long l) {
+GField::GField(long p, long l)
+{
     assert((isPrime(p) && (l >= 0)));
     this->_p = p;
     this->_l = l;
 }
 
-bool GField::isPrime(long p) {
+bool GField::isPrime(long p)
+{
+    p = std::abs(p);
+    if (p <= 1)
+    {
+        return false;
+    }
+    for (int i = 2; i <= sqrt(p); i++)
+    {
+        if ((p % i) == 0) return false;
+    }
     return true;
 }
 
-GFNumber GField::gcd(GFNumber a, GFNumber b) {
+GFNumber GField::gcd(GFNumber a, GFNumber b)
+{
     return GFNumber();
 }
 
-GFNumber GField::createNumber(long k) {
+GFNumber GField::createNumber(long k)
+{
     return GFNumber();
 }
 
-GField &GField::operator=(const GField &other) {
+GField &GField::operator=(const GField &other)
+{
+    this->_p = other._p;
+    this->_l = other._l;
     return *this;
 }
 
-std::ostream &operator<<(std::ostream &out, const GField &field) {
+std::ostream &operator<<(std::ostream &out, const GField &field)
+{
+    //out <<
     return out;
 }
 
-std::istream &operator>>(std::istream &in, const GField &field) {
+std::istream &operator>>(std::istream &in, const GField &field)
+{
     return in;
 }
 
-const bool GField::operator!=(const GField &other) {
-    return false;
+const bool GField::operator!=(const GField &other)
+{
+    return (this->_p != other._p || this->_l != other._l);
 }
 
-const bool GField::operator==(const GField &other) {
-    return false;
+const bool GField::operator==(const GField &other)
+{
+    return (this->_p == other._p && this->_l == other._l);
 }
