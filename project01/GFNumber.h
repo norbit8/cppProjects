@@ -96,7 +96,13 @@ public:
      * @param other another GFNumber.
      * @return The result GFNumber
      */
-    const GFNumber& operator+ (const GFNumber& other) const;
+    GFNumber operator+ (const GFNumber& other) const;
+    
+    /**
+     *
+     * @param other
+     * @return
+     */
     const GFNumber& operator+= (const GFNumber& other) const;
     const GFNumber& operator-= (const GFNumber& other) const;
     const GFNumber& operator- (const GFNumber& other) const;
