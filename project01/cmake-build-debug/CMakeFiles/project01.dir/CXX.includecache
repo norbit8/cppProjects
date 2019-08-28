@@ -13,6 +13,8 @@ GField.h
 /cs/usr/yoav/semester03/cpp/cppProjects/project01/GField.h
 
 /cs/usr/yoav/semester03/cpp/cppProjects/project01/GFNumber.h
+GField.h
+/cs/usr/yoav/semester03/cpp/cppProjects/project01/GField.h
 
 /cs/usr/yoav/semester03/cpp/cppProjects/project01/GField.cpp
 GField.h
@@ -29,7 +31,7 @@ iostream
 /cs/usr/yoav/semester03/cpp/cppProjects/project01/GField.h
 cmath
 -
-iosfwd
+iostream
 -
 
 /cs/usr/yoav/semester03/cpp/cppProjects/project01/main.cpp
@@ -37,4 +39,6 @@ iostream
 -
 GField.h
 /cs/usr/yoav/semester03/cpp/cppProjects/project01/GField.h
+GFNumber.h
+/cs/usr/yoav/semester03/cpp/cppProjects/project01/GFNumber.h
 

@@ -9,6 +9,7 @@ CMakeFiles/project01.dir/GField.cpp.o: ../GFNumber.h
 CMakeFiles/project01.dir/GField.cpp.o: ../GField.cpp
 CMakeFiles/project01.dir/GField.cpp.o: ../GField.h
 
+CMakeFiles/project01.dir/main.cpp.o: ../GFNumber.h
 CMakeFiles/project01.dir/main.cpp.o: ../GField.h
 CMakeFiles/project01.dir/main.cpp.o: ../main.cpp
 

@@ -1,11 +1,13 @@
 // GField.h
-
+//----------- include guards------------
 #ifndef GFIELD_H
 #define GFIELD_H
-
+//-------------- includes --------------
 #include <cmath>
-#include <iosfwd>
-#include "GFNumber.h"
+#include <iostream>
+//--------------------------------------
+// forward declaration of the GFNumber class:
+class GFNumber;
 
 /**
  *  A GField class.
@@ -17,7 +19,6 @@ private:
     long _l; /** The degree of the field. */
     long _p; /** The char of the field. */
 public:
-
     /**
      * A constructor.
      * Default ctor.
@@ -27,18 +28,22 @@ public:
     /**
      * A constructor.
      * ctor with p and l is default 1.
+     * @param p the char of the field.
      */
-    GField(long p);
+    explicit GField(long p);
 
     /**
      * A constructor.
      * ctor with p and l.
+     * @param p the char of the field.
+     * @param l the degree of the field.
      */
     GField(long p, long l);
 
     /**
      * A constructor.
      * copy ctor.
+     * @param field gets GField.
      */
     GField(const GField& field):GField(field._p, field._l){};
 
