@@ -8,13 +8,15 @@ int main()
     GField x(3, 1);
     GField y(2,2);
     GField z(2,30);
-    GFNumber noobnoob1(70000000, z);
-    GFNumber noobnoob2(3030, z);
+    GField o(2,3);
+    //GFNumber noobnoob1(70000000, z);
+    //GFNumber noobnoob2(2, z);
     std::cout << z.getOrder() << std::endl;
-    std::cout << z.gcd(noobnoob1, noobnoob2).getNumber() << std::endl;
+    //std::cout << z.gcd(noobnoob1, noobnoob2).getNumber() << std::endl;
     GFNumber num3(3,y);
     GFNumber num1(5, x);
     GFNumber num2(4, x);
+    GFNumber num5(4, o);
     // --- gcd test (1) ---
     std::cout << "gcd test (1): " << (x.gcd(num1 , num2).getNumber() == 1 ? "Pass" : "Fail") <<
     std::endl;
@@ -30,8 +32,8 @@ int main()
 
     std::cout << "GFNumber plus operator test (3): " << ((num1 + 2).getNumber() == 0 ? "Pass" :
                                                          "Fail") << std::endl;
-
-
-
+    std::cin >> num2;
+    std::cout << num2 << std::endl;
+    std::cout << num2 + num5 << std::endl;
     return 0;
 }

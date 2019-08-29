@@ -225,34 +225,40 @@ public:
      * Not equal operator overloading.
      * @param other , another GFNumber instance.
      * @return true if they are not equal, false otherwise.
+     * (Also it validates that the other is from the same field)
      */
     bool operator!=(const GFNumber& other) const;
 
     /**
-     * Greater equal operator.
+     * Greater equal operator overloading.
      * @param other GFNumber.
      * @return true if the n of this is greater or equal to the n of the other GFNumber.
+     * (Also it validates that the other is from the same field)
      */
     bool operator>=(const GFNumber& other) const;
 
     /**
-     *
-     * @param other
-     * @return
+     * Greater than operator overloading.
+     * @param other GFNumber.
+     * @return true if the number of this instance is greater than the number of the other
+     * instance. (Also it validates that the other is from the same field)
      */
     bool operator>(const GFNumber& other) const;
 
     /**
-     *
-     * @param other
-     * @return
+     * Less than and equal to operator overloading.
+     * @param other GFNumber.
+     * @return true if the number of this instance is less and equal to than the number of the
+     * other instance.
+     * (Also it validates that the other is from the same field)
      */
     bool operator<=(const GFNumber& other) const;
 
     /**
-     *
-     * @param other
-     * @return
+     * Less than operator overloading.
+     * @param other GFNumber.
+     * @return true if the number of this instance is less than the number of the other instance.
+     * (Also it validates that the other is from the same field)
      */
     bool operator<(const GFNumber& other) const;
 

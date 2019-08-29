@@ -1,0 +1,24 @@
+cpp_ex1
+yoav
+314963257
+######
+
+In this exercise we created our first cpp classes
+representing a field of numbers and a number in a field.
+also, we overloaded some operators like +, -, % and also
+<<, >>.
+I started writing the exercise with efficiency on my mind,
+because I learned that cpp is a very efficient programming language and that
+we can make our program run faster than programmes in python (for example).
+
+I implemented the gcd algorithm as a recursive one at the beginning,
+but than I thought that it could cause a stack-overflow so I changed it
+to an iterative one.
+
+also I declared the operators >> and << as friends of my classes, because we need the istream class
+to have the function >> (or << in ostream class) which get GFNumber/GField as an instance.
+
+In this exercise we implemented the Direct Search Factorization algorithm
+which is a brute force based algorithm to factorize a given number.
+also we implemented the Pollard's Rho algorithm for factorizing which
+uses a more straightforward approach.

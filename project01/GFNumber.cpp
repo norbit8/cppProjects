@@ -38,8 +38,7 @@ GFNumber &GFNumber::operator=(const GFNumber &other)
 GFNumber GFNumber::operator+(const GFNumber &other) const
 {
     checkValidityField(other);
-    GFNumber gfNum(convertNumberToField(other.getNumber() + this->_n), this->_field);
-    return gfNum;
+    return GFNumber(convertNumberToField(other.getNumber() + this->_n), this->_field);
 }
 
 GFNumber GFNumber::operator+(long rparam) const
@@ -51,26 +50,26 @@ GFNumber GFNumber::operator+(long rparam) const
 GFNumber &GFNumber::operator+=(const GFNumber &other)
 {
     checkValidityField(other);
-    this->convertNumberToField(_n + other.getNumber());
+    this->_n = convertNumberToField(_n + other.getNumber());
     return *this;
 }
 
 GFNumber &GFNumber::operator+=(long rparam)
 {
-    this->convertNumberToField(_n + rparam);
+    this->_n = convertNumberToField(_n + rparam);
     return *this;
 }
 
 GFNumber &GFNumber::operator-=(long rparam)
 {
-    this->convertNumberToField(_n - rparam);
+    this->_n = convertNumberToField(_n - rparam);
     return *this;
 }
 
 GFNumber &GFNumber::operator-=(const GFNumber &other)
 {
     checkValidityField(other);
-    this->convertNumberToField(_n - other.getNumber());
+    this->_n = convertNumberToField(_n - other.getNumber());
     return *this;
 }
 
@@ -90,13 +89,13 @@ GFNumber GFNumber::operator-(long rparam) const
 GFNumber &GFNumber::operator*=(const GFNumber &other)
 {
     checkValidityField(other);
-    this->convertNumberToField(_n * other.getNumber());
+    this->_n =convertNumberToField(_n * other.getNumber());
     return *this;
 }
 
 GFNumber &GFNumber::operator*=(long rparam)
 {
-    this->convertNumberToField(_n * rparam);
+    this->_n = convertNumberToField(_n * rparam);
     return *this;
 }
 
@@ -116,13 +115,13 @@ GFNumber GFNumber::operator*(long rparam) const
 GFNumber &GFNumber::operator%=(const GFNumber &other)
 {
     checkValidityField(other);
-    this->convertNumberToField(_n % other.getNumber());
+    this->_n = convertNumberToField(_n % other.getNumber());
     return *this;
 }
 
 GFNumber &GFNumber::operator%=(long rparam)
 {
-    this->convertNumberToField(_n % rparam);
+    this->_n = convertNumberToField(_n % rparam);
     return *this;
 }
 
@@ -150,6 +149,46 @@ bool GFNumber::operator!=(const GFNumber &other) const
     return (!(*this == other));
 }
 
+bool GFNumber::operator>=(const GFNumber &other) const
+{
+    checkValidityField(other);
+    return (this->_n >= other.getNumber());
+}
+
+bool GFNumber::operator>(const GFNumber &other) const
+{
+    checkValidityField(other);
+    return (this->_n > other.getNumber());
+}
+
+
+bool GFNumber::operator<=(const GFNumber &other) const
+{
+    checkValidityField(other);
+    return (this->_n <= other.getNumber());
+}
+
+bool GFNumber::operator<(const GFNumber &other) const
+{
+    checkValidityField(other);
+    return (this->_n < other.getNumber());
+}
+
+std::ostream& operator<<(std::ostream &out, const GFNumber& number)
+{
+    return (out << number.getNumber() << " " << number.getField());
+}
+
+std::istream &operator>>(std::istream &in, GFNumber& number)
+{
+    long n, p, l;
+    in >> n >> p >> l;
+    GField field(p, l);
+    GFNumber newgf(n, field);
+    number = newgf;
+    return in;
+}
+
 // ------------ methods ------------
 
 long *GFNumber::getPrimeFactors() const
@@ -167,21 +206,3 @@ bool GFNumber::getIsPrime() const
 {
     return GField::isPrime(this->_n);
 }
-
-bool GFNumber::operator>=(const GFNumber &other) const
-{
-    return false;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
