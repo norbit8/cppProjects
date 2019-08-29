@@ -7,6 +7,11 @@ int main()
 {
     GField x(3, 1);
     GField y(2,2);
+    GField z(2,30);
+    GFNumber noobnoob1(70000000, z);
+    GFNumber noobnoob2(3030, z);
+    std::cout << z.getOrder() << std::endl;
+    std::cout << z.gcd(noobnoob1, noobnoob2).getNumber() << std::endl;
     GFNumber num3(3,y);
     GFNumber num1(5, x);
     GFNumber num2(4, x);

@@ -11,8 +11,8 @@
  *  A GFNumber class.
  *  This class represents a number from some GField.
  */
-class GFNumber {
-
+class GFNumber
+{
 private:
 
     long _n; /** Number representation of the field (after modulo). */

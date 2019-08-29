@@ -41,17 +41,19 @@ bool GField::isPrime(long p)
 GFNumber GField::gcd(GFNumber a, GFNumber b) const
 {
     assert(a.getField() == b.getField() && a.getField() == *this && b.getField() == *this);
-    if (a.getNumber() == 0) return b;
-    if (b.getNumber() == 0) return a;
-    if (a.getNumber() == b.getNumber()) return a;
-    if (a.getNumber() > b.getNumber())
+    while(a.getNumber()>=0 && b.getNumber()>= 0)
     {
-        GFNumber takeOff(a.getNumber() - b.getNumber(), a.getField());
-        return gcd(takeOff, b);
+        if (a.getNumber() == 0) return b;
+        if (b.getNumber() == 0) return a;
+        if (a.getNumber() == b.getNumber()) return a;
+        if (a.getNumber() > b.getNumber())
+        {
+            GFNumber takeOff(a.getNumber() - b.getNumber(), a.getField());
+            a = takeOff;
+        }
+        GFNumber takeOff(b.getNumber() - a.getNumber(), a.getField());
+        b = takeOff;
     }
-    GFNumber takeOff(b.getNumber() - a.getNumber(), a.getField());
-    return gcd(a, takeOff);
-
 }
 
 GFNumber GField::createNumber(long k) const
