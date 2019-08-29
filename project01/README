@@ -22,3 +22,20 @@ In this exercise we implemented the Direct Search Factorization algorithm
 which is a brute force based algorithm to factorize a given number.
 also we implemented the Pollard's Rho algorithm for factorizing which
 uses a more straightforward approach.
+
+In the GFNumber class, when one uses any ctor with a given number and a field, the number
+gets converted (if needed) to the equivalent number in the given field.
+In order to get this behavior I implemented a private method which gets any long number and
+converts it to the number's representation in the given field.
+
+furthermore I implemented a checkValidityField function which is also a private method
+inside the GFNumber class, which takes any GField and verifies that it is the same field as
+the current instance of GFNumber.
+
+This project contains the following files:
+1. README (this)
+2. GField.h
+3. GField.cpp
+4. GFNumber.h
+5. GFNumber.cpp
+6. IntegerFactorization.cpp
