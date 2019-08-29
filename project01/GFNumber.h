@@ -33,6 +33,13 @@ private:
      */
     void checkValidityField(const GFNumber& other) const;
 
+    /**
+     * Pollard's Rho Algorithm for factorizing a long number.
+     * @param n 
+     * @return
+     */
+    long pollardRho(long n) const;
+
 public:
 
     /**
