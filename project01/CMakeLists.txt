@@ -3,4 +3,4 @@ project(project01)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(project01 main.cpp GField.cpp GField.h GFNumber.cpp GFNumber.h)
+add_executable(project01 main.cpp GField.cpp GField.h GFNumber.cpp GFNumber.h IntegerFactorization.cpp)

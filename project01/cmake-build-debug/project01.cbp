@@ -96,6 +96,9 @@
 		<Unit filename="/cs/usr/yoav/semester03/cpp/cppProjects/project01/GField.h">
 			<Option target="project01"/>
 		</Unit>
+		<Unit filename="/cs/usr/yoav/semester03/cpp/cppProjects/project01/IntegerFactorization.cpp">
+			<Option target="project01"/>
+		</Unit>
 		<Unit filename="/cs/usr/yoav/semester03/cpp/cppProjects/project01/main.cpp">
 			<Option target="project01"/>
 		</Unit>

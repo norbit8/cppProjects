@@ -32,6 +32,10 @@ furthermore I implemented a checkValidityField function which is also a private 
 inside the GFNumber class, which takes any GField and verifies that it is the same field as
 the current instance of GFNumber.
 
+One important method is the getPrimeFactors which will return an array of all the prime
+factors of a given number, note that I allocate memory dynamically inside the function
+and the destruction of the allocated array is the responsibility of the user.
+
 This project contains the following files:
 1. README (this)
 2. GField.h

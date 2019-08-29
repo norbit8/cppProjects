@@ -2,6 +2,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/project01.dir/main.cpp.o"
   "CMakeFiles/project01.dir/GField.cpp.o"
   "CMakeFiles/project01.dir/GFNumber.cpp.o"
+  "CMakeFiles/project01.dir/IntegerFactorization.cpp.o"
   "project01.pdb"
   "project01"
 )

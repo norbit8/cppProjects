@@ -6,6 +6,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_CHECK_CXX
   "/cs/usr/yoav/semester03/cpp/cppProjects/project01/GFNumber.cpp" "/cs/usr/yoav/semester03/cpp/cppProjects/project01/cmake-build-debug/CMakeFiles/project01.dir/GFNumber.cpp.o"
   "/cs/usr/yoav/semester03/cpp/cppProjects/project01/GField.cpp" "/cs/usr/yoav/semester03/cpp/cppProjects/project01/cmake-build-debug/CMakeFiles/project01.dir/GField.cpp.o"
+  "/cs/usr/yoav/semester03/cpp/cppProjects/project01/IntegerFactorization.cpp" "/cs/usr/yoav/semester03/cpp/cppProjects/project01/cmake-build-debug/CMakeFiles/project01.dir/IntegerFactorization.cpp.o"
   "/cs/usr/yoav/semester03/cpp/cppProjects/project01/main.cpp" "/cs/usr/yoav/semester03/cpp/cppProjects/project01/cmake-build-debug/CMakeFiles/project01.dir/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")

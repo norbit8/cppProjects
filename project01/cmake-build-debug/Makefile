@@ -177,6 +177,33 @@ GField.cpp.s:
 	$(MAKE) -f CMakeFiles/project01.dir/build.make CMakeFiles/project01.dir/GField.cpp.s
 .PHONY : GField.cpp.s
 
+IntegerFactorization.o: IntegerFactorization.cpp.o
+
+.PHONY : IntegerFactorization.o
+
+# target to build an object file
+IntegerFactorization.cpp.o:
+	$(MAKE) -f CMakeFiles/project01.dir/build.make CMakeFiles/project01.dir/IntegerFactorization.cpp.o
+.PHONY : IntegerFactorization.cpp.o
+
+IntegerFactorization.i: IntegerFactorization.cpp.i
+
+.PHONY : IntegerFactorization.i
+
+# target to preprocess a source file
+IntegerFactorization.cpp.i:
+	$(MAKE) -f CMakeFiles/project01.dir/build.make CMakeFiles/project01.dir/IntegerFactorization.cpp.i
+.PHONY : IntegerFactorization.cpp.i
+
+IntegerFactorization.s: IntegerFactorization.cpp.s
+
+.PHONY : IntegerFactorization.s
+
+# target to generate assembly for a file
+IntegerFactorization.cpp.s:
+	$(MAKE) -f CMakeFiles/project01.dir/build.make CMakeFiles/project01.dir/IntegerFactorization.cpp.s
+.PHONY : IntegerFactorization.cpp.s
+
 main.o: main.cpp.o
 
 .PHONY : main.o
@@ -219,6 +246,9 @@ help:
 	@echo "... GField.o"
 	@echo "... GField.i"
 	@echo "... GField.s"
+	@echo "... IntegerFactorization.o"
+	@echo "... IntegerFactorization.i"
+	@echo "... IntegerFactorization.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

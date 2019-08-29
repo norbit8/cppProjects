@@ -2,7 +2,7 @@
 #include "GField.h"
 #include "GFNumber.h"
 
-
+/**
 int main()
 {
     GField x(3, 1);
@@ -37,3 +37,4 @@ int main()
     std::cout << num2 + num5 << std::endl;
     return 0;
 }
+**/
