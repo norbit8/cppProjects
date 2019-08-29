@@ -1,27 +1,38 @@
 // GFNumber.h
 
-
 #ifndef GFNUMBER_H
 #define GFNUMBER_H
 #define DEFAULT_INIT 0
 #define DEFAULT_P 2
 #define DEFAULT_L 1
-
 #include "GField.h"
+
 /**
  *  A GFNumber class.
  *  This class represents a number from some GField.
  */
 class GFNumber {
+
 private:
+
     long _n; /** Number representation of the field (after modulo). */
+
     GField _field; /** The degree of the field. */
+
     /**
      * This private method converts any number to a number from the field.
      * @param n long number.
      * @return
      */
-    long convertNumberToField(long n);
+    long convertNumberToField(long n) const;
+
+    /**
+     * Private method for checking the validity of a given GFNumber by verifying that
+     * it has the same field as the current instance.
+     * @param other some GFNumber instance
+     */
+    void checkValidityField(const GFNumber& other) const;
+
 public:
 
     /**
@@ -96,30 +107,154 @@ public:
      * @param other another GFNumber.
      * @return The result GFNumber
      */
-    GFNumber operator+ (const GFNumber& other) const;
-    
+    GFNumber operator+(const GFNumber& other) const;
+
+    /**
+     * Operator + on long number and gfNumber (GFNumber + long).
+     * @param rparam long number.
+     * @return The result GFNumber
+     */
+    GFNumber operator+(long rparam) const;
+
+    /**
+     * plus-assignment operator, for two GFNumbers.
+     * @param other another GFNumber.
+     * @return GFNumber instance.
+     */
+    GFNumber& operator+=(const GFNumber& other);
+
+    /**
+     * plus-assignment operator, for GFNumber and long number.
+     * @param rparam long number.
+     * @return GFNumber instance.
+     */
+    GFNumber& operator+=(long rparam);
+
+    /**
+     * minus-assignment operator, for two GFNumbers.
+     * @param other another GFNumber.
+     * @return GFNumber instance.
+     */
+    GFNumber& operator-=(const GFNumber& other);
+
+    /**
+     * minus-assignment operator, for GFNumber and long number.
+     * @param rparam long number.
+     * @return GFNumber instance.
+     */
+    GFNumber& operator-=(long rparam);
+
+    /**
+     * Operator - on long number and gfNumber (GFNumber - GFNumber).
+     * @param other GFNumber.
+     * @return The result GFNumber
+     */
+    GFNumber operator-(const GFNumber& other) const;
+
+    /**
+     * Operator - on long number and gfNumber (GFNumber - long).
+     * @param rparam long number.
+     * @return The result GFNumber
+     */
+    GFNumber operator-(long rparam) const;
+
+    /**
+     * multiply-assignment operator, for two GFNumbers.
+     * @param other GFNumber instance.
+     * @return GFNumber instance.
+     */
+    GFNumber& operator*=(const GFNumber& other);
+
+    /**
+     * multiply-assignment operator, for GFNumber and long number.
+     * @param rparam long number.
+     * @return GFNumber instance.
+     */
+    GFNumber& operator*=(long rparam);
+
+    /**
+     * Operator * on two gfNumber (GFNumber * GFNumber).
+     * @param other GFNumber instance.
+     * @return The result GFNumber
+     */
+    GFNumber operator*(const GFNumber& other) const;
+
+    /**
+     * Operator * on long number and gfNumber (GFNumber * long number).
+     * @param rparam long numbr.
+     * @return The result GFNumber
+     */
+    GFNumber operator*(long rparam) const;
+
+    /**
+     * Operator %= on two gfNumbers (GFNumber %= GFNumber).
+     * @param other GFNumber instance.
+     * @return The result GFNumber
+     */
+    GFNumber& operator%=(const GFNumber& other);
+
+    /**
+     * Operator %= on one long number and a gfNumber (GFNumber %= long).
+     * @param rparam long number.
+     * @return The result GFNumber
+     */
+    GFNumber& operator%=(long rparam);
+
+    /**
+     * Operator % on two gfNumbers (GFNumber % GFNumber).
+     * @param other GFNumber instance.
+     * @return The result GFNumber
+     */
+    GFNumber operator%(const GFNumber& other) const;
+
+    /**
+     * Operator % on long number and gfNumber (GFNumber % long number).
+     * @param rparam long number.
+     * @return The result GFNumber
+     */
+    GFNumber operator%(long rparam) const;
+
+    /**
+     * Equal operator overloading. checks if both GFNumbers are the same.
+     * @param other , another GFNumber instance.
+     * @return true if they are the same, false otherwise.
+     */
+    bool operator==(const GFNumber& other) const;
+
+    /**
+     * Not equal operator overloading.
+     * @param other , another GFNumber instance.
+     * @return true if they are not equal, false otherwise.
+     */
+    bool operator!=(const GFNumber& other) const;
+
+    /**
+     * Greater equal operator.
+     * @param other GFNumber.
+     * @return true if the n of this is greater or equal to the n of the other GFNumber.
+     */
+    bool operator>=(const GFNumber& other) const;
+
     /**
      *
      * @param other
      * @return
      */
-    const GFNumber& operator+= (const GFNumber& other) const;
-    const GFNumber& operator-= (const GFNumber& other) const;
-    const GFNumber& operator- (const GFNumber& other) const;
-    const GFNumber& operator*= (const GFNumber& other) const;
-    const GFNumber& operator* (const GFNumber& other) const;
-    const GFNumber& operator%= (const GFNumber& other) const;
-    const GFNumber& operator% (const GFNumber& other) const;
+    bool operator>(const GFNumber& other) const;
 
-    const GFNumber& operator== (const GFNumber& other) const;
-    const GFNumber& operator!= (const GFNumber& other) const;
+    /**
+     *
+     * @param other
+     * @return
+     */
+    bool operator<=(const GFNumber& other) const;
 
-    const GFNumber& operator>= (const GFNumber& other) const;
-    const GFNumber& operator> (const GFNumber& other) const;
-    const GFNumber& operator<= (const GFNumber& other) const;
-    const GFNumber& operator< (const GFNumber& other) const;
-
-
+    /**
+     *
+     * @param other
+     * @return
+     */
+    bool operator<(const GFNumber& other) const;
 
      /**
      * Operator overloading of "<<".
@@ -127,7 +262,7 @@ public:
      * @param number some GFNumber reference.
      * @return ostream reference with the desire output.
      */
-    friend std::ostream& operator<< (std::ostream& out, const GFNumber& number);
+    friend std::ostream& operator<<(std::ostream& out, const GFNumber& number);
 
     /**
      * Operator overloading of ">>".
@@ -135,7 +270,7 @@ public:
      * @param number GFNumber refernce.
      * @return istream reference with the desire input.
      */
-    friend std::istream& operator>> (std::istream& in, GFNumber& number);
+    friend std::istream& operator>>(std::istream& in, GFNumber& number);
 };
 
 #endif //GFNUMBER_H

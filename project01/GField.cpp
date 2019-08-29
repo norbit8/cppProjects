@@ -38,17 +38,14 @@ bool GField::isPrime(long p)
     return true;
 }
 
-
 GFNumber GField::gcd(GFNumber a, GFNumber b) const
 {
     assert(a.getField() == b.getField() && a.getField() == *this && b.getField() == *this);
-    std::cout << a.getNumber() << "  " << b.getNumber() << std::endl;
     if (a.getNumber() == 0) return b;
     if (b.getNumber() == 0) return a;
     if (a.getNumber() == b.getNumber()) return a;
     if (a.getNumber() > b.getNumber())
     {
-        std::cout << " LOOK HERE:: !!!!" << (a.getNumber() - b.getNumber()) << std::endl;
         GFNumber takeOff(a.getNumber() - b.getNumber(), a.getField());
         return gcd(takeOff, b);
     }
@@ -85,12 +82,12 @@ std::istream &operator>>(std::istream &in, GField &field)
     return in;
 }
 
-const bool GField::operator!=(const GField &other)
+const bool GField::operator!=(const GField &other) const
 {
     return (this->getOrder() != other.getOrder());
 }
 
-const bool GField::operator==(const GField &other)
+const bool GField::operator==(const GField &other) const
 {
     return (this->getOrder() == other.getOrder());
 }

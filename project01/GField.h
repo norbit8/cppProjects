@@ -100,7 +100,7 @@ public:
      * @return True if the objects are equal, false otherwise.
      * note that instances are equal if the have the same order.
      */
-    const bool operator== (const GField& other);
+    const bool operator== (const GField& other) const;
 
     /**
      * Operator overloading of "==".
@@ -108,7 +108,7 @@ public:
      * @return True if the objects are equal, false otherwise.
      * note that instances are equal if the have the same order.
      */
-    const bool operator!= (const GField& other);
+    const bool operator!= (const GField& other) const;
 
     /**
      * Operator overloading of "<<".
