@@ -48,11 +48,12 @@ GFNumber GField::gcd(GFNumber a, GFNumber b) const
         if (a.getNumber() == b.getNumber()) return a;
         if (a.getNumber() > b.getNumber())
         {
-            GFNumber takeOff(a.getNumber() - b.getNumber(), a.getField());
-            a = takeOff;
+            a = a - b;
         }
-        GFNumber takeOff(b.getNumber() - a.getNumber(), a.getField());
-        b = takeOff;
+        else
+        {
+            b = b - a;
+        }
     }
 }
 
@@ -92,4 +93,8 @@ const bool GField::operator!=(const GField &other) const
 const bool GField::operator==(const GField &other) const
 {
     return (this->getOrder() == other.getOrder());
+}
+
+GField::~GField() {
+    // empty destructor
 }

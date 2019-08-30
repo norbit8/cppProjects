@@ -48,6 +48,11 @@ public:
     GField(const GField& field):GField(field._p, field._l){};
 
     /**
+     * Destructor
+     */
+    ~GField();
+
+    /**
      * Getter for the char of the field.
      * @return the char of the field (long).
      */

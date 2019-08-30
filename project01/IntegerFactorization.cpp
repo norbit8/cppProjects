@@ -1,6 +1,7 @@
 // IntegerFactorization.cpp
 
 #include <iostream>
+#include <random>
 #include "GField.h"
 #include "GFNumber.h"
 #define FAILED 1
@@ -26,5 +27,7 @@ int main()
     std::cout << num1 - num2 << std::endl;
     std::cout << num2 - num1 << std::endl;
     std::cout << num1 * num2 << std::endl;
+    num1.printFactors();
+    num2.printFactors();
     return 0;
 }
