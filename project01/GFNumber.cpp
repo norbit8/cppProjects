@@ -33,7 +33,7 @@ GFNumber::GFNumber(long n, GField field) : _field(field)
 
 // ------------- destructor ----------------
 GFNumber::~GFNumber() {
-    delete[] _primeFactors;
+    if(_allocatedMem) delete[] _primeFactors;
 }
 
 // ------------ operators ------------
@@ -203,8 +203,6 @@ std::istream &operator>>(std::istream &in, GFNumber& number)
 
 void GFNumber::_addPrime(int num)
 {
-    // TODO: remove this assert after debugging
-    assert(GField::isPrime(num));
     _primeFactorsLength += 1;
     int* newPrimeArray = new int[_primeFactorsLength];
     for(int i = 0; i < _primeFactorsLength - 1; i++)
@@ -212,7 +210,8 @@ void GFNumber::_addPrime(int num)
         newPrimeArray[i] = _primeFactors[i];
     }
     newPrimeArray[_primeFactorsLength - 1] = num;
-    delete[] _primeFactors;
+    if (_allocatedMem) delete[] _primeFactors;
+    _allocatedMem = true;
     _primeFactors = newPrimeArray;
 }
 
@@ -242,6 +241,7 @@ int *GFNumber::getPrimeFactors(int* pointer)
     {
         _primeFactors = new int[0];
         *pointer = 0;
+        _factorsReadyFlag = true;
         return _primeFactors;
     }
     // --------------------------------------------------------------
@@ -254,16 +254,21 @@ int *GFNumber::getPrimeFactors(int* pointer)
     }
     // try using "Pollard's Rho" algorithm until it gives -1
     long maybePrime = _pollardRho(currentNumber);
-    while(GField::isPrime(maybePrime) || maybePrime == -1)
+    while(GField::isPrime(maybePrime) || maybePrime != -1)
     {
         _addPrime(maybePrime);
         currentNumber /= maybePrime;
         maybePrime = _pollardRho(currentNumber);
     }
-    if (currentNumber == 1) return _primeFactors;
+    if (currentNumber == 1)
+    {
+        _factorsReadyFlag = true;
+        return _primeFactors;
+    }
     else // we need to use the iterative method
     {
         _directSearchFactorization(currentNumber);
+        _factorsReadyFlag = true;
         return _primeFactors;
     }
 }
@@ -287,6 +292,7 @@ void GFNumber::printFactors()
     else
     {
         getPrimeFactors(&_primeFactorsLength);
+        printFactors();
     }
 }
 
@@ -309,6 +315,7 @@ long GFNumber::_generateRand(long supremum) const
 
 long GFNumber::_pollardRho(long currentNumber) const
 {
+    if (currentNumber == 1) return FAILED_POLARD;
     GFNumber x(_generateRand(currentNumber), _field);
     GFNumber y;
     long p = 1;

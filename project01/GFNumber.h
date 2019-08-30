@@ -22,7 +22,9 @@ private:
 
     int* _primeFactors; /** array of all the prime factors*/
 
-    int _primeFactorsLength;
+    int _primeFactorsLength = 0; /** The length of the prime factors array */
+
+    bool _allocatedMem = false; /** flag which tells if the memory has ever been alocated */
 
     bool _factorsReadyFlag = false; /** flag which indicates if the prime array is ready*/
 
