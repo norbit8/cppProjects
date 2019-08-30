@@ -23,7 +23,7 @@ public:
      * A constructor.
      * Default ctor.
      */
-    GField():_p(2),_l(1){};
+    GField():_p(2), _l(1){};
 
     /**
      * A constructor.
@@ -56,19 +56,19 @@ public:
      * Getter for the char of the field.
      * @return the char of the field (long).
      */
-    const long& getChar() const{return _p;}
+    const long& getChar() const{return _p; }
 
     /**
      * Getter for the degree of the field.
      * @return the degree of the field (long).
      */
-    const long& getDegree() const{return _l;}
+    const long& getDegree() const{return _l; }
 
     /**
      * Getter for the order of the field.
      * @return  the order of the field (long).
      */
-    long getOrder() const{return (long)pow(_p, _l);}
+    long getOrder() const{return (long)pow(_p, _l); }
 
     /**
      * This static method verifies that the number p is prime.

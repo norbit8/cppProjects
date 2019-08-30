@@ -33,7 +33,10 @@ bool GField::isPrime(long p)
     }
     for (int i = 2; i <= sqrt(p); i++)
     {
-        if ((p % i) == 0) return false;
+        if ((p % i) == 0)
+        {
+            return false;
+        }
     }
     return true;
 }
@@ -41,7 +44,7 @@ bool GField::isPrime(long p)
 GFNumber GField::gcd(GFNumber a, GFNumber b) const
 {
     assert(a.getField() == b.getField() && a.getField() == *this && b.getField() == *this);
-    while(a.getNumber()>=0 && b.getNumber()>= 0)
+    while(a.getNumber() >= 0 && b.getNumber() >=  0)
     {
         if (a.getNumber() == 0) return b;
         if (b.getNumber() == 0) return a;

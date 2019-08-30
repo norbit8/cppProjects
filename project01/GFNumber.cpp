@@ -32,8 +32,12 @@ GFNumber::GFNumber(long n, GField field) : _field(field)
 }
 
 // ------------- destructor ----------------
-GFNumber::~GFNumber() {
-    if(_allocatedMem) delete[] _primeFactors;
+GFNumber::~GFNumber()
+{
+    if(_allocatedMem)
+    {
+        delete[] _primeFactors;
+    }
 }
 
 // ------------ operators ------------
@@ -225,7 +229,10 @@ void GFNumber::_directSearchFactorization(long n)
             _addPrime(i);
             n = n / floor(i);
         }
-        else i = i + 1;
+        else
+        {
+            i = i + 1;
+        }
     }
     if (n > 1)
     {
@@ -236,7 +243,10 @@ void GFNumber::_directSearchFactorization(long n)
 int *GFNumber::getPrimeFactors(int* pointer)
 {
     // ------------------------ TRIVIAL -----------------------------
-    if (_factorsReadyFlag) return _primeFactors;
+    if (_factorsReadyFlag)
+    {
+        return _primeFactors;
+    }
     if(getIsPrime()) // if the number is prime just create an array of size 0
     {
         _primeFactors = new int[0];
@@ -277,7 +287,10 @@ void GFNumber::printFactors()
 {
     if(_factorsReadyFlag)
     {
-        if(_primeFactorsLength == 0) std::cout<< (this->getNumber()) << std::endl;
+        if(_primeFactorsLength == 0)
+        {
+            std::cout<< (this->getNumber()) << std::endl;
+        }
         else
         {
             std::cout << this->getNumber() << "=";
@@ -315,7 +328,10 @@ long GFNumber::_generateRand(long supremum) const
 
 long GFNumber::_pollardRho(long currentNumber) const
 {
-    if (currentNumber == 1) return FAILED_POLARD;
+    if (currentNumber == 1)
+    {
+        return FAILED_POLARD;
+    }
     GFNumber x(_generateRand(currentNumber), _field);
     GFNumber y;
     long p = 1;
