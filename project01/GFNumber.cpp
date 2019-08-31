@@ -45,7 +45,7 @@ GFNumber &GFNumber::operator=(const GFNumber &other)
 {
     this->_n = other.getNumber();
     this->_field = other._field;
-    this->_factorsReadyFlag = false;
+    cleanUp();
     return *this;
 }
 
@@ -65,18 +65,21 @@ GFNumber &GFNumber::operator+=(const GFNumber &other)
 {
     _checkValidityField(other);
     this->_n = _convertNumberToField(_n + other.getNumber());
+    cleanUp();
     return *this;
 }
 
 GFNumber &GFNumber::operator+=(long rparam)
 {
     this->_n = _convertNumberToField(_n + rparam);
+    cleanUp();
     return *this;
 }
 
 GFNumber &GFNumber::operator-=(long rparam)
 {
     this->_n = _convertNumberToField(_n - rparam);
+    cleanUp();
     return *this;
 }
 
@@ -84,6 +87,7 @@ GFNumber &GFNumber::operator-=(const GFNumber &other)
 {
     _checkValidityField(other);
     this->_n = _convertNumberToField(_n - other.getNumber());
+    cleanUp();
     return *this;
 }
 
@@ -103,13 +107,16 @@ GFNumber GFNumber::operator-(long rparam) const
 GFNumber &GFNumber::operator*=(const GFNumber &other)
 {
     _checkValidityField(other);
+    std::cout << "HEY:::!" << _convertNumberToField(_n * other.getNumber()) << std::endl;
     this->_n =_convertNumberToField(_n * other.getNumber());
+    cleanUp();
     return *this;
 }
 
 GFNumber &GFNumber::operator*=(long rparam)
 {
     this->_n = _convertNumberToField(_n * rparam);
+    cleanUp();
     return *this;
 }
 
@@ -130,12 +137,14 @@ GFNumber &GFNumber::operator%=(const GFNumber &other)
 {
     _checkValidityField(other);
     this->_n = _convertNumberToField(_n % other.getNumber());
+    cleanUp();
     return *this;
 }
 
 GFNumber &GFNumber::operator%=(long rparam)
 {
     this->_n = _convertNumberToField(_n % rparam);
+    cleanUp();
     return *this;
 }
 
@@ -214,7 +223,10 @@ void GFNumber::_addPrime(int num)
         newPrimeArray[i] = _primeFactors[i];
     }
     newPrimeArray[_primeFactorsLength - 1] = GFNumber(num, _field);
-    if (_allocatedMem) delete[] _primeFactors;
+    if (_allocatedMem)
+    {
+        delete[] _primeFactors;
+    }
     _allocatedMem = true;
     _primeFactors = newPrimeArray;
 }
@@ -247,7 +259,7 @@ GFNumber *GFNumber::getPrimeFactors(int* pointer)
     {
         return _primeFactors;
     }
-    if(getIsPrime()) // if the number is prime just create an array of size 0
+    if(getIsPrime() || _n == 0) // if the number is prime just create an array of size 0
     {
         _primeFactors = new GFNumber[0];
         *pointer = 0;
@@ -346,4 +358,20 @@ long GFNumber::_pollardRho(long currentNumber) const
         return FAILED_POLARD; // Faild to find p with the chosen polynomial
     }
     return p;
+}
+
+void GFNumber::cleanUp()
+{
+    if(_allocatedMem)
+    {
+        delete[] _primeFactors;
+        _primeFactorsLength = 0;
+        _factorsReadyFlag = false;
+        _allocatedMem = false;
+    }
+    else
+    {
+        _factorsReadyFlag = false;
+        _primeFactorsLength = 0;
+    }
 }

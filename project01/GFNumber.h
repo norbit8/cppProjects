@@ -57,7 +57,7 @@ private:
     long _generateRand(long supremum) const;
 
     /**
-     * This method addes a prime number to the _primeFactors array.
+     * This method adds a prime number to the _primeFactors array.
      * it does all the job of allocating memory to the new array and assigning the values of the
      * old array to the new one and then deleting the old array.
      */
@@ -69,6 +69,13 @@ private:
      * @param n
      */
     void _directSearchFactorization(long n);
+
+    /**
+     * This method deletes the array and sets all the flags to false.
+     * it should be called whenever is a change to the given number. (for instance,
+     * when added two numbers, or when changing the number by using the ">>" operator)
+     */
+    void cleanUp();
 
 public:
 
