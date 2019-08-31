@@ -8,6 +8,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/mercydude/University/SUMMER_CPP/cppProjects/project01/GField.cpp" "/home/mercydude/University/SUMMER_CPP/cppProjects/project01/cmake-build-debug/CMakeFiles/project01.dir/GField.cpp.o"
   "/home/mercydude/University/SUMMER_CPP/cppProjects/project01/IntegerFactorization.cpp" "/home/mercydude/University/SUMMER_CPP/cppProjects/project01/cmake-build-debug/CMakeFiles/project01.dir/IntegerFactorization.cpp.o"
   "/home/mercydude/University/SUMMER_CPP/cppProjects/project01/main.cpp" "/home/mercydude/University/SUMMER_CPP/cppProjects/project01/cmake-build-debug/CMakeFiles/project01.dir/main.cpp.o"
+  "/home/mercydude/University/SUMMER_CPP/cppProjects/project01/tester.cpp" "/home/mercydude/University/SUMMER_CPP/cppProjects/project01/cmake-build-debug/CMakeFiles/project01.dir/tester.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

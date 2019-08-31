@@ -102,6 +102,9 @@
 		<Unit filename="/home/mercydude/University/SUMMER_CPP/cppProjects/project01/main.cpp">
 			<Option target="project01"/>
 		</Unit>
+		<Unit filename="/home/mercydude/University/SUMMER_CPP/cppProjects/project01/tester.cpp">
+			<Option target="project01"/>
+		</Unit>
 		<Unit filename="/home/mercydude/University/SUMMER_CPP/cppProjects/project01/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
