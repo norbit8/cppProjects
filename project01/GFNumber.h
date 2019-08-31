@@ -20,7 +20,7 @@ private:
 
     GField _field; /** The degree of the field. */
 
-    int* _primeFactors; /** array of all the prime factors*/
+    GFNumber* _primeFactors; /** array of all the prime factors*/
 
     int _primeFactorsLength = 0; /** The length of the prime factors array */
 
@@ -124,7 +124,7 @@ public:
      * factors of the given GFNumber.
      * @return An array of long representing all the prime factors of the GFNumber.
      */
-    int *getPrimeFactors(int *pointer);
+    GFNumber *getPrimeFactors(int *pointer);
 
     /**
      * Prints all the prime factors

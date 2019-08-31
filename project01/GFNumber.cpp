@@ -208,12 +208,12 @@ std::istream &operator>>(std::istream &in, GFNumber& number)
 void GFNumber::_addPrime(int num)
 {
     _primeFactorsLength += 1;
-    int* newPrimeArray = new int[_primeFactorsLength];
+    GFNumber* newPrimeArray = new GFNumber[_primeFactorsLength];
     for(int i = 0; i < _primeFactorsLength - 1; i++)
     {
         newPrimeArray[i] = _primeFactors[i];
     }
-    newPrimeArray[_primeFactorsLength - 1] = num;
+    newPrimeArray[_primeFactorsLength - 1] = GFNumber(num, _field);
     if (_allocatedMem) delete[] _primeFactors;
     _allocatedMem = true;
     _primeFactors = newPrimeArray;
@@ -240,7 +240,7 @@ void GFNumber::_directSearchFactorization(long n)
     }
 }
 
-int *GFNumber::getPrimeFactors(int* pointer)
+GFNumber *GFNumber::getPrimeFactors(int* pointer)
 {
     // ------------------------ TRIVIAL -----------------------------
     if (_factorsReadyFlag)
@@ -249,7 +249,7 @@ int *GFNumber::getPrimeFactors(int* pointer)
     }
     if(getIsPrime()) // if the number is prime just create an array of size 0
     {
-        _primeFactors = new int[0];
+        _primeFactors = new GFNumber[0];
         *pointer = 0;
         _factorsReadyFlag = true;
         return _primeFactors;
@@ -296,10 +296,9 @@ void GFNumber::printFactors()
             std::cout << this->getNumber() << "=";
             for(int i = 0; i < _primeFactorsLength - 1; i++)
             {
-                std::cout << _primeFactors[i] << "*";
-
+                std::cout << _primeFactors[i].getNumber() << "*";
             }
-            std::cout << _primeFactors[_primeFactorsLength - 1] <<std::endl;
+            std::cout << _primeFactors[_primeFactorsLength - 1].getNumber() <<std::endl;
         }
     }
     else

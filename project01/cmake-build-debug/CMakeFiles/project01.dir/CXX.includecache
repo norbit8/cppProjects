@@ -6,23 +6,25 @@
 
 #IncludeRegexTransform: 
 
-/home/mercydude/University/SUMMER_CPP/cppProjects/project01/GFNumber.h
+C:/Users/Yoav/Desktop/HUJI/SemesterSummer/cpp/cppProjects/project01/GFNumber.cpp
+GFNumber.h
+C:/Users/Yoav/Desktop/HUJI/SemesterSummer/cpp/cppProjects/project01/GFNumber.h
 GField.h
-/home/mercydude/University/SUMMER_CPP/cppProjects/project01/GField.h
+C:/Users/Yoav/Desktop/HUJI/SemesterSummer/cpp/cppProjects/project01/GField.h
+cassert
+-
+random
+-
+cmath
+-
 
-/home/mercydude/University/SUMMER_CPP/cppProjects/project01/GField.h
+C:/Users/Yoav/Desktop/HUJI/SemesterSummer/cpp/cppProjects/project01/GFNumber.h
+GField.h
+C:/Users/Yoav/Desktop/HUJI/SemesterSummer/cpp/cppProjects/project01/GField.h
+
+C:/Users/Yoav/Desktop/HUJI/SemesterSummer/cpp/cppProjects/project01/GField.h
 cmath
 -
 iostream
 -
-
-/home/mercydude/University/SUMMER_CPP/cppProjects/project01/IntegerFactorization.cpp
-iostream
--
-random
--
-GField.h
-/home/mercydude/University/SUMMER_CPP/cppProjects/project01/GField.h
-GFNumber.h
-/home/mercydude/University/SUMMER_CPP/cppProjects/project01/GFNumber.h
 

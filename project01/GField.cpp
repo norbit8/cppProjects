@@ -20,7 +20,7 @@ GField::GField(long p)
 // ctor 2
 GField::GField(long p, long l)
 {
-    assert((isPrime(p) && (l >= 0)));
+    assert((isPrime(p) && (l > 0)));
     this->_p = p;
     this->_l = l;
 }
