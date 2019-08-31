@@ -4,7 +4,6 @@
 #include <cassert>
 #include <random>
 #include <cmath>
-#define POLYNOMIAL_FUNC(x) ((x) * (x) + 1)
 #define FAILED_POLARD -1
 
 // --------------------------------------------------------------------------------------
@@ -107,7 +106,6 @@ GFNumber GFNumber::operator-(long rparam) const
 GFNumber &GFNumber::operator*=(const GFNumber &other)
 {
     _checkValidityField(other);
-    std::cout << "HEY:::!" << _convertNumberToField(_n * other.getNumber()) << std::endl;
     this->_n =_convertNumberToField(_n * other.getNumber());
     cleanUp();
     return *this;
@@ -234,7 +232,7 @@ void GFNumber::_addPrime(int num)
 void GFNumber::_directSearchFactorization(long n)
 {
     long i = 2;
-    while(i <= floor(sqrt(2)))
+    while(i <= floor(sqrt(n)))
     {
         if ((n % i) == 0)
         {
@@ -348,8 +346,8 @@ long GFNumber::_pollardRho(long currentNumber) const
     long p = 1;
     while(p == 1)
     {
-        x = POLYNOMIAL_FUNC(x);
-        y = POLYNOMIAL_FUNC(POLYNOMIAL_FUNC(x));
+        x = polynomialFunc(x);
+        y = polynomialFunc(polynomialFunc(y));
         p = _field.gcd(GFNumber(std::abs(x.getNumber() - y.getNumber()), _field),
                 GFNumber(currentNumber, _field)).getNumber();
     }
@@ -374,4 +372,9 @@ void GFNumber::cleanUp()
         _factorsReadyFlag = false;
         _primeFactorsLength = 0;
     }
+}
+
+GFNumber GFNumber::polynomialFunc(GFNumber x) const {
+    x *= x;
+    return (x + 1);
 }

@@ -77,6 +77,13 @@ private:
      */
     void cleanUp();
 
+    /**
+     * this is the polynomial func f(x) = x^2 + 1
+     * @param x GFNumber
+     * @return GFNumber result
+     */
+    GFNumber polynomialFunc(GFNumber x) const;
+
 public:
 
     /**
@@ -99,7 +106,7 @@ public:
      * ctor with default field.
      * @param n A number from the field.
      */
-    explicit GFNumber(long n) : GFNumber(n, GField(DEFAULT_P, DEFAULT_L)) {};
+    GFNumber(long n) : GFNumber(n, GField(DEFAULT_P, DEFAULT_L)) {};
 
 
     /**

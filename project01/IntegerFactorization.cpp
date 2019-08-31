@@ -29,12 +29,5 @@ int main()
     std::cout << num1 * num2 << std::endl;
     num1.printFactors();
     num2.printFactors();
-    std::cout << "_____________________" << std::endl;
-    std:: cout << num2 * num1 << std::endl;
-    num1 *= (num2 * num1);
-    std::cout << num1.getNumber() << std::endl;
-    num1.printFactors();
-    num1 = num2;
-    num1.printFactors();
     return 0;
 }

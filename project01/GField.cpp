@@ -27,6 +27,7 @@ GField::GField(long p, long l)
 
 bool GField::isPrime(long p)
 {
+    p = abs(p);
     if (p <= 1)
     {
         return false;

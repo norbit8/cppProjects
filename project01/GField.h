@@ -30,7 +30,7 @@ public:
      * ctor with p and l is default 1.
      * @param p the char of the field.
      */
-    explicit GField(long p);
+    GField(long p);
 
     /**
      * A constructor.
@@ -68,7 +68,7 @@ public:
      * Getter for the order of the field.
      * @return  the order of the field (long).
      */
-    long getOrder() const{return (long)pow(_p, _l); }
+    long getOrder() const{return ceil(pow(_p, _l)); }
 
     /**
      * This static method verifies that the number p is prime.
