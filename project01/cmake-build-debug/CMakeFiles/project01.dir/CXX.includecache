@@ -6,11 +6,11 @@
 
 #IncludeRegexTransform: 
 
-C:/Users/Yoav/Desktop/HUJI/SemesterSummer/cpp/cppProjects/project01/GFNumber.cpp
+/cs/usr/yoav/semester03/cpp/cppProjects/project01/GFNumber.cpp
 GFNumber.h
-C:/Users/Yoav/Desktop/HUJI/SemesterSummer/cpp/cppProjects/project01/GFNumber.h
+/cs/usr/yoav/semester03/cpp/cppProjects/project01/GFNumber.h
 GField.h
-C:/Users/Yoav/Desktop/HUJI/SemesterSummer/cpp/cppProjects/project01/GField.h
+/cs/usr/yoav/semester03/cpp/cppProjects/project01/GField.h
 cassert
 -
 random
@@ -18,23 +18,13 @@ random
 cmath
 -
 
-C:/Users/Yoav/Desktop/HUJI/SemesterSummer/cpp/cppProjects/project01/GFNumber.h
+/cs/usr/yoav/semester03/cpp/cppProjects/project01/GFNumber.h
 GField.h
-C:/Users/Yoav/Desktop/HUJI/SemesterSummer/cpp/cppProjects/project01/GField.h
+/cs/usr/yoav/semester03/cpp/cppProjects/project01/GField.h
 
-C:/Users/Yoav/Desktop/HUJI/SemesterSummer/cpp/cppProjects/project01/GField.h
+/cs/usr/yoav/semester03/cpp/cppProjects/project01/GField.h
 cmath
 -
 iostream
 -
-
-C:/Users/Yoav/Desktop/HUJI/SemesterSummer/cpp/cppProjects/project01/IntegerFactorization.cpp
-iostream
--
-random
--
-GField.h
-C:/Users/Yoav/Desktop/HUJI/SemesterSummer/cpp/cppProjects/project01/GField.h
-GFNumber.h
-C:/Users/Yoav/Desktop/HUJI/SemesterSummer/cpp/cppProjects/project01/GFNumber.h
 

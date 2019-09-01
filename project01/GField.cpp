@@ -15,6 +15,7 @@ GField::GField(long p)
 {
     assert(p >= 1 && isPrime(p));
     this->_p = p;
+    this->_l = 1;
 }
 
 // ctor 2

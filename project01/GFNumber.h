@@ -82,7 +82,9 @@ private:
      * @param x GFNumber
      * @return GFNumber result
      */
-    GFNumber polynomialFunc(GFNumber x) const;
+    long polynomialFunc(long x) const;
+
+    long gcd(long num1, long num2) const;
 
 public:
 
