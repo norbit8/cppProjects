@@ -13,16 +13,13 @@
  */
 int main()
 {
-    int a1, b1, c1, a2, b2, c2;
-    std::cin >> a1 >> b1 >> c1;
-    std::cin >> a2 >> b2 >> c2;
+    GFNumber num1, num2;
+    std::cin >> num1 >> num2;
     // Check if the user input is valid
     if(std::cin.fail())
     {
         return FAILED;
     }
-    GField f1(b1, c1), f2(b2, c2);
-    GFNumber num1(a1, f1), num2(a2, f2);
     std::cout << num1 + num2 << std::endl;
     std::cout << num1 - num2 << std::endl;
     std::cout << num2 - num1 << std::endl;

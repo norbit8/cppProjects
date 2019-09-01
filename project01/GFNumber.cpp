@@ -44,7 +44,7 @@ GFNumber &GFNumber::operator=(const GFNumber &other)
 {
     this->_n = other.getNumber();
     this->_field = other._field;
-    cleanUp();
+    _cleanUp();
     return *this;
 }
 
@@ -64,21 +64,21 @@ GFNumber &GFNumber::operator+=(const GFNumber &other)
 {
     _checkValidityField(other);
     this->_n = _convertNumberToField(_n + other.getNumber());
-    cleanUp();
+    _cleanUp();
     return *this;
 }
 
 GFNumber &GFNumber::operator+=(long rparam)
 {
     this->_n = _convertNumberToField(_n + rparam);
-    cleanUp();
+    _cleanUp();
     return *this;
 }
 
 GFNumber &GFNumber::operator-=(long rparam)
 {
     this->_n = _convertNumberToField(_n - rparam);
-    cleanUp();
+    _cleanUp();
     return *this;
 }
 
@@ -86,7 +86,7 @@ GFNumber &GFNumber::operator-=(const GFNumber &other)
 {
     _checkValidityField(other);
     this->_n = _convertNumberToField(_n - other.getNumber());
-    cleanUp();
+    _cleanUp();
     return *this;
 }
 
@@ -107,14 +107,14 @@ GFNumber &GFNumber::operator*=(const GFNumber &other)
 {
     _checkValidityField(other);
     this->_n =_convertNumberToField(_n * other.getNumber());
-    cleanUp();
+    _cleanUp();
     return *this;
 }
 
 GFNumber &GFNumber::operator*=(long rparam)
 {
     this->_n = _convertNumberToField(_n * rparam);
-    cleanUp();
+    _cleanUp();
     return *this;
 }
 
@@ -135,14 +135,14 @@ GFNumber &GFNumber::operator%=(const GFNumber &other)
 {
     _checkValidityField(other);
     this->_n = _convertNumberToField(_n % other.getNumber());
-    cleanUp();
+    _cleanUp();
     return *this;
 }
 
 GFNumber &GFNumber::operator%=(long rparam)
 {
     this->_n = _n % _convertNumberToField(rparam);
-    cleanUp();
+    _cleanUp();
     return *this;
 }
 
@@ -289,7 +289,6 @@ GFNumber *GFNumber::getPrimeFactors(int* pointer)
     }
     else // we need to use the iterative method
     {
-        std::cout << "FAILED POLLARD " << std::endl;
         _directSearchFactorization(currentNumber);
         *pointer = _primeFactorsLength;
         _factorsReadyFlag = true;
@@ -303,7 +302,7 @@ void GFNumber::printFactors()
     {
         if(_primeFactorsLength == 0)
         {
-            std::cout<< (this->getNumber()) << std::endl;
+            std::cout<< (this->getNumber()) << "=" << (this->getNumber()) << "*1" << std::endl;
         }
         else
         {
@@ -350,9 +349,9 @@ long GFNumber::_pollardRho(long currentNumber) const
     long p = 1;
     while(p == 1)
     {
-        x = polynomialFunc(x) % currentNumber;
-        y = polynomialFunc(polynomialFunc(y)) % currentNumber;
-        p = gcd(std::abs(x - y) % currentNumber, currentNumber) % currentNumber;
+        x = _polynomialFunc(x, currentNumber);
+        y = _polynomialFunc(_polynomialFunc(y,currentNumber), currentNumber) ;
+        p = _gcd(std::abs(x - y), currentNumber) ;
     }
     if (p == currentNumber)
     {
@@ -361,7 +360,7 @@ long GFNumber::_pollardRho(long currentNumber) const
     return p;
 }
 
-void GFNumber::cleanUp()
+void GFNumber::_cleanUp()
 {
     if(_allocatedMem)
     {
@@ -377,13 +376,12 @@ void GFNumber::cleanUp()
     }
 }
 
-long GFNumber::polynomialFunc(long x) const
+long GFNumber::_polynomialFunc(long x, long num) const
 {
-    x *= x;
-    return (x + 1);
+    return ((x*x) + 1) % num;
 }
 
-long GFNumber::gcd(long num1, long num2) const {
+long GFNumber::_gcd(long num1, long num2) const {
     while(num1 >= 0 && num2 >=  0)
     {
         if (num1 == 0) return num2;
@@ -391,11 +389,11 @@ long GFNumber::gcd(long num1, long num2) const {
         if (num1 == num2) return num1;
         if (num1 > num2)
         {
-            num1 = num1 - num2;
+            num1 = (num1 - num2);
         }
         else
         {
-            num2 = num2 - num1;
+            num2 = (num2 - num1);
         }
     }
 }

@@ -75,16 +75,17 @@ private:
      * it should be called whenever is a change to the given number. (for instance,
      * when added two numbers, or when changing the number by using the ">>" operator)
      */
-    void cleanUp();
+    void _cleanUp();
 
     /**
-     * this is the polynomial func f(x) = x^2 + 1
-     * @param x GFNumber
+     * this is the polynomial func f(x) = x^2 + 1 mod n
+     * @param x long
+     * @param num long
      * @return GFNumber result
      */
-    long polynomialFunc(long x) const;
+    long _polynomialFunc(long x, long num) const;
 
-    long gcd(long num1, long num2) const;
+    long _gcd(long num1, long num2) const;
 
 public:
 

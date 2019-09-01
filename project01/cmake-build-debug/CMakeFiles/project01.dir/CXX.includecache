@@ -6,11 +6,11 @@
 
 #IncludeRegexTransform: 
 
-/cs/usr/yoav/semester03/cpp/cppProjects/project01/GFNumber.cpp
+C:/Users/Yoav/Desktop/HUJI/SemesterSummer/cpp/cppProjects/project01/GFNumber.cpp
 GFNumber.h
-/cs/usr/yoav/semester03/cpp/cppProjects/project01/GFNumber.h
+C:/Users/Yoav/Desktop/HUJI/SemesterSummer/cpp/cppProjects/project01/GFNumber.h
 GField.h
-/cs/usr/yoav/semester03/cpp/cppProjects/project01/GField.h
+C:/Users/Yoav/Desktop/HUJI/SemesterSummer/cpp/cppProjects/project01/GField.h
 cassert
 -
 random
@@ -18,11 +18,11 @@ random
 cmath
 -
 
-/cs/usr/yoav/semester03/cpp/cppProjects/project01/GFNumber.h
+C:/Users/Yoav/Desktop/HUJI/SemesterSummer/cpp/cppProjects/project01/GFNumber.h
 GField.h
-/cs/usr/yoav/semester03/cpp/cppProjects/project01/GField.h
+C:/Users/Yoav/Desktop/HUJI/SemesterSummer/cpp/cppProjects/project01/GField.h
 
-/cs/usr/yoav/semester03/cpp/cppProjects/project01/GField.h
+C:/Users/Yoav/Desktop/HUJI/SemesterSummer/cpp/cppProjects/project01/GField.h
 cmath
 -
 iostream

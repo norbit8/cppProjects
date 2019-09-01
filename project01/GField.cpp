@@ -13,7 +13,8 @@
 // ctor 1
 GField::GField(long p)
 {
-    assert(p >= 1 && isPrime(p));
+    p = abs(p);
+    assert(p > 1 && isPrime(p));
     this->_p = p;
     this->_l = 1;
 }
@@ -21,7 +22,8 @@ GField::GField(long p)
 // ctor 2
 GField::GField(long p, long l)
 {
-    assert((isPrime(p) && (l > 0)));
+    p = abs(p);
+    assert((isPrime(p)) && (l > 0));
     this->_p = p;
     this->_l = l;
 }
@@ -84,7 +86,7 @@ std::istream &operator>>(std::istream &in, GField &field)
 {
     long ch, degree;
     in >> ch >> degree;
-    assert(ch >= 1 && GField::isPrime(ch) && degree >=0);
+    assert(ch > 1 && GField::isPrime(ch) && degree >0);
     field._p = ch;
     field._l = degree;
     return in;
