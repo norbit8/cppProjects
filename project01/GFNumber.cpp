@@ -4,6 +4,7 @@
 #include <cassert>
 #include <random>
 #include <cmath>
+
 #define FAILED_POLARD -1
 
 // --------------------------------------------------------------------------------------
@@ -12,34 +13,57 @@
 
 // ------- private ----------
 
+/**
+ * Private method for checking the validity of a given GFNumber by verifying that
+ * it has the same field as the current instance.
+ * @param other some GFNumber instance
+ */
 void GFNumber::_checkValidityField(const GFNumber &other) const
 {
     assert(this->_field == other._field);
 }
 
+/**
+ * This private method converts any number to a number from the field.
+ * @param n long number.
+ * @return
+ */
 long GFNumber::_convertNumberToField(long n) const
 {
-    return ((((n % _field.getOrder()) + _field.getOrder())% _field.getOrder()));
+    return ((((n % _field.getOrder()) + _field.getOrder()) % _field.getOrder()));
 }
 
 // ------------- public --------------
 
 // ------------- ctor ----------------
-GFNumber::GFNumber(long n, GField field) : _field(field)
+/**
+ * A constructor.
+ * @param n A number.
+ * @param field The field.
+ */
+GFNumber::GFNumber(long n , GField field) : _field(field)
 {
     _n = _convertNumberToField(n);
 }
 
 // ------------- destructor ----------------
+/**
+ * Destructor.
+ */
 GFNumber::~GFNumber()
 {
-    if(_allocatedMem)
-    {
-        delete[] _primeFactors;
-    }
+//    if (_allocatedMem)
+//    {
+//        delete[] _primeFactors;
+//    }
 }
 
 // ------------ operators ------------
+/**
+ * Assignment operator.
+ * @param other another GFNumber.
+ * @return The result GFNumber
+ */
 GFNumber &GFNumber::operator=(const GFNumber &other)
 {
     this->_n = other.getNumber();
@@ -48,18 +72,33 @@ GFNumber &GFNumber::operator=(const GFNumber &other)
     return *this;
 }
 
+/**
+ * Operator +
+ * @param other another GFNumber.
+ * @return The result GFNumber
+ */
 GFNumber GFNumber::operator+(const GFNumber &other) const
 {
     _checkValidityField(other);
-    return GFNumber(_convertNumberToField(other.getNumber() + this->_n), this->_field);
+    return GFNumber(_convertNumberToField(other.getNumber() + this->_n) , this->_field);
 }
 
+/**
+ * Operator + on long number and gfNumber (GFNumber + long).
+ * @param rparam long number.
+ * @return The result GFNumber
+ */
 GFNumber GFNumber::operator+(long rparam) const
 {
-    GFNumber gfNum(_convertNumberToField(this->_n + rparam), this->_field);
+    GFNumber gfNum(_convertNumberToField(this->_n + rparam) , this->_field);
     return gfNum;
 }
 
+/**
+ * plus-assignment operator, for two GFNumbers.
+ * @param other another GFNumber.
+ * @return GFNumber instance.
+ */
 GFNumber &GFNumber::operator+=(const GFNumber &other)
 {
     _checkValidityField(other);
@@ -68,6 +107,11 @@ GFNumber &GFNumber::operator+=(const GFNumber &other)
     return *this;
 }
 
+/**
+ * plus-assignment operator, for GFNumber and long number.
+ * @param rparam long number.
+ * @return GFNumber instance.
+ */
 GFNumber &GFNumber::operator+=(long rparam)
 {
     this->_n = _convertNumberToField(_n + rparam);
@@ -75,6 +119,11 @@ GFNumber &GFNumber::operator+=(long rparam)
     return *this;
 }
 
+/**
+ * minus-assignment operator, for GFNumber and long number.
+ * @param rparam long number.
+ * @return GFNumber instance.
+ */
 GFNumber &GFNumber::operator-=(long rparam)
 {
     this->_n = _convertNumberToField(_n - rparam);
@@ -82,6 +131,11 @@ GFNumber &GFNumber::operator-=(long rparam)
     return *this;
 }
 
+/**
+ * minus-assignment operator, for two GFNumbers.
+ * @param other another GFNumber.
+ * @return GFNumber instance.
+ */
 GFNumber &GFNumber::operator-=(const GFNumber &other)
 {
     _checkValidityField(other);
@@ -90,27 +144,47 @@ GFNumber &GFNumber::operator-=(const GFNumber &other)
     return *this;
 }
 
+/**
+ * Operator - on long number and gfNumber (GFNumber - GFNumber).
+ * @param other GFNumber.
+ * @return The result GFNumber
+ */
 GFNumber GFNumber::operator-(const GFNumber &other) const
 {
     _checkValidityField(other);
-    GFNumber gfNum(_convertNumberToField(this->_n - other.getNumber()), this->_field);
+    GFNumber gfNum(_convertNumberToField(this->_n - other.getNumber()) , this->_field);
     return gfNum;
 }
 
+/**
+ * Operator - on long number and gfNumber (GFNumber - long).
+ * @param rparam long number.
+ * @return The result GFNumber
+ */
 GFNumber GFNumber::operator-(long rparam) const
 {
-    GFNumber gfNum(_convertNumberToField(_n - rparam), this->_field);
+    GFNumber gfNum(_convertNumberToField(_n - rparam) , this->_field);
     return gfNum;
 }
 
+/**
+ * multiply-assignment operator, for two GFNumbers.
+ * @param other GFNumber instance.
+ * @return GFNumber instance.
+ */
 GFNumber &GFNumber::operator*=(const GFNumber &other)
 {
     _checkValidityField(other);
-    this->_n =_convertNumberToField(_n * other.getNumber());
+    this->_n = _convertNumberToField(_n * other.getNumber());
     _cleanUp();
     return *this;
 }
 
+/**
+ * multiply-assignment operator, for GFNumber and long number.
+ * @param rparam long number.
+ * @return GFNumber instance.
+ */
 GFNumber &GFNumber::operator*=(long rparam)
 {
     this->_n = _convertNumberToField(_n * rparam);
@@ -118,19 +192,34 @@ GFNumber &GFNumber::operator*=(long rparam)
     return *this;
 }
 
+/**
+ * Operator * on two gfNumber (GFNumber * GFNumber).
+ * @param other GFNumber instance.
+ * @return The result GFNumber
+ */
 GFNumber GFNumber::operator*(const GFNumber &other) const
 {
     _checkValidityField(other);
-    GFNumber gfNum(_convertNumberToField(this->_n * other.getNumber()), this->_field);
+    GFNumber gfNum(_convertNumberToField(this->_n * other.getNumber()) , this->_field);
     return gfNum;
 }
 
+/**
+ * Operator * on long number and gfNumber (GFNumber * long number).
+ * @param rparam long numbr.
+ * @return The result GFNumber
+ */
 GFNumber GFNumber::operator*(long rparam) const
 {
-    GFNumber gfNum(_convertNumberToField(this->_n * rparam), this->_field);
+    GFNumber gfNum(_convertNumberToField(this->_n * rparam) , this->_field);
     return gfNum;
 }
 
+/**
+ * Operator %= on two gfNumbers (GFNumber %= GFNumber).
+ * @param other GFNumber instance.
+ * @return The result GFNumber
+ */
 GFNumber &GFNumber::operator%=(const GFNumber &other)
 {
     _checkValidityField(other);
@@ -139,6 +228,11 @@ GFNumber &GFNumber::operator%=(const GFNumber &other)
     return *this;
 }
 
+/**
+ * Operator %= on one long number and a gfNumber (GFNumber %= long).
+ * @param rparam long number.
+ * @return The result GFNumber
+ */
 GFNumber &GFNumber::operator%=(long rparam)
 {
     this->_n = _n % _convertNumberToField(rparam);
@@ -146,81 +240,143 @@ GFNumber &GFNumber::operator%=(long rparam)
     return *this;
 }
 
+/**
+ * Operator % on two gfNumbers (GFNumber % GFNumber).
+ * @param other GFNumber instance.
+ * @return The result GFNumber
+ */
 GFNumber GFNumber::operator%(const GFNumber &other) const
 {
     _checkValidityField(other);
-    GFNumber gfNum(_convertNumberToField(this->_n % other.getNumber()), this->_field);
+    GFNumber gfNum(_convertNumberToField(this->_n % other.getNumber()) , this->_field);
     return gfNum;
 }
 
+/**
+ * Operator % on long number and gfNumber (GFNumber % long number).
+ * @param rparam long number.
+ * @return The result GFNumber
+ */
 GFNumber GFNumber::operator%(long rparam) const
 {
     assert(rparam != 0); // modulo 0 is undefined
-    GFNumber gfNum(this->_n % _convertNumberToField(rparam), this->_field);
+    GFNumber gfNum(this->_n % _convertNumberToField(rparam) , this->_field);
     return gfNum;
 }
 
+/**
+ * Equal operator overloading. checks if both GFNumbers are the same.
+ * @param other , another GFNumber instance.
+ * @return true if they are the same, false otherwise.
+ */
 bool GFNumber::operator==(const GFNumber &other) const
 {
     return (this->_n == other.getNumber() && this->_field.getChar() == other.getField().getChar());
 }
 
+/**
+ * Not equal operator overloading.
+ * @param other , another GFNumber instance.
+ * @return true if they are not equal, false otherwise.
+ * (Also it validates that the other is from the same field)
+ */
 bool GFNumber::operator!=(const GFNumber &other) const
 {
     return (!(*this == other));
 }
 
+/**
+ * Greater equal operator overloading.
+ * @param other GFNumber.
+ * @return true if the n of this is greater or equal to the n of the other GFNumber.
+ * (Also it validates that the other is from the same field)
+ */
 bool GFNumber::operator>=(const GFNumber &other) const
 {
     _checkValidityField(other);
     return (this->_n >= other.getNumber());
 }
 
+/**
+ * Greater than operator overloading.
+ * @param other GFNumber.
+ * @return true if the number of this instance is greater than the number of the other
+ * instance. (Also it validates that the other is from the same field)
+ */
 bool GFNumber::operator>(const GFNumber &other) const
 {
     _checkValidityField(other);
     return (this->_n > other.getNumber());
 }
 
-
+/**
+ * Less than and equal to operator overloading.
+ * @param other GFNumber.
+ * @return true if the number of this instance is less and equal to than the number of the
+ * other instance.
+ * (Also it validates that the other is from the same field)
+ */
 bool GFNumber::operator<=(const GFNumber &other) const
 {
     _checkValidityField(other);
     return (this->_n <= other.getNumber());
 }
 
+/**
+ * Less than operator overloading.
+ * @param other GFNumber.
+ * @return true if the number of this instance is less than the number of the other instance.
+ * (Also it validates that the other is from the same field)
+ */
 bool GFNumber::operator<(const GFNumber &other) const
 {
     _checkValidityField(other);
     return (this->_n < other.getNumber());
 }
 
-std::ostream& operator<<(std::ostream &out, const GFNumber& number)
+/**
+* Operator overloading of "<<".
+* @param out ostream reference.
+* @param number some GFNumber reference.
+* @return ostream reference with the desire output.
+*/
+std::ostream &operator<<(std::ostream &out , const GFNumber &number)
 {
     return (out << number.getNumber() << " " << number.getField());
 }
 
-std::istream &operator>>(std::istream &in, GFNumber& number)
+/**
+ * Operator overloading of ">>".
+ * @param in some istream input.
+ * @param number GFNumber refernce.
+ * @return istream reference with the desire input.
+ */
+std::istream &operator>>(std::istream &in , GFNumber &number)
 {
-    long n, p, l;
+    long n , p , l;
     in >> n >> p >> l;
-    GField field(p, l);
-    GFNumber newgf(n, field);
+    GField field(p , l);
+    GFNumber newgf(n , field);
     number = newgf;
     return in;
 }
 
 // ------------ methods ------------
 
-void GFNumber::_addPrime(int num)
+/**
+ * This method adds a prime number to the _primeFactors array.
+ * it does all the job of allocating memory to the new array and assigning the values of the
+ * old array to the new one and then deleting the old array.
+ */
+void GFNumber::_addPrime(long num)
 {
     _primeFactorsLength += 1;
-    GFNumber* newPrimeArray = new GFNumber[_primeFactorsLength];
-    for(int i = 0; i < _primeFactorsLength - 1; i++)
+    GFNumber *newPrimeArray = new GFNumber[_primeFactorsLength];
+    for (int i = 0; i < _primeFactorsLength - 1; i++)
     {
         newPrimeArray[i] = _primeFactors[i];
     }
-    newPrimeArray[_primeFactorsLength - 1] = GFNumber(num, _field);
+    newPrimeArray[_primeFactorsLength - 1] = GFNumber(num , _field);
     if (_allocatedMem)
     {
         delete[] _primeFactors;
@@ -229,15 +385,20 @@ void GFNumber::_addPrime(int num)
     _primeFactors = newPrimeArray;
 }
 
+/**
+ * This method uses a brute force approach in order to get all the prime
+ * factors of n, it uses a principal called "Trail Division"
+ * @param n
+ */
 void GFNumber::_directSearchFactorization(long n)
 {
     long i = 2;
-    while(i <= floor(sqrt(n)))
+    while (i <= floor(sqrt(n)))
     {
         if ((n % i) == 0)
         {
             _addPrime(i);
-            n = n / floor(i);
+            n = n / i;
         }
         else
         {
@@ -250,7 +411,12 @@ void GFNumber::_directSearchFactorization(long n)
     }
 }
 
-GFNumber *GFNumber::getPrimeFactors(int* pointer)
+/**
+ * This method returns a list of longs of all the prime
+ * factors of the given GFNumber.
+ * @return An array of long representing all the prime factors of the GFNumber.
+ */
+GFNumber *GFNumber::getPrimeFactors(int *pointer)
 {
     // ------------------------ TRIVIAL -----------------------------
     if (_factorsReadyFlag)
@@ -258,7 +424,7 @@ GFNumber *GFNumber::getPrimeFactors(int* pointer)
         *pointer = _primeFactorsLength;
         return _primeFactors;
     }
-    if(getIsPrime() || _n == 0) // if the number is prime just create an array of size 0
+    if (getIsPrime() || _n == 0) // if the number is prime just create an array of size 0
     {
         _primeFactors = new GFNumber[0];
         *pointer = 0;
@@ -268,14 +434,14 @@ GFNumber *GFNumber::getPrimeFactors(int* pointer)
     // --------------------------------------------------------------
     // try to factor until the number is odd
     long currentNumber = _n;
-    while(currentNumber % 2 == 0)
+    while (currentNumber % 2 == 0)
     {
         _addPrime(2); // adds 2 to the prime list
         currentNumber /= 2;
     }
     // try using "Pollard's Rho" algorithm until it gives -1
     long maybePrime = _pollardRho(currentNumber);
-    while(GField::isPrime(maybePrime) || maybePrime != -1)
+    while (GField::isPrime(maybePrime) || maybePrime != -1)
     {
         _addPrime(maybePrime);
         currentNumber /= maybePrime;
@@ -296,22 +462,25 @@ GFNumber *GFNumber::getPrimeFactors(int* pointer)
     }
 }
 
+/**
+ * Prints all the prime factors
+ */
 void GFNumber::printFactors()
 {
-    if(_factorsReadyFlag)
+    if (_factorsReadyFlag)
     {
-        if(_primeFactorsLength == 0)
+        if (_primeFactorsLength == 0)
         {
-            std::cout<< (this->getNumber()) << "=" << (this->getNumber()) << "*1" << std::endl;
+            std::cout << (this->getNumber()) << "=" << (this->getNumber()) << "*1" << std::endl;
         }
         else
         {
             std::cout << this->getNumber() << "=";
-            for(int i = 0; i < _primeFactorsLength - 1; i++)
+            for (int i = 0; i < _primeFactorsLength - 1; i++)
             {
                 std::cout << _primeFactors[i].getNumber() << "*";
             }
-            std::cout << _primeFactors[_primeFactorsLength - 1].getNumber() <<std::endl;
+            std::cout << _primeFactors[_primeFactorsLength - 1].getNumber() << std::endl;
         }
     }
     else
@@ -321,12 +490,20 @@ void GFNumber::printFactors()
     }
 }
 
+/**
+ * This method checks if the GFNumber is prime or not.
+ * @return True if prime, false otherwise.
+ */
 bool GFNumber::getIsPrime() const
 {
     return GField::isPrime(this->_n);
 }
 
-
+/**
+ * This method generates a long random number in the range of [0,supremum]
+ * @param supremum A long number.
+ * @return Random number uniformly distributed.
+ */
 long GFNumber::_generateRand(long supremum) const
 {
     /* The seed of the random number */
@@ -334,10 +511,15 @@ long GFNumber::_generateRand(long supremum) const
     /* The random number generator */
     std::default_random_engine generator(rd());
     /* The generator will generate number uniformly distributed */
-    std::uniform_int_distribution<long> distribution(1,supremum - 1);
+    std::uniform_int_distribution<long> distribution(1 , supremum - 1);
     return distribution(generator);
 }
 
+/**
+ * Pollard's Rho Algorithm for factorizing a long number.
+ * @param n the number to factorize
+ * @return prime factor (or some number multiplying the prime), or -1 if fails
+ */
 long GFNumber::_pollardRho(long currentNumber) const
 {
     if (currentNumber == 1)
@@ -347,11 +529,11 @@ long GFNumber::_pollardRho(long currentNumber) const
     long x = _generateRand(currentNumber);
     long y = x;
     long p = 1;
-    while(p == 1)
+    while (p == 1)
     {
-        x = _polynomialFunc(x, currentNumber);
-        y = _polynomialFunc(_polynomialFunc(y,currentNumber), currentNumber) ;
-        p = _gcd(std::abs(x - y), currentNumber) ;
+        x = _polynomialFunc(x , currentNumber);
+        y = _polynomialFunc(_polynomialFunc(y , currentNumber) , currentNumber);
+        p = _gcd(std::abs(x - y) , currentNumber);
     }
     if (p == currentNumber)
     {
@@ -360,9 +542,14 @@ long GFNumber::_pollardRho(long currentNumber) const
     return p;
 }
 
+/**
+ * This method deletes the array and sets all the flags to false.
+ * it should be called whenever is a change to the given number. (for instance,
+ * when added two numbers, or when changing the number by using the ">>" operator)
+ */
 void GFNumber::_cleanUp()
 {
-    if(_allocatedMem)
+    if (_allocatedMem)
     {
         delete[] _primeFactors;
         _primeFactorsLength = 0;
@@ -376,17 +563,39 @@ void GFNumber::_cleanUp()
     }
 }
 
-long GFNumber::_polynomialFunc(long x, long num) const
+/**
+ * this is the polynomial func f(x) = x^2 + 1 mod n
+ * @param x long
+ * @param num long
+ * @return GFNumber result
+ */
+long GFNumber::_polynomialFunc(long x , long num) const
 {
-    return ((x*x) + 1) % num;
+    return ((x * x) + 1) % num;
 }
 
-long GFNumber::_gcd(long num1, long num2) const {
-    while(num1 >= 0 && num2 >=  0)
+/**
+ * GCD CALCULATOR
+ * @param num1 first long num
+ * @param num2 second long num
+ * @return the gcd of them.
+ */
+long GFNumber::_gcd(long num1 , long num2) const
+{
+    while (num1 >= 0 && num2 >= 0)
     {
-        if (num1 == 0) return num2;
-        if (num2 == 0) return num1;
-        if (num1 == num2) return num1;
+        if (num1 == 0)
+        {
+            return num2;
+        }
+        if (num2 == 0)
+        {
+            return num1;
+        }
+        if (num1 == num2)
+        {
+            return num1;
+        }
         if (num1 > num2)
         {
             num1 = (num1 - num2);

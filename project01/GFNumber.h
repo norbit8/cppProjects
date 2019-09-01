@@ -61,7 +61,7 @@ private:
      * it does all the job of allocating memory to the new array and assigning the values of the
      * old array to the new one and then deleting the old array.
      */
-    void _addPrime(int);
+    void _addPrime(long);
 
     /**
      * This method uses a brute force approach in order to get all the prime
@@ -85,6 +85,12 @@ private:
      */
     long _polynomialFunc(long x, long num) const;
 
+    /**
+     * GCD CALCULATOR
+     * @param num1 first long num
+     * @param num2 second long num
+     * @return the gcd of them.
+     */
     long _gcd(long num1, long num2) const;
 
 public:

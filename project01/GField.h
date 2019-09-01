@@ -5,6 +5,7 @@
 //-------------- includes --------------
 #include <cmath>
 #include <iostream>
+
 //--------------------------------------
 // forward declaration of the GFNumber class:
 class GFNumber;
@@ -23,7 +24,7 @@ public:
      * A constructor.
      * Default ctor.
      */
-    GField():_p(2), _l(1){};
+    GField() : _p(2) , _l(1) {};
 
     /**
      * A constructor.
@@ -38,14 +39,15 @@ public:
      * @param p the char of the field.
      * @param l the degree of the field.
      */
-    GField(long p, long l);
+    GField(long p , long l);
 
     /**
      * A constructor.
      * copy ctor.
      * @param field gets GField.
      */
-    GField(const GField& field):GField(field._p, field._l){};
+    GField(const GField &field) : GField(field._p , field._l)
+    {};
 
     /**
      * Destructor
@@ -56,19 +58,22 @@ public:
      * Getter for the char of the field.
      * @return the char of the field (long).
      */
-    const long& getChar() const{return _p; }
+    const long &getChar() const
+    { return _p; }
 
     /**
      * Getter for the degree of the field.
      * @return the degree of the field (long).
      */
-    const long& getDegree() const{return _l; }
+    const long &getDegree() const
+    { return _l; }
 
     /**
      * Getter for the order of the field.
      * @return  the order of the field (long).
      */
-    long getOrder() const{return ceil(pow(_p, _l)); }
+    long getOrder() const
+    { return ceil(pow(_p , _l)); }
 
     /**
      * This static method verifies that the number p is prime.
@@ -83,7 +88,7 @@ public:
      * @param b GFNumber instance.
      * @return GFNumber instance which is the gcd of a and b.
      */
-    GFNumber gcd(GFNumber a, GFNumber b) const;
+    GFNumber gcd(GFNumber a , GFNumber b) const;
 
     /**
      * This method creates a GFNumber from the GField.
@@ -97,7 +102,7 @@ public:
      * @param other GField instance.
      * @return GField instace
      */
-    GField& operator= (const GField& other);
+    GField &operator=(const GField &other);
 
     /**
      * Operator overloading of "==".
@@ -105,7 +110,7 @@ public:
      * @return True if the objects are equal, false otherwise.
      * note that instances are equal if the have the same order.
      */
-    const bool operator== (const GField& other) const;
+    const bool operator==(const GField &other) const;
 
     /**
      * Operator overloading of "==".
@@ -113,7 +118,7 @@ public:
      * @return True if the objects are equal, false otherwise.
      * note that instances are equal if the have the same order.
      */
-    const bool operator!= (const GField& other) const;
+    const bool operator!=(const GField &other) const;
 
     /**
      * Operator overloading of "<<".
@@ -121,7 +126,7 @@ public:
      * @param field reference to a GField instance.
      * @return ostream reference with the desire output.
      */
-    friend std::ostream& operator<< (std::ostream& out, const GField& field);
+    friend std::ostream &operator<<(std::ostream &out , const GField &field);
 
     /**
      * Operator overloading of ">>".
@@ -129,6 +134,7 @@ public:
      * @param field GField refernce.
      * @return istream reference with the desire input.
      */
-    friend std::istream& operator>> (std::istream& in, GField& field);
+    friend std::istream &operator>>(std::istream &in , GField &field);
 };
+
 #endif
