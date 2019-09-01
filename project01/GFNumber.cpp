@@ -52,10 +52,7 @@ GFNumber::GFNumber(long n , GField field) : _field(field)
  */
 GFNumber::~GFNumber()
 {
-//    if (_allocatedMem)
-//    {
-//        delete[] _primeFactors;
-//    }
+
 }
 
 // ------------ operators ------------
@@ -68,7 +65,6 @@ GFNumber &GFNumber::operator=(const GFNumber &other)
 {
     this->_n = other.getNumber();
     this->_field = other._field;
-    _cleanUp();
     return *this;
 }
 
@@ -103,7 +99,6 @@ GFNumber &GFNumber::operator+=(const GFNumber &other)
 {
     _checkValidityField(other);
     this->_n = _convertNumberToField(_n + other.getNumber());
-    _cleanUp();
     return *this;
 }
 
@@ -115,7 +110,6 @@ GFNumber &GFNumber::operator+=(const GFNumber &other)
 GFNumber &GFNumber::operator+=(long rparam)
 {
     this->_n = _convertNumberToField(_n + rparam);
-    _cleanUp();
     return *this;
 }
 
@@ -127,7 +121,6 @@ GFNumber &GFNumber::operator+=(long rparam)
 GFNumber &GFNumber::operator-=(long rparam)
 {
     this->_n = _convertNumberToField(_n - rparam);
-    _cleanUp();
     return *this;
 }
 
@@ -140,7 +133,6 @@ GFNumber &GFNumber::operator-=(const GFNumber &other)
 {
     _checkValidityField(other);
     this->_n = _convertNumberToField(_n - other.getNumber());
-    _cleanUp();
     return *this;
 }
 
@@ -176,7 +168,6 @@ GFNumber &GFNumber::operator*=(const GFNumber &other)
 {
     _checkValidityField(other);
     this->_n = _convertNumberToField(_n * other.getNumber());
-    _cleanUp();
     return *this;
 }
 
@@ -188,7 +179,6 @@ GFNumber &GFNumber::operator*=(const GFNumber &other)
 GFNumber &GFNumber::operator*=(long rparam)
 {
     this->_n = _convertNumberToField(_n * rparam);
-    _cleanUp();
     return *this;
 }
 
@@ -224,7 +214,6 @@ GFNumber &GFNumber::operator%=(const GFNumber &other)
 {
     _checkValidityField(other);
     this->_n = _convertNumberToField(_n % other.getNumber());
-    _cleanUp();
     return *this;
 }
 
@@ -236,7 +225,6 @@ GFNumber &GFNumber::operator%=(const GFNumber &other)
 GFNumber &GFNumber::operator%=(long rparam)
 {
     this->_n = _n % _convertNumberToField(rparam);
-    _cleanUp();
     return *this;
 }
 
@@ -377,11 +365,7 @@ void GFNumber::_addPrime(long num)
         newPrimeArray[i] = _primeFactors[i];
     }
     newPrimeArray[_primeFactorsLength - 1] = GFNumber(num , _field);
-    if (_allocatedMem)
-    {
-        delete[] _primeFactors;
-    }
-    _allocatedMem = true;
+    delete[] _primeFactors;
     _primeFactors = newPrimeArray;
 }
 
@@ -419,19 +403,15 @@ void GFNumber::_directSearchFactorization(long n)
 GFNumber *GFNumber::getPrimeFactors(int *pointer)
 {
     // ------------------------ TRIVIAL -----------------------------
-    if (_factorsReadyFlag)
-    {
-        *pointer = _primeFactorsLength;
-        return _primeFactors;
-    }
     if (getIsPrime() || _n == 0) // if the number is prime just create an array of size 0
     {
         _primeFactors = new GFNumber[0];
         *pointer = 0;
-        _factorsReadyFlag = true;
         return _primeFactors;
     }
     // --------------------------------------------------------------
+    _primeFactors = new GFNumber[0];
+    _primeFactorsLength = 0;
     // try to factor until the number is odd
     long currentNumber = _n;
     while (currentNumber % 2 == 0)
@@ -450,14 +430,12 @@ GFNumber *GFNumber::getPrimeFactors(int *pointer)
     if (currentNumber == 1)
     {
         *pointer = _primeFactorsLength;
-        _factorsReadyFlag = true;
         return _primeFactors;
     }
     else // we need to use the iterative method
     {
         _directSearchFactorization(currentNumber);
         *pointer = _primeFactorsLength;
-        _factorsReadyFlag = true;
         return _primeFactors;
     }
 }
@@ -467,27 +445,22 @@ GFNumber *GFNumber::getPrimeFactors(int *pointer)
  */
 void GFNumber::printFactors()
 {
-    if (_factorsReadyFlag)
+    getPrimeFactors(&_primeFactorsLength);
+    if (_primeFactorsLength == 0)
     {
-        if (_primeFactorsLength == 0)
-        {
-            std::cout << (this->getNumber()) << "=" << (this->getNumber()) << "*1" << std::endl;
-        }
-        else
-        {
-            std::cout << this->getNumber() << "=";
-            for (int i = 0; i < _primeFactorsLength - 1; i++)
-            {
-                std::cout << _primeFactors[i].getNumber() << "*";
-            }
-            std::cout << _primeFactors[_primeFactorsLength - 1].getNumber() << std::endl;
-        }
+        std::cout << (this->getNumber()) << "=" << (this->getNumber()) << "*1" << std::endl;
     }
     else
     {
-        getPrimeFactors(&_primeFactorsLength);
-        printFactors();
+        std::cout << this->getNumber() << "=";
+        for (int i = 0; i < _primeFactorsLength - 1; i++)
+        {
+            std::cout << _primeFactors[i].getNumber() << "*";
+        }
+        std::cout << _primeFactors[_primeFactorsLength - 1].getNumber() << std::endl;
     }
+    delete[] _primeFactors;
+    _primeFactors = nullptr;
 }
 
 /**
@@ -543,27 +516,6 @@ long GFNumber::_pollardRho(long currentNumber) const
 }
 
 /**
- * This method deletes the array and sets all the flags to false.
- * it should be called whenever is a change to the given number. (for instance,
- * when added two numbers, or when changing the number by using the ">>" operator)
- */
-void GFNumber::_cleanUp()
-{
-    if (_allocatedMem)
-    {
-        delete[] _primeFactors;
-        _primeFactorsLength = 0;
-        _factorsReadyFlag = false;
-        _allocatedMem = false;
-    }
-    else
-    {
-        _factorsReadyFlag = false;
-        _primeFactorsLength = 0;
-    }
-}
-
-/**
  * this is the polynomial func f(x) = x^2 + 1 mod n
  * @param x long
  * @param num long
@@ -605,4 +557,5 @@ long GFNumber::_gcd(long num1 , long num2) const
             num2 = (num2 - num1);
         }
     }
+    return 0;
 }

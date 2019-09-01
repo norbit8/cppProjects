@@ -329,12 +329,12 @@ TEST(GFNumberTest , GetPrimeFactors)
 
     GFNumber *factors = number0.getPrimeFactors(&numOfFactors);
     EXPECT_EQ(numOfFactors , 0);
-    //delete[]factors;
+    delete[]factors;
 
     numOfFactors = 0;
     factors = number1.getPrimeFactors(&numOfFactors);
     EXPECT_EQ(numOfFactors , 0);
-    //delete[]factors;
+    delete[]factors;
 
     numOfFactors = 0;
     factors = numberEven.getPrimeFactors(&numOfFactors);
@@ -344,7 +344,7 @@ TEST(GFNumberTest , GetPrimeFactors)
     {
         EXPECT_EQ(factors[i].getNumber() , 2);
     }
-    //delete[]factors;
+    delete[]factors;
 
     numOfFactors = 0;
     factors = numberOdd.getPrimeFactors(&numOfFactors);
@@ -352,19 +352,19 @@ TEST(GFNumberTest , GetPrimeFactors)
     EXPECT_EQ(factors[0].getNumber() , 5);
     EXPECT_EQ(factors[1].getNumber() , 5);
 
-    //delete[]factors;
+    delete[]factors;
 
     numOfFactors = 0;
     factors = numberPrime17.getPrimeFactors(&numOfFactors);
     EXPECT_EQ(numOfFactors , 0);
-    //delete[]factors;
+    delete[]factors;
 
     numOfFactors = 0;
     factors = numberPrimeBig.getPrimeFactors(&numOfFactors);
     EXPECT_EQ(numOfFactors , 2);
     //Order is not imporant
     long n1 = factors[0].getNumber() , n2 = factors[1].getNumber() , temp = 0;
-    //delete[]factors;
+    delete[]factors;
 
     if (n1 > n2)
     {

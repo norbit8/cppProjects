@@ -24,10 +24,6 @@ private:
 
     int _primeFactorsLength = 0; /** The length of the prime factors array */
 
-    bool _allocatedMem = false; /** flag which tells if the memory has ever been alocated */
-
-    bool _factorsReadyFlag = false; /** flag which indicates if the prime array is ready*/
-
     /**
      * This private method converts any number to a number from the field.
      * @param n long number.
@@ -69,13 +65,6 @@ private:
      * @param n
      */
     void _directSearchFactorization(long n);
-
-    /**
-     * This method deletes the array and sets all the flags to false.
-     * it should be called whenever is a change to the given number. (for instance,
-     * when added two numbers, or when changing the number by using the ">>" operator)
-     */
-    void _cleanUp();
 
     /**
      * this is the polynomial func f(x) = x^2 + 1 mod n

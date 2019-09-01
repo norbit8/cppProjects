@@ -92,6 +92,7 @@ GFNumber GField::gcd(GFNumber a , GFNumber b) const
             b = b - a;
         }
     }
+    return a;
 }
 
 /**
