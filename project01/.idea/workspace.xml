@@ -16,15 +16,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5476d9ee-54fc-4493-a896-e154240941b1" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GFNumber.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/GFNumber.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GField.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/GField.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IntegerFactorization.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/IntegerFactorization.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/project01" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ex1_cpp_tester_v1.2.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/ex1_cpp_tester_v1.2.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README" beforeDir="false" afterPath="$PROJECT_DIR$/README" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cpp_ex1.tar" beforeDir="false" afterPath="$PROJECT_DIR$/cpp_ex1.tar" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -41,7 +34,7 @@
     <session id="11808358">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="6" />
+          <entry key="project.closed" value="7" />
           <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.2" value="1" />
           <entry key="project.open.time.5" value="1" />
@@ -53,19 +46,19 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="cpp" value="430" />
-          <entry key="h" value="72" />
+          <entry key="cpp" value="436" />
+          <entry key="h" value="79" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="Doxygen file" value="1" />
-          <entry key="ObjectiveC" value="501" />
+          <entry key="ObjectiveC" value="514" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="README" value="1" />
+          <entry key="README" value="2" />
           <entry key="cpp" value="1" />
           <entry key="h" value="3" />
         </counts>
@@ -73,7 +66,7 @@
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="ObjectiveC" value="4" />
-          <entry key="PLAIN_TEXT" value="1" />
+          <entry key="PLAIN_TEXT" value="2" />
         </counts>
       </usages-collector>
     </session>
@@ -89,10 +82,10 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/GFNumber.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
+            <state relative-caret-position="465">
               <caret line="34" column="37" selection-start-line="34" selection-start-column="37" selection-end-line="34" selection-end-column="37" />
               <folding>
                 <element signature="e#16#37#0" expanded="true" />
@@ -104,8 +97,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/GFNumber.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="819">
-              <caret line="131" column="14" selection-start-line="131" selection-start-column="11" selection-end-line="131" selection-end-column="14" />
+            <state relative-caret-position="309">
+              <caret line="130" column="7" lean-forward="true" selection-start-line="130" selection-start-column="7" selection-end-line="130" selection-end-column="7" />
             </state>
           </provider>
         </entry>
@@ -113,8 +106,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/README">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="540">
-              <caret line="36" column="77" selection-start-line="36" selection-start-column="77" selection-end-line="36" selection-end-column="77" />
+            <state relative-caret-position="-157">
+              <caret line="1" column="4" lean-forward="true" selection-start-line="1" selection-start-column="4" selection-end-line="1" selection-end-column="4" />
             </state>
           </provider>
         </entry>
@@ -143,11 +136,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/IntegerFactorization.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="12" column="19" lean-forward="true" selection-start-line="12" selection-start-column="19" selection-end-line="12" selection-end-column="19" />
+            <state relative-caret-position="405">
+              <caret line="27" column="1" selection-start-line="27" selection-start-column="1" selection-end-line="27" selection-end-column="1" />
               <folding>
                 <element signature="e#29#48#0" expanded="true" />
               </folding>
@@ -191,6 +184,7 @@
       <find>cleanU</find>
       <find>get</find>
       <find>Gcd</find>
+      <find>getp</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -200,17 +194,17 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/../Point.cpp" />
-        <option value="$PROJECT_DIR$/README" />
         <option value="$PROJECT_DIR$/main.cpp" />
         <option value="$PROJECT_DIR$/tester.cpp" />
         <option value="$PROJECT_DIR$/cpp_EX1_tester.cpp" />
         <option value="$PROJECT_DIR$/CMakeLists.txt" />
-        <option value="$PROJECT_DIR$/GFNumber.h" />
         <option value="$PROJECT_DIR$/GField.h" />
         <option value="$PROJECT_DIR$/GField.cpp" />
         <option value="$PROJECT_DIR$/IntegerFactorization.cpp" />
-        <option value="$PROJECT_DIR$/GFNumber.cpp" />
         <option value="$PROJECT_DIR$/ex1_cpp_tester_v1.2.cpp" />
+        <option value="$PROJECT_DIR$/GFNumber.cpp" />
+        <option value="$PROJECT_DIR$/GFNumber.h" />
+        <option value="$PROJECT_DIR$/README" />
       </list>
     </option>
   </component>
@@ -336,12 +330,12 @@
       <workItem from="1567503018156" duration="324000" />
       <workItem from="1567516264393" duration="9000" />
       <workItem from="1567519610840" duration="195000" />
-      <workItem from="1567519853508" duration="587000" />
+      <workItem from="1567519853508" duration="1067000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="126669000" />
+    <option name="totallyTimeSpent" value="127149000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -360,7 +354,7 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4914621" visible="true" weight="0.29014397" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4914621" weight="0.29014397" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.5433186" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -466,13 +460,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/README">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="36" column="77" selection-start-line="36" selection-start-column="77" selection-end-line="36" selection-end-column="77" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/GField.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1065">
@@ -483,29 +470,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/GFNumber.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="819">
-          <caret line="131" column="14" selection-start-line="131" selection-start-column="11" selection-end-line="131" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/GField.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="909">
           <caret line="70" selection-start-line="70" selection-end-line="70" />
           <folding>
             <element signature="e#15#34#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/GFNumber.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="34" column="37" selection-start-line="34" selection-start-column="37" selection-end-line="34" selection-end-column="37" />
-          <folding>
-            <element signature="e#16#37#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -520,12 +490,36 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/README">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-157">
+          <caret line="1" column="4" lean-forward="true" selection-start-line="1" selection-start-column="4" selection-end-line="1" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/IntegerFactorization.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="19" lean-forward="true" selection-start-line="12" selection-start-column="19" selection-end-line="12" selection-end-column="19" />
+        <state relative-caret-position="405">
+          <caret line="27" column="1" selection-start-line="27" selection-start-column="1" selection-end-line="27" selection-end-column="1" />
           <folding>
             <element signature="e#29#48#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GFNumber.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="309">
+          <caret line="130" column="7" lean-forward="true" selection-start-line="130" selection-start-column="7" selection-end-line="130" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GFNumber.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="34" column="37" selection-start-line="34" selection-start-column="37" selection-end-line="34" selection-end-column="37" />
+          <folding>
+            <element signature="e#16#37#0" expanded="true" />
           </folding>
         </state>
       </provider>
