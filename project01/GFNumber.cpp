@@ -30,6 +30,10 @@ void GFNumber::_checkValidityField(const GFNumber &other) const
  */
 long GFNumber::_convertNumberToField(long n) const
 {
+    if (n > 0)
+    {
+        return n % _field.getOrder();
+    }
     return ((((n % _field.getOrder()) + _field.getOrder()) % _field.getOrder()));
 }
 
@@ -534,7 +538,6 @@ long GFNumber::_polynomialFunc(long x , long num) const
  */
 long GFNumber::_gcd(long num1 , long num2) const
 {
-    assert(num1 != 0 && num2 != 0);
     while (num1 >= 0 && num2 >= 0)
     {
         if (num1 == 0)

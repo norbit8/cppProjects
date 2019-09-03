@@ -2,11 +2,11 @@
 <project version="4">
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true" buildAllGenerated="true">
     <generated>
-      <config projectName="project01" targetName="gtest" />
-      <config projectName="project01" targetName="gmock_main" />
-      <config projectName="project01" targetName="gmock" />
       <config projectName="project01" targetName="gtest_main" />
+      <config projectName="project01" targetName="gmock" />
+      <config projectName="project01" targetName="gtest" />
       <config projectName="project01" targetName="project01" />
+      <config projectName="project01" targetName="gmock_main" />
     </generated>
   </component>
   <component name="CMakeSettings">
@@ -19,15 +19,12 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GFNumber.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/GFNumber.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GField.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/GField.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GField.h" beforeDir="false" afterPath="$PROJECT_DIR$/GField.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/IntegerFactorization.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/IntegerFactorization.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/project01.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/project01.dir/CXX.includecache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/project01.dir/GFNumber.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/project01.dir/GFNumber.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/project01.dir/GField.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/project01.dir/GField.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/project01.dir/IntegerFactorization.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/project01.dir/IntegerFactorization.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/project01.dir/ex1_cpp_tester_v1.2.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/project01.dir/ex1_cpp_tester_v1.2.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/project01" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/project01" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cpp_ex1.tar" beforeDir="false" afterPath="$PROJECT_DIR$/cpp_ex1.tar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/project01" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ex1_cpp_tester_v1.2.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/ex1_cpp_tester_v1.2.cpp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -44,24 +41,26 @@
     <session id="11808358">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="4" />
+          <entry key="project.closed" value="6" />
+          <entry key="project.open.time.0" value="1" />
+          <entry key="project.open.time.2" value="1" />
           <entry key="project.open.time.5" value="1" />
           <entry key="project.open.time.6" value="2" />
-          <entry key="project.open.time.7" value="1" />
+          <entry key="project.open.time.7" value="2" />
           <entry key="project.open.time.8" value="1" />
-          <entry key="project.opened" value="5" />
+          <entry key="project.opened" value="8" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="cpp" value="397" />
+          <entry key="cpp" value="430" />
           <entry key="h" value="72" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="Doxygen file" value="1" />
-          <entry key="ObjectiveC" value="468" />
+          <entry key="ObjectiveC" value="501" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -93,8 +92,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/GFNumber.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="324">
-              <caret line="517" column="3" lean-forward="true" selection-start-line="517" selection-start-column="3" selection-end-line="517" selection-end-column="3" />
+            <state relative-caret-position="510">
+              <caret line="34" column="37" selection-start-line="34" selection-start-column="37" selection-end-line="34" selection-end-column="37" />
               <folding>
                 <element signature="e#16#37#0" expanded="true" />
               </folding>
@@ -105,7 +104,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/GFNumber.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="273">
+            <state relative-caret-position="819">
               <caret line="131" column="14" selection-start-line="131" selection-start-column="11" selection-end-line="131" selection-end-column="14" />
             </state>
           </provider>
@@ -120,10 +119,10 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/GField.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="186">
+            <state relative-caret-position="909">
               <caret line="70" selection-start-line="70" selection-end-line="70" />
               <folding>
                 <element signature="e#15#34#0" expanded="true" />
@@ -135,7 +134,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/GField.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="273">
+            <state relative-caret-position="1065">
               <caret line="71" column="10" selection-start-line="71" selection-start-column="7" selection-end-line="71" selection-end-column="10" />
               <folding>
                 <element signature="e#128#144#0" expanded="true" />
@@ -144,11 +143,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/IntegerFactorization.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="14" column="9" selection-start-line="14" selection-start-column="9" selection-end-line="14" selection-end-column="9" />
+            <state relative-caret-position="180">
+              <caret line="12" column="19" lean-forward="true" selection-start-line="12" selection-start-column="19" selection-end-line="12" selection-end-column="19" />
               <folding>
                 <element signature="e#29#48#0" expanded="true" />
               </folding>
@@ -160,7 +159,7 @@
         <entry file="file://$PROJECT_DIR$/ex1_cpp_tester_v1.2.cpp">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="30">
-              <caret line="6" column="8" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="8" />
+              <caret line="6" column="9" selection-start-line="6" selection-start-column="9" selection-end-line="6" selection-end-column="9" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
@@ -209,8 +208,8 @@
         <option value="$PROJECT_DIR$/GFNumber.h" />
         <option value="$PROJECT_DIR$/GField.h" />
         <option value="$PROJECT_DIR$/GField.cpp" />
-        <option value="$PROJECT_DIR$/GFNumber.cpp" />
         <option value="$PROJECT_DIR$/IntegerFactorization.cpp" />
+        <option value="$PROJECT_DIR$/GFNumber.cpp" />
         <option value="$PROJECT_DIR$/ex1_cpp_tester_v1.2.cpp" />
       </list>
     </option>
@@ -335,11 +334,14 @@
       <workItem from="1567436947313" duration="657000" />
       <workItem from="1567496455807" duration="43000" />
       <workItem from="1567503018156" duration="324000" />
+      <workItem from="1567516264393" duration="9000" />
+      <workItem from="1567519610840" duration="195000" />
+      <workItem from="1567519853508" duration="587000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="125878000" />
+    <option name="totallyTimeSpent" value="126669000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -353,7 +355,7 @@
   <component name="ToolWindowManager">
     <frame x="-3" y="26" width="1926" height="1032" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17609392" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18249734" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -365,7 +367,7 @@
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32779622" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.32890365" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5011013" side_tool="true" weight="0.3303671" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5011013" side_tool="true" weight="0.33001107" />
       <window_info anchor="bottom" id="Version Control" order="10" weight="0.32890365" />
       <window_info anchor="bottom" id="CMake" order="11" weight="0.32890365" />
       <window_info anchor="bottom" id="Messages" order="12" sideWeight="0.49889868" weight="0.31229237" />
@@ -473,7 +475,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/GField.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
+        <state relative-caret-position="1065">
           <caret line="71" column="10" selection-start-line="71" selection-start-column="7" selection-end-line="71" selection-end-column="10" />
           <folding>
             <element signature="e#128#144#0" expanded="true" />
@@ -483,27 +485,27 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/GFNumber.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
+        <state relative-caret-position="819">
           <caret line="131" column="14" selection-start-line="131" selection-start-column="11" selection-end-line="131" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GField.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="909">
+          <caret line="70" selection-start-line="70" selection-end-line="70" />
+          <folding>
+            <element signature="e#15#34#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/GFNumber.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="517" column="3" lean-forward="true" selection-start-line="517" selection-start-column="3" selection-end-line="517" selection-end-column="3" />
+        <state relative-caret-position="510">
+          <caret line="34" column="37" selection-start-line="34" selection-start-column="37" selection-end-line="34" selection-end-column="37" />
           <folding>
             <element signature="e#16#37#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/IntegerFactorization.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="9" selection-start-line="14" selection-start-column="9" selection-end-line="14" selection-end-column="9" />
-          <folding>
-            <element signature="e#29#48#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -511,19 +513,19 @@
     <entry file="file://$PROJECT_DIR$/ex1_cpp_tester_v1.2.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
-          <caret line="6" column="8" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="8" />
+          <caret line="6" column="9" selection-start-line="6" selection-start-column="9" selection-end-line="6" selection-end-column="9" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/GField.cpp">
+    <entry file="file://$PROJECT_DIR$/IntegerFactorization.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="186">
-          <caret line="70" selection-start-line="70" selection-end-line="70" />
+        <state relative-caret-position="180">
+          <caret line="12" column="19" lean-forward="true" selection-start-line="12" selection-start-column="19" selection-end-line="12" selection-end-column="19" />
           <folding>
-            <element signature="e#15#34#0" expanded="true" />
+            <element signature="e#29#48#0" expanded="true" />
           </folding>
         </state>
       </provider>
