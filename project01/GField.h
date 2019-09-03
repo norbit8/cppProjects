@@ -17,8 +17,8 @@ class GFNumber;
 class GField
 {
 private:
-    long _l; /** The degree of the field. */
     long _p; /** The char of the field. */
+    long _l; /** The degree of the field. */
 public:
     /**
      * A constructor.

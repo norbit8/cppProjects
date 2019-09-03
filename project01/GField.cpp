@@ -68,6 +68,7 @@ bool GField::isPrime(long p)
  */
 GFNumber GField::gcd(GFNumber a , GFNumber b) const
 {
+    assert(a.getNumber() != 0 && b.getNumber() != 0);
     assert(a.getField() == b.getField() && a.getField() == *this && b.getField() == *this);
     while (a.getNumber() >= 0 && b.getNumber() >= 0)
     {

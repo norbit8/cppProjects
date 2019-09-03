@@ -12,7 +12,7 @@
  * and a GFNumber and do some math operations on this.
  * @return 0 for successful run and 1 otherwise.
  */
-int main()
+int main2()
 {
     GFNumber num1, num2;
     std::cin >> num1 >> num2;

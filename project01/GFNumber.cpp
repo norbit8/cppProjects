@@ -534,6 +534,7 @@ long GFNumber::_polynomialFunc(long x , long num) const
  */
 long GFNumber::_gcd(long num1 , long num2) const
 {
+    assert(num1 != 0 && num2 != 0);
     while (num1 >= 0 && num2 >= 0)
     {
         if (num1 == 0)
