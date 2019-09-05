@@ -4,13 +4,13 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/cs/usr/yoav/semester03/cpp/cppProjects/project01/lib/googletest-master/googlemock/src/gmock_main.cc" "/cs/usr/yoav/semester03/cpp/cppProjects/project01/cmake-build-debug/lib/googletest-master/googlemock/CMakeFiles/gmock_main.dir/src/gmock_main.cc.o"
+  "/home/mercydude/University/SUMMER_CPP/cppProjects/project01/lib/googletest-master/googlemock/src/gmock_main.cc" "/home/mercydude/University/SUMMER_CPP/cppProjects/project01/cmake-build-debug/lib/googletest-master/googlemock/CMakeFiles/gmock_main.dir/src/gmock_main.cc.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
-  "../lib/pkgconfig"
+  "/cs/usr/yoav/semester03/cpp/cppProjects/project01/lib/pkgconfig"
   "../lib/googletest-master/googlemock/include"
   "../lib/googletest-master/googlemock"
   "../lib/googletest-master/googletest/include"
@@ -19,8 +19,8 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
-  "/cs/usr/yoav/semester03/cpp/cppProjects/project01/cmake-build-debug/lib/googletest-master/googlemock/CMakeFiles/gmock.dir/DependInfo.cmake"
-  "/cs/usr/yoav/semester03/cpp/cppProjects/project01/cmake-build-debug/lib/googletest-master/googletest/CMakeFiles/gtest.dir/DependInfo.cmake"
+  "/home/mercydude/University/SUMMER_CPP/cppProjects/project01/cmake-build-debug/lib/googletest-master/googlemock/CMakeFiles/gmock.dir/DependInfo.cmake"
+  "/home/mercydude/University/SUMMER_CPP/cppProjects/project01/cmake-build-debug/lib/googletest-master/googletest/CMakeFiles/gtest.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.

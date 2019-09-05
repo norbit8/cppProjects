@@ -1,22 +1,24 @@
 Determining if the pthread_create exist failed with the following output:
-Change Dir: /cs/usr/yoav/semester03/cpp/cppProjects/project01/cmake-build-debug/CMakeFiles/CMakeTmp
+Change Dir: /home/mercydude/University/SUMMER_CPP/cppProjects/project01/cmake-build-debug/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_a08c2/fast"
-/usr/bin/make -f CMakeFiles/cmTC_a08c2.dir/build.make CMakeFiles/cmTC_a08c2.dir/build
-make[1]: Entering directory '/cs/usr/yoav/semester03/cpp/cppProjects/project01/cmake-build-debug/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_a08c2.dir/CheckSymbolExists.c.o
-/usr/bin/cc    -o CMakeFiles/cmTC_a08c2.dir/CheckSymbolExists.c.o   -c /cs/usr/yoav/semester03/cpp/cppProjects/project01/cmake-build-debug/CMakeFiles/CMakeTmp/CheckSymbolExists.c
-Linking C executable cmTC_a08c2
-/usr/local/APP/jetbrains/clion/2018.2.1/bin/cmake/linux/bin/cmake -E cmake_link_script CMakeFiles/cmTC_a08c2.dir/link.txt --verbose=1
-/usr/bin/cc      -rdynamic CMakeFiles/cmTC_a08c2.dir/CheckSymbolExists.c.o  -o cmTC_a08c2 
-/usr/bin/ld: CMakeFiles/cmTC_a08c2.dir/CheckSymbolExists.c.o: in function `main':
+Run Build Command(s):/usr/bin/make cmTC_7fa36/fast 
+/usr/bin/make -f CMakeFiles/cmTC_7fa36.dir/build.make CMakeFiles/cmTC_7fa36.dir/build
+make[1]: Entering directory '/home/mercydude/University/SUMMER_CPP/cppProjects/project01/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_7fa36.dir/CheckSymbolExists.c.o
+/usr/bin/cc    -o CMakeFiles/cmTC_7fa36.dir/CheckSymbolExists.c.o   -c /home/mercydude/University/SUMMER_CPP/cppProjects/project01/cmake-build-debug/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTC_7fa36
+/opt/clion-2019.1.4/bin/cmake/linux/bin/cmake -E cmake_link_script CMakeFiles/cmTC_7fa36.dir/link.txt --verbose=1
+/usr/bin/cc      -rdynamic CMakeFiles/cmTC_7fa36.dir/CheckSymbolExists.c.o  -o cmTC_7fa36 
+CMakeFiles/cmTC_7fa36.dir/CheckSymbolExists.c.o: In function `main':
 CheckSymbolExists.c:(.text+0x1b): undefined reference to `pthread_create'
 collect2: error: ld returned 1 exit status
-make[1]: *** [CMakeFiles/cmTC_a08c2.dir/build.make:87: cmTC_a08c2] Error 1
-make[1]: Leaving directory '/cs/usr/yoav/semester03/cpp/cppProjects/project01/cmake-build-debug/CMakeFiles/CMakeTmp'
-make: *** [Makefile:121: cmTC_a08c2/fast] Error 2
+CMakeFiles/cmTC_7fa36.dir/build.make:86: recipe for target 'cmTC_7fa36' failed
+make[1]: *** [cmTC_7fa36] Error 1
+make[1]: Leaving directory '/home/mercydude/University/SUMMER_CPP/cppProjects/project01/cmake-build-debug/CMakeFiles/CMakeTmp'
+Makefile:121: recipe for target 'cmTC_7fa36/fast' failed
+make: *** [cmTC_7fa36/fast] Error 2
 
-File /cs/usr/yoav/semester03/cpp/cppProjects/project01/cmake-build-debug/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+File /home/mercydude/University/SUMMER_CPP/cppProjects/project01/cmake-build-debug/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
 /* */
 #include <pthread.h>
 
@@ -32,20 +34,22 @@ int main(int argc, char** argv)
 }
 
 Determining if the function pthread_create exists in the pthreads failed with the following output:
-Change Dir: /cs/usr/yoav/semester03/cpp/cppProjects/project01/cmake-build-debug/CMakeFiles/CMakeTmp
+Change Dir: /home/mercydude/University/SUMMER_CPP/cppProjects/project01/cmake-build-debug/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_14f0c/fast"
-/usr/bin/make -f CMakeFiles/cmTC_14f0c.dir/build.make CMakeFiles/cmTC_14f0c.dir/build
-make[1]: Entering directory '/cs/usr/yoav/semester03/cpp/cppProjects/project01/cmake-build-debug/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_14f0c.dir/CheckFunctionExists.c.o
-/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_14f0c.dir/CheckFunctionExists.c.o   -c /usr/local/APP/jetbrains/clion/2018.2.1/bin/cmake/linux/share/cmake-3.12/Modules/CheckFunctionExists.c
-Linking C executable cmTC_14f0c
-/usr/local/APP/jetbrains/clion/2018.2.1/bin/cmake/linux/bin/cmake -E cmake_link_script CMakeFiles/cmTC_14f0c.dir/link.txt --verbose=1
-/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pthread_create    -rdynamic CMakeFiles/cmTC_14f0c.dir/CheckFunctionExists.c.o  -o cmTC_14f0c -lpthreads 
+Run Build Command(s):/usr/bin/make cmTC_2cf71/fast 
+/usr/bin/make -f CMakeFiles/cmTC_2cf71.dir/build.make CMakeFiles/cmTC_2cf71.dir/build
+make[1]: Entering directory '/home/mercydude/University/SUMMER_CPP/cppProjects/project01/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_2cf71.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_2cf71.dir/CheckFunctionExists.c.o   -c /opt/clion-2019.1.4/bin/cmake/linux/share/cmake-3.14/Modules/CheckFunctionExists.c
+Linking C executable cmTC_2cf71
+/opt/clion-2019.1.4/bin/cmake/linux/bin/cmake -E cmake_link_script CMakeFiles/cmTC_2cf71.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pthread_create    -rdynamic CMakeFiles/cmTC_2cf71.dir/CheckFunctionExists.c.o  -o cmTC_2cf71 -lpthreads 
 /usr/bin/ld: cannot find -lpthreads
 collect2: error: ld returned 1 exit status
-make[1]: *** [CMakeFiles/cmTC_14f0c.dir/build.make:87: cmTC_14f0c] Error 1
-make[1]: Leaving directory '/cs/usr/yoav/semester03/cpp/cppProjects/project01/cmake-build-debug/CMakeFiles/CMakeTmp'
-make: *** [Makefile:121: cmTC_14f0c/fast] Error 2
+CMakeFiles/cmTC_2cf71.dir/build.make:86: recipe for target 'cmTC_2cf71' failed
+make[1]: *** [cmTC_2cf71] Error 1
+make[1]: Leaving directory '/home/mercydude/University/SUMMER_CPP/cppProjects/project01/cmake-build-debug/CMakeFiles/CMakeTmp'
+Makefile:121: recipe for target 'cmTC_2cf71/fast' failed
+make: *** [cmTC_2cf71/fast] Error 2
 
 
