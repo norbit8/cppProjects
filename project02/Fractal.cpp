@@ -1,10 +1,9 @@
-//
-// Created by mercydude on 9/5/19.
-//
+// Fractal.cpp
 
 #define SIERPINSKISIEVE 1
 #define SIERPINSKICARPET 2
 #define CANTORDUST 3
+
 #include "Fractal.h"
 #include <iostream>
 
@@ -14,25 +13,34 @@
  * @param height The height of the fractal.
  * @return a pointer to the newly created frcatal, from the correct type.
  */
-Fractal& Fractal::Create(int type, int height)
+Fractal *Fractal::Create(int type , int height)
 {
     if (type == SIERPINSKISIEVE)
     {
-        return *(new SierpinskiSieve(height));
+        return (new SierpinskiSieve(height));
     }
     else if (type == SIERPINSKICARPET)
     {
-        return *(new SierpinskiCarpet(height));
+        return (new SierpinskiCarpet(height));
     }
     else if (type == CANTORDUST)
     {
-        return *(new CantorDust(height));
+        return (new CantorDust(height));
     }
 }
 
+
 void SierpinskiSieve::draw()
 {
-    std::cout << "SierpinskiSieve" << std::endl;
+    if (this->_height == 1)
+    {
+        std::cout << "###\n" << "# #\n" << "###\n";
+    }
+    else
+    {
+        SierpinskiSieve sieve(_height - 1);
+        sieve.draw();
+    }
 }
 
 void SierpinskiCarpet::draw()

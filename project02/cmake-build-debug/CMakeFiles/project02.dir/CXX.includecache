@@ -6,19 +6,11 @@
 
 #IncludeRegexTransform: 
 
-/home/mercydude/University/SUMMER_CPP/cppProjects/project02/Fractal.h
-
-/home/mercydude/University/SUMMER_CPP/cppProjects/project02/FractalDrawer.cpp
-iostream
--
-string
--
-deque
--
-vector
--
+/home/mercydude/University/SUMMER_CPP/cppProjects/project02/Fractal.cpp
 Fractal.h
 /home/mercydude/University/SUMMER_CPP/cppProjects/project02/Fractal.h
-boost/filesystem.hpp
-/home/mercydude/University/SUMMER_CPP/cppProjects/project02/boost/filesystem.hpp
+iostream
+-
+
+/home/mercydude/University/SUMMER_CPP/cppProjects/project02/Fractal.h
 

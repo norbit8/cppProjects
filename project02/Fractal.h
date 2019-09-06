@@ -10,45 +10,59 @@ class Fractal
 {
 public:
     virtual void draw() = 0;
-    static Fractal& Create(int type, int height);
+
+    static Fractal *Create(int type , int height);
 };
 
 /**
  *  A Sierpinski Sieve type of fractal.
  */
-class SierpinskiSieve : public Fractal {
+class SierpinskiSieve : public Fractal
+{
 private:
     int _height;
 public:
-    SierpinskiSieve() =  delete;
-    SierpinskiSieve(int height): _height(height){};
+    SierpinskiSieve() = delete;
+
+    SierpinskiSieve(int height) : _height(height){};
+
     virtual void draw();
+
     ~SierpinskiSieve() = default;
 };
 
 /**
  *  A Sierpinski Carpet type of fractal.
  */
-class SierpinskiCarpet : public Fractal {
+class SierpinskiCarpet : public Fractal
+{
 private:
     int _height;
+    SierpinskiSieve *_step[3][3];
 public:
     SierpinskiCarpet() = delete;
-    SierpinskiCarpet(int height): _height(height){};
+
+    SierpinskiCarpet(int height) : _height(height){};
+
     virtual void draw();
+
     ~SierpinskiCarpet() = default;
 };
 
 /**
  *  A Cantor Dust type of fractal.
  */
-class CantorDust : public Fractal {
+class CantorDust : public Fractal
+{
 private:
     int _height;
 public:
     CantorDust() = delete;
-    CantorDust(int height): _height(height){};
+
+    CantorDust(int height) : _height(height){};
+
     virtual void draw();
+
     ~CantorDust() = default;
 };
 
