@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/mercydude/University/SUMMER_CPP/cppProjects/project02/Fractal.h
+
+/home/mercydude/University/SUMMER_CPP/cppProjects/project02/FractalDrawer.cpp
+iostream
+-
+string
+-
+deque
+-
+vector
+-
+Fractal.h
+/home/mercydude/University/SUMMER_CPP/cppProjects/project02/Fractal.h
+boost/filesystem.hpp
+/home/mercydude/University/SUMMER_CPP/cppProjects/project02/boost/filesystem.hpp
+

@@ -1,5 +1,6 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/project02.dir/main.cpp.o"
+  "CMakeFiles/project02.dir/FractalDrawer.cpp.o"
+  "CMakeFiles/project02.dir/Fractal.cpp.o"
   "project02.pdb"
   "project02"
 )

@@ -57,30 +57,47 @@ include CMakeFiles/project02.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/project02.dir/flags.make
 
-CMakeFiles/project02.dir/main.cpp.o: CMakeFiles/project02.dir/flags.make
-CMakeFiles/project02.dir/main.cpp.o: ../main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mercydude/University/SUMMER_CPP/cppProjects/project02/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/project02.dir/main.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/project02.dir/main.cpp.o -c /home/mercydude/University/SUMMER_CPP/cppProjects/project02/main.cpp
+CMakeFiles/project02.dir/FractalDrawer.cpp.o: CMakeFiles/project02.dir/flags.make
+CMakeFiles/project02.dir/FractalDrawer.cpp.o: ../FractalDrawer.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mercydude/University/SUMMER_CPP/cppProjects/project02/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/project02.dir/FractalDrawer.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/project02.dir/FractalDrawer.cpp.o -c /home/mercydude/University/SUMMER_CPP/cppProjects/project02/FractalDrawer.cpp
 
-CMakeFiles/project02.dir/main.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/project02.dir/main.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mercydude/University/SUMMER_CPP/cppProjects/project02/main.cpp > CMakeFiles/project02.dir/main.cpp.i
+CMakeFiles/project02.dir/FractalDrawer.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/project02.dir/FractalDrawer.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mercydude/University/SUMMER_CPP/cppProjects/project02/FractalDrawer.cpp > CMakeFiles/project02.dir/FractalDrawer.cpp.i
 
-CMakeFiles/project02.dir/main.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/project02.dir/main.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mercydude/University/SUMMER_CPP/cppProjects/project02/main.cpp -o CMakeFiles/project02.dir/main.cpp.s
+CMakeFiles/project02.dir/FractalDrawer.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/project02.dir/FractalDrawer.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mercydude/University/SUMMER_CPP/cppProjects/project02/FractalDrawer.cpp -o CMakeFiles/project02.dir/FractalDrawer.cpp.s
+
+CMakeFiles/project02.dir/Fractal.cpp.o: CMakeFiles/project02.dir/flags.make
+CMakeFiles/project02.dir/Fractal.cpp.o: ../Fractal.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mercydude/University/SUMMER_CPP/cppProjects/project02/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/project02.dir/Fractal.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/project02.dir/Fractal.cpp.o -c /home/mercydude/University/SUMMER_CPP/cppProjects/project02/Fractal.cpp
+
+CMakeFiles/project02.dir/Fractal.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/project02.dir/Fractal.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mercydude/University/SUMMER_CPP/cppProjects/project02/Fractal.cpp > CMakeFiles/project02.dir/Fractal.cpp.i
+
+CMakeFiles/project02.dir/Fractal.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/project02.dir/Fractal.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mercydude/University/SUMMER_CPP/cppProjects/project02/Fractal.cpp -o CMakeFiles/project02.dir/Fractal.cpp.s
 
 # Object files for target project02
 project02_OBJECTS = \
-"CMakeFiles/project02.dir/main.cpp.o"
+"CMakeFiles/project02.dir/FractalDrawer.cpp.o" \
+"CMakeFiles/project02.dir/Fractal.cpp.o"
 
 # External object files for target project02
 project02_EXTERNAL_OBJECTS =
 
-project02: CMakeFiles/project02.dir/main.cpp.o
+project02: CMakeFiles/project02.dir/FractalDrawer.cpp.o
+project02: CMakeFiles/project02.dir/Fractal.cpp.o
 project02: CMakeFiles/project02.dir/build.make
+project02: /usr/lib/x86_64-linux-gnu/libboost_system.so
+project02: /usr/lib/x86_64-linux-gnu/libboost_filesystem.so
 project02: CMakeFiles/project02.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/mercydude/University/SUMMER_CPP/cppProjects/project02/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable project02"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/mercydude/University/SUMMER_CPP/cppProjects/project02/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable project02"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/project02.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

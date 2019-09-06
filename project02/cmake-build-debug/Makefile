@@ -123,32 +123,59 @@ project02/fast:
 	$(MAKE) -f CMakeFiles/project02.dir/build.make CMakeFiles/project02.dir/build
 .PHONY : project02/fast
 
-main.o: main.cpp.o
+Fractal.o: Fractal.cpp.o
 
-.PHONY : main.o
+.PHONY : Fractal.o
 
 # target to build an object file
-main.cpp.o:
-	$(MAKE) -f CMakeFiles/project02.dir/build.make CMakeFiles/project02.dir/main.cpp.o
-.PHONY : main.cpp.o
+Fractal.cpp.o:
+	$(MAKE) -f CMakeFiles/project02.dir/build.make CMakeFiles/project02.dir/Fractal.cpp.o
+.PHONY : Fractal.cpp.o
 
-main.i: main.cpp.i
+Fractal.i: Fractal.cpp.i
 
-.PHONY : main.i
+.PHONY : Fractal.i
 
 # target to preprocess a source file
-main.cpp.i:
-	$(MAKE) -f CMakeFiles/project02.dir/build.make CMakeFiles/project02.dir/main.cpp.i
-.PHONY : main.cpp.i
+Fractal.cpp.i:
+	$(MAKE) -f CMakeFiles/project02.dir/build.make CMakeFiles/project02.dir/Fractal.cpp.i
+.PHONY : Fractal.cpp.i
 
-main.s: main.cpp.s
+Fractal.s: Fractal.cpp.s
 
-.PHONY : main.s
+.PHONY : Fractal.s
 
 # target to generate assembly for a file
-main.cpp.s:
-	$(MAKE) -f CMakeFiles/project02.dir/build.make CMakeFiles/project02.dir/main.cpp.s
-.PHONY : main.cpp.s
+Fractal.cpp.s:
+	$(MAKE) -f CMakeFiles/project02.dir/build.make CMakeFiles/project02.dir/Fractal.cpp.s
+.PHONY : Fractal.cpp.s
+
+FractalDrawer.o: FractalDrawer.cpp.o
+
+.PHONY : FractalDrawer.o
+
+# target to build an object file
+FractalDrawer.cpp.o:
+	$(MAKE) -f CMakeFiles/project02.dir/build.make CMakeFiles/project02.dir/FractalDrawer.cpp.o
+.PHONY : FractalDrawer.cpp.o
+
+FractalDrawer.i: FractalDrawer.cpp.i
+
+.PHONY : FractalDrawer.i
+
+# target to preprocess a source file
+FractalDrawer.cpp.i:
+	$(MAKE) -f CMakeFiles/project02.dir/build.make CMakeFiles/project02.dir/FractalDrawer.cpp.i
+.PHONY : FractalDrawer.cpp.i
+
+FractalDrawer.s: FractalDrawer.cpp.s
+
+.PHONY : FractalDrawer.s
+
+# target to generate assembly for a file
+FractalDrawer.cpp.s:
+	$(MAKE) -f CMakeFiles/project02.dir/build.make CMakeFiles/project02.dir/FractalDrawer.cpp.s
+.PHONY : FractalDrawer.cpp.s
 
 # Help Target
 help:
@@ -159,9 +186,12 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... project02"
 	@echo "... edit_cache"
-	@echo "... main.o"
-	@echo "... main.i"
-	@echo "... main.s"
+	@echo "... Fractal.o"
+	@echo "... Fractal.i"
+	@echo "... Fractal.s"
+	@echo "... FractalDrawer.o"
+	@echo "... FractalDrawer.i"
+	@echo "... FractalDrawer.s"
 .PHONY : help
 
 
