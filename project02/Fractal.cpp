@@ -29,6 +29,10 @@ Fractal *Fractal::Create(int type , int height)
     }
 }
 
+std::string& helper(const Fractal& fract)
+{
+
+}
 
 void SierpinskiSieve::draw()
 {
