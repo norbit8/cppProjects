@@ -94,8 +94,8 @@ project02_EXTERNAL_OBJECTS =
 project02: CMakeFiles/project02.dir/FractalDrawer.cpp.o
 project02: CMakeFiles/project02.dir/Fractal.cpp.o
 project02: CMakeFiles/project02.dir/build.make
-project02: /usr/lib/x86_64-linux-gnu/libboost_system.so
 project02: /usr/lib/x86_64-linux-gnu/libboost_filesystem.so
+project02: /usr/lib/x86_64-linux-gnu/libboost_system.so
 project02: CMakeFiles/project02.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/mercydude/University/SUMMER_CPP/cppProjects/project02/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable project02"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/project02.dir/link.txt --verbose=$(VERBOSE)

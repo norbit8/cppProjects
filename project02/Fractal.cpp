@@ -31,42 +31,174 @@ Fractal *Fractal::Create(int type , int height)
     return nullptr;
 }
 
+char** getMatBase(int type)
+{
+    if (type == SIERPINSKICARPET)
+    {
+        char** mat = new char*[3];
+        for (int i = 0; i < 3; i++)
+        {
+            mat[i] = new char[3];
+            for(int j = 0; j < 3; j++)
+            {
+                if (i == 1 && j == 1)
+                {
+                    mat[i][j] = ' ';
+                }
+                else
+                {
+                    mat[i][j] = '#';
+                }
+            }
+        }
+        return mat;
+    }
+    if (type == SIERPINSKISIEVE)
+    {
+        char** mat = new char*[2];
+        for (int i = 0; i < 2; i++)
+        {
+            mat[i] = new char[2];
+            for(int j = 0; j < 2; j++)
+            {
+                if (i == 1 && j == 1)
+                {
+                    mat[i][j] = ' ';
+                }
+                else
+                {
+                    mat[i][j] = '#';
+                }
+            }
+        }
+        return mat;
+    }
+    if (type == CANTORDUST)
+    {
+        char** mat = new char*[3];
+        for (int i = 0; i < 3; i++)
+        {
+            mat[i] = new char[3]();
+            for(int j = 0; j < 3; j++)
+            {
+                mat[i][j] = ' ';
+            }
+        }
+        mat[0][0] = '#';
+        mat[0][2] = '#';
+        mat[2][0] = '#';
+        mat[2][2] = '#';
+        return mat;
+    }
+    return nullptr;
+}
+
+char** matHelper(int type, int level)
+{
+    if(level == 1)
+    {
+        char** mat = getMatBase(type);
+        return mat;
+    }
+    else
+    {
+        char** mat = matHelper(type, level - 1);
+        int rowCol;
+        if (type == 2)
+        {
+            rowCol = 2;
+        }
+        else
+        {
+            rowCol = 3;
+        }
+        int times = ceil(pow(rowCol , level));
+        int fillOne = ceil(pow(rowCol , level - 1));
+        char **newMat = new char* [times];
+        for (int i = 0; i < times; i++)
+        {
+            newMat[i] = new char[times]();
+            for (int j = 0; j < times; j++)
+            {
+                if (mat[i % fillOne][j % fillOne] == '#' &&
+                    mat[(i / fillOne)][(j / fillOne)] == '#')
+                {
+                    newMat[i][j] = '#';
+                }
+                else
+                {
+                    newMat[i][j] += ' ';
+                }
+            }
+        }
+        times = ceil(pow(rowCol , level - 1));
+        for (int i = 0; i < times; i++)
+        {
+            delete[] mat[i];
+        }
+        delete[] mat;
+        return newMat;
+    }
+}
+
 void SierpinskiSieve::draw()
 {
-    std::cout << "SierpinskiSieve" << std::endl;
+    int times = ceil(pow(2 , _height));
+    char** matrix = matHelper(SIERPINSKISIEVE, this->_height);
+    for (int i = 0; i < times; i++)
+    {
+        for (int j = 0; j < times; j++)
+        {
+            std::cout << matrix[i][j];
+        }
+        std::cout << "\n";
+    }
+    // deleting the matrix, to prevent memory leak.
+    for (int i = 0; i < times; i++)
+    {
+        delete[] matrix[i];
+    }
+    delete[] matrix;
 }
+
 
 void SierpinskiCarpet::draw()
 {
-    int times = ceil(pow(3, _height));
-    int lower = ceil(sqrt(times));
-    int upper = lower + 3 * (_height-1) - 1;
-    std::string toPrint;
-    for(int i = 0; i < times; i++)
+    int times = ceil(pow(3 , _height));
+    char** matrix = matHelper(SIERPINSKICARPET, this->_height);
+    for (int i = 0; i < times; i++)
     {
-        for(int j = 0; j < times; j++)
+        for (int j = 0; j < times; j++)
         {
-            if(i >= lower && i <= upper && j >= lower && j<= upper)
-            {
-                toPrint += " ";
-            }
-            else
-            {
-                toPrint += (this->_mat[i%3][j%3]);
-            }
+            std::cout << matrix[i][j];
         }
-        toPrint += '\n';
+        std::cout << "\n";
     }
-    std::cout << toPrint << std::endl;
+    // deleting the matrix, to prevent memory leak.
+    for (int i = 0; i < times; i++)
+    {
+        delete[] matrix[i];
+    }
+    delete[] matrix;
 }
 
-SierpinskiCarpet::SierpinskiCarpet(int height): _height(height),
-  _mat  {{'#', '#', '#'},
-         {'#',' ', '#'},
-         {'#','#', '#'}}
-{}
 
 void CantorDust::draw()
 {
-    std::cout << "CantorDust" << std::endl;
+    int times = ceil(pow(3 , _height));
+    char** matrix = matHelper(CANTORDUST, this->_height);
+    for (int i = 0; i < times; i++)
+    {
+        for (int j = 0; j < times; j++)
+        {
+            std::cout << matrix[i][j];
+        }
+        std::cout << "\n";
+    }
+    // deleting the matrix, to prevent memory leak.
+    for (int i = 0; i < times; i++)
+    {
+        delete[] matrix[i];
+    }
+    delete[] matrix;
 }

@@ -178,16 +178,16 @@ int main(int argc , char *argv[])
     // ------------------------------
     for (const std::string &str: lst)
     {
-
         if (!addToVec(str , fracVec))
         {
-            std::cout << str << std::endl;
             return EXIT_FAILURE;
         }
     }
     for (Fractal *frac: fracVec)
     {
         frac->draw();
+        std::cout << std::endl;
+        delete frac;
     }
     return 0;
 }

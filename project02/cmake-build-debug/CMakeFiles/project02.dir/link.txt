@@ -1,1 +1,1 @@
-/usr/bin/c++  -g   CMakeFiles/project02.dir/FractalDrawer.cpp.o CMakeFiles/project02.dir/Fractal.cpp.o  -o project02 /usr/lib/x86_64-linux-gnu/libboost_system.so /usr/lib/x86_64-linux-gnu/libboost_filesystem.so 
+/usr/bin/c++   -Wall -Wextra -Werror -g   CMakeFiles/project02.dir/FractalDrawer.cpp.o CMakeFiles/project02.dir/Fractal.cpp.o  -o project02 /usr/lib/x86_64-linux-gnu/libboost_filesystem.so /usr/lib/x86_64-linux-gnu/libboost_system.so 
