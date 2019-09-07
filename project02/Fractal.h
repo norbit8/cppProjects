@@ -10,7 +10,7 @@ class Fractal
 {
 public:
     virtual void draw() = 0;
-
+    virtual ~Fractal() = default;
     static Fractal *Create(int type , int height);
 };
 
@@ -38,11 +38,11 @@ class SierpinskiCarpet : public Fractal
 {
 private:
     int _height;
-    SierpinskiSieve *_step[3][3];
+    const char _mat[3][3];
 public:
     SierpinskiCarpet() = delete;
 
-    SierpinskiCarpet(int height) : _height(height){};
+    SierpinskiCarpet(int height);
 
     virtual void draw();
 

@@ -1,11 +1,12 @@
 // Fractal.cpp
 
-#define SIERPINSKISIEVE 1
-#define SIERPINSKICARPET 2
+#define SIERPINSKICARPET 1
+#define SIERPINSKISIEVE 2
 #define CANTORDUST 3
 
 #include "Fractal.h"
 #include <iostream>
+#include <cmath>
 
 /**
  * Factory function
@@ -27,30 +28,43 @@ Fractal *Fractal::Create(int type , int height)
     {
         return (new CantorDust(height));
     }
-}
-
-std::string& helper(const Fractal& fract)
-{
-
+    return nullptr;
 }
 
 void SierpinskiSieve::draw()
 {
-    if (this->_height == 1)
-    {
-        std::cout << "###\n" << "# #\n" << "###\n";
-    }
-    else
-    {
-        SierpinskiSieve sieve(_height - 1);
-        sieve.draw();
-    }
+    std::cout << "SierpinskiSieve" << std::endl;
 }
 
 void SierpinskiCarpet::draw()
 {
-    std::cout << "SierpinskiCarpet" << std::endl;
+    int times = ceil(pow(3, _height));
+    int lower = ceil(sqrt(times));
+    int upper = lower + 3 * (_height-1) - 1;
+    std::string toPrint;
+    for(int i = 0; i < times; i++)
+    {
+        for(int j = 0; j < times; j++)
+        {
+            if(i >= lower && i <= upper && j >= lower && j<= upper)
+            {
+                toPrint += " ";
+            }
+            else
+            {
+                toPrint += (this->_mat[i%3][j%3]);
+            }
+        }
+        toPrint += '\n';
+    }
+    std::cout << toPrint << std::endl;
 }
+
+SierpinskiCarpet::SierpinskiCarpet(int height): _height(height),
+  _mat  {{'#', '#', '#'},
+         {'#',' ', '#'},
+         {'#','#', '#'}}
+{}
 
 void CantorDust::draw()
 {
