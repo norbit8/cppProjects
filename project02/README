@@ -3,7 +3,26 @@ yoav
 314963257
 ######
 
-In this exercise I created a
+In this exercise I created an abstract class (pure virtual) of a generic fractal,
+and then I created a class for each specific fractal (Cantor Dust, Sierpinski Sieve,
+and SierpinskiCarpet), each class inherits from the abstract fractal class.
+The abstract fractal class has a virtual method (pure virtual) named draw,
+this function draws each fractal, because each fractal is drawn in a different way,
+I took advantage of the function being virtual and in the main function where I create each
+fractal I store them in a vector of pointers to fractal and thus achieve polymorphism.
+
+furthermore I implemented a Factory design pattern in this project, which is the function
+"Create" in the abstract class fractal, it will create a specific fractal (and allocate it's
+memory on the heap) and return a pointer to it.
+
+Also I implemented the rule of 5 to each of my classes.
+
+About my implementation of the file FractalDrawer, I created a deque to store the fractals
+in a reversed order so I can draw them as requested in the pdf.
+also I go line by line first to simply validate the file,
+then I scan it again and load the fractals to the deque, each scan can print to sdterr if
+somthing goes wrong and return a bool value representing the state of the scan (false if it
+got any bad input, true otherwise).
 
 This project contains the following files:
 1. README (this)

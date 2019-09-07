@@ -31,15 +31,21 @@ Fractal *Fractal::Create(int type , int height)
     return nullptr;
 }
 
-char** getMatBase(int type)
+/**
+ * This method allocate a memory for 2d matrices representing the base of each
+ * fractal.
+ * @param type The type of the fractal. (1/2/3).
+ * @return The base fractal matrix.
+ */
+char **getMatBase(int type)
 {
     if (type == SIERPINSKICARPET)
     {
-        char** mat = new char*[3];
+        char **mat = new char *[3];
         for (int i = 0; i < 3; i++)
         {
             mat[i] = new char[3];
-            for(int j = 0; j < 3; j++)
+            for (int j = 0; j < 3; j++)
             {
                 if (i == 1 && j == 1)
                 {
@@ -55,11 +61,11 @@ char** getMatBase(int type)
     }
     if (type == SIERPINSKISIEVE)
     {
-        char** mat = new char*[2];
+        char **mat = new char *[2];
         for (int i = 0; i < 2; i++)
         {
             mat[i] = new char[2];
-            for(int j = 0; j < 2; j++)
+            for (int j = 0; j < 2; j++)
             {
                 if (i == 1 && j == 1)
                 {
@@ -75,11 +81,11 @@ char** getMatBase(int type)
     }
     if (type == CANTORDUST)
     {
-        char** mat = new char*[3];
+        char **mat = new char *[3];
         for (int i = 0; i < 3; i++)
         {
             mat[i] = new char[3]();
-            for(int j = 0; j < 3; j++)
+            for (int j = 0; j < 3; j++)
             {
                 mat[i][j] = ' ';
             }
@@ -93,16 +99,23 @@ char** getMatBase(int type)
     return nullptr;
 }
 
-char** matHelper(int type, int level)
+/**
+ * This function gets a type and a level (= height) of a fractal
+ * and creates a matrix (on the heap) which represents the fractal.
+ * @param type Type of a fractal (1/2/3).
+ * @param level The height of the fractal (1-6).
+ * @return An allocated 2d matrix with '#' and ' ' representing the specified fractal.
+ */
+char **matHelper(int type , int level)
 {
-    if(level == 1)
+    if (level == 1)
     {
-        char** mat = getMatBase(type);
+        char **mat = getMatBase(type);
         return mat;
     }
     else
     {
-        char** mat = matHelper(type, level - 1);
+        char **mat = matHelper(type , level - 1);
         int rowCol;
         if (type == 2)
         {
@@ -114,7 +127,7 @@ char** matHelper(int type, int level)
         }
         int times = ceil(pow(rowCol , level));
         int fillOne = ceil(pow(rowCol , level - 1));
-        char **newMat = new char* [times];
+        char **newMat = new char *[times];
         for (int i = 0; i < times; i++)
         {
             newMat[i] = new char[times]();
@@ -141,10 +154,14 @@ char** matHelper(int type, int level)
     }
 }
 
+/**
+ * The draw function of Sierpinski Sieve (virtual function).
+ * this void function draws to cout the fractal.
+ */
 void SierpinskiSieve::draw()
 {
     int times = ceil(pow(2 , _height));
-    char** matrix = matHelper(SIERPINSKISIEVE, this->_height);
+    char **matrix = matHelper(SIERPINSKISIEVE , this->_height);
     for (int i = 0; i < times; i++)
     {
         for (int j = 0; j < times; j++)
@@ -161,11 +178,14 @@ void SierpinskiSieve::draw()
     delete[] matrix;
 }
 
-
+/**
+ * The draw function of Sierpinski Carpet (virtual function).
+ * this void function draws to cout the fractal.
+ */
 void SierpinskiCarpet::draw()
 {
     int times = ceil(pow(3 , _height));
-    char** matrix = matHelper(SIERPINSKICARPET, this->_height);
+    char **matrix = matHelper(SIERPINSKICARPET , this->_height);
     for (int i = 0; i < times; i++)
     {
         for (int j = 0; j < times; j++)
@@ -182,11 +202,14 @@ void SierpinskiCarpet::draw()
     delete[] matrix;
 }
 
-
+/**
+ * The draw function of cantor dust (virtual function).
+ * this void function draws to cout the fractal.
+ */
 void CantorDust::draw()
 {
     int times = ceil(pow(3 , _height));
-    char** matrix = matHelper(CANTORDUST, this->_height);
+    char **matrix = matHelper(CANTORDUST , this->_height);
     for (int i = 0; i < times; i++)
     {
         for (int j = 0; j < times; j++)
@@ -201,4 +224,88 @@ void CantorDust::draw()
         delete[] matrix[i];
     }
     delete[] matrix;
+}
+
+/**
+ * Move assignment.
+ * @param other rvalue-reference to another sierpinski sieve.
+ * @return this.
+ */
+SierpinskiSieve &SierpinskiSieve::operator=(SierpinskiSieve &&other) noexcept
+{
+    if (this != &other)
+    {
+        _height = other._height;
+    }
+    return *this;
+}
+
+/**
+ * Assignment operator.
+ * @param other reference to another sierpinski sieve.
+ * @return this.
+ */
+SierpinskiSieve &SierpinskiSieve::operator=(const SierpinskiSieve &other)
+{
+    if (this != &other)
+    {
+        _height = other._height;
+    }
+    return *this;
+}
+
+/**
+ * Move assignment.
+ * @param other rvalue-reference to another SierpinskiCarpet.
+ * @return this.
+ */
+SierpinskiCarpet &SierpinskiCarpet::operator=(SierpinskiCarpet &&other) noexcept
+{
+    if (this != &other)
+    {
+        _height = other._height;
+    }
+    return *this;
+}
+
+/**
+ * Assignment operator.
+ * @param other reference to another SierpinskiCarpet.
+ * @return this.
+ */
+SierpinskiCarpet &SierpinskiCarpet::operator=(const SierpinskiCarpet &other)
+{
+    if (this != &other)
+    {
+        _height = other._height;
+    }
+    return *this;
+}
+
+/**
+ * Move assignment.
+ * @param other rvalue-reference to another CantorDust.
+ * @return this.
+ */
+CantorDust &CantorDust::operator=(const CantorDust &other)
+{
+    if (this != &other)
+    {
+        _height = other._height;
+    }
+    return *this;
+}
+
+/**
+ * Assignment operator.
+ * @param other reference to another CantorDust.
+ * @return this.
+ */
+CantorDust &CantorDust::operator=(CantorDust &&other) noexcept
+{
+    if (this != &other)
+    {
+        _height = other._height;
+    }
+    return *this;
 }

@@ -4,8 +4,8 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/mercydude/University/SUMMER_CPP/cppProjects/project02/Fractal.cpp" "/home/mercydude/University/SUMMER_CPP/cppProjects/project02/cmake-build-debug/CMakeFiles/project02.dir/Fractal.cpp.o"
-  "/home/mercydude/University/SUMMER_CPP/cppProjects/project02/FractalDrawer.cpp" "/home/mercydude/University/SUMMER_CPP/cppProjects/project02/cmake-build-debug/CMakeFiles/project02.dir/FractalDrawer.cpp.o"
+  "C:/Users/Yoav/Desktop/HUJI/SemesterSummer/cpp/cppProjects/project02/Fractal.cpp" "C:/Users/Yoav/Desktop/HUJI/SemesterSummer/cpp/cppProjects/project02/cmake-build-debug/CMakeFiles/project02.dir/Fractal.cpp.obj"
+  "C:/Users/Yoav/Desktop/HUJI/SemesterSummer/cpp/cppProjects/project02/FractalDrawer.cpp" "C:/Users/Yoav/Desktop/HUJI/SemesterSummer/cpp/cppProjects/project02/cmake-build-debug/CMakeFiles/project02.dir/FractalDrawer.cpp.obj"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

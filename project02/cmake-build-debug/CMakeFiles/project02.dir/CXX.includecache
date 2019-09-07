@@ -6,9 +6,9 @@
 
 #IncludeRegexTransform: 
 
-/home/mercydude/University/SUMMER_CPP/cppProjects/project02/Fractal.h
+C:/Users/Yoav/Desktop/HUJI/SemesterSummer/cpp/cppProjects/project02/Fractal.h
 
-/home/mercydude/University/SUMMER_CPP/cppProjects/project02/FractalDrawer.cpp
+C:/Users/Yoav/Desktop/HUJI/SemesterSummer/cpp/cppProjects/project02/FractalDrawer.cpp
 iostream
 -
 string
@@ -18,7 +18,7 @@ deque
 vector
 -
 Fractal.h
-/home/mercydude/University/SUMMER_CPP/cppProjects/project02/Fractal.h
-boost/filesystem.hpp
-/home/mercydude/University/SUMMER_CPP/cppProjects/project02/boost/filesystem.hpp
+C:/Users/Yoav/Desktop/HUJI/SemesterSummer/cpp/cppProjects/project02/Fractal.h
+fstream
+-
 

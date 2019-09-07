@@ -5,7 +5,7 @@
 #include <deque>
 #include <vector>
 #include "Fractal.h"
-#include "boost/filesystem.hpp"
+#include <fstream>
 // --------- constants ---------
 #define FILE_PATH 1 /** The argument number that the files path should be located at */
 #define INPUT_COUNT 2 /** Number of input (-1) that the user should provide */
@@ -19,8 +19,6 @@
 #define CANTORDUST 3 /** Cantor Dust code */
 #define FRACTAL_UPPER_BOUND 6 /** Fractal height upper bound */
 #define FRACTAL_LOWER_BOUND 1 /** Fractal height lower bound */
-
-using namespace boost::filesystem;
 
 /**
  * This method verifies the user input and return false if the program should exit (failure)
@@ -37,7 +35,8 @@ bool checkValidity(int argc , char *argv[])
         std::cerr << USAGE << std::endl;
         return false;
     }
-    if (!exists(argv[FILE_PATH]))
+    std::ifstream inFile(argv[FILE_PATH]);
+    if (inFile.fail())
     {
         std::cerr << INVALID_INPUT << std::endl;
         return false;
@@ -57,6 +56,11 @@ bool validLine(const std::string &line)
     std::string strNum;
     for (char ch : line) // iterating char by char to search for illegal ones.
     {
+        if (!isdigit(ch) && ch != COMMA)
+        {
+            std::cerr << INVALID_INPUT << std::endl;
+            return false;
+        }
         if (ch == COMMA)
         {
             counter++;
@@ -164,7 +168,7 @@ int main(int argc , char *argv[])
     }
     // open the file and start loading the data...
     std::vector<Fractal *> fracVec;
-    ifstream inFile(argv[FILE_PATH]);
+    std::ifstream inFile(argv[FILE_PATH]);
     std::string line;
     std::deque<std::string> lst;
     while (std::getline(inFile , line))
@@ -175,7 +179,6 @@ int main(int argc , char *argv[])
         }
         lst.push_front(line); // load line by line
     }
-    // ------------------------------
     for (const std::string &str: lst)
     {
         if (!addToVec(str , fracVec))

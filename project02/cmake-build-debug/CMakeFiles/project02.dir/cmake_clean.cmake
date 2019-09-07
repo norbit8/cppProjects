@@ -1,8 +1,10 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/project02.dir/FractalDrawer.cpp.o"
-  "CMakeFiles/project02.dir/Fractal.cpp.o"
+  "CMakeFiles/project02.dir/FractalDrawer.cpp.obj"
+  "CMakeFiles/project02.dir/Fractal.cpp.obj"
   "project02.pdb"
-  "project02"
+  "project02.exe"
+  "project02.exe.manifest"
+  "libproject02.dll.a"
 )
 
 # Per-language clean rules from dependency scanning.
