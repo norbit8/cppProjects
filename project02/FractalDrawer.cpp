@@ -148,7 +148,7 @@ bool addToVec(const std::string &line , std::vector<Fractal *> &fracVec)
     {
         return false;
     }
-    Fractal *frac = Fractal::Create(fracNum , height);
+    Fractal *frac = Fractal::create(fracNum , height);
     fracVec.push_back(frac);
     return true;
 }

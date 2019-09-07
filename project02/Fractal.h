@@ -25,7 +25,7 @@ public:
      * @param height The height of the fractal.
      * @return
      */
-    static Fractal *Create(int type , int height);
+    static Fractal *create(int type , int height);
 };
 
 /**
@@ -60,7 +60,7 @@ public:
      * Move ctor.
      * @param other rvalue-reference to another sierpinski sieve.
      */
-    SierpinskiSieve(SierpinskiSieve &&other) noexcept : SierpinskiSieve(other._height)
+    SierpinskiSieve(SierpinskiSieve && other) noexcept : SierpinskiSieve(other._height)
     {};
 
     /**
@@ -68,7 +68,7 @@ public:
      * @param other rvalue-reference to another sierpinski sieve.
      * @return this.
      */
-    SierpinskiSieve &operator=(SierpinskiSieve &&other) noexcept;
+    SierpinskiSieve &operator=(SierpinskiSieve && other) noexcept;
 
     /**
      * Assignment operator.
@@ -120,7 +120,7 @@ public:
     * Move ctor.
     * @param other rvalue-reference to another SierpinskiCarpet.
     */
-    SierpinskiCarpet(SierpinskiCarpet &&other) noexcept : SierpinskiCarpet(other._height)
+    SierpinskiCarpet(SierpinskiCarpet && other) noexcept : SierpinskiCarpet(other._height)
     {};
 
     /**
@@ -128,7 +128,7 @@ public:
      * @param other rvalue-reference to another SierpinskiCarpet.
      * @return this.
      */
-    SierpinskiCarpet &operator=(SierpinskiCarpet &&other) noexcept;
+    SierpinskiCarpet &operator=(SierpinskiCarpet && other) noexcept;
 
     /**
      * Assignment operator.
@@ -176,7 +176,7 @@ public:
      * Move ctor.
      * @param other rvalue-reference to another CantorDust.
      */
-    CantorDust(CantorDust &&other) noexcept : CantorDust(other._height)
+    CantorDust(CantorDust && other) noexcept : CantorDust(other._height)
     {};
 
     /**
@@ -184,7 +184,7 @@ public:
      * @param other rvalue-reference to another CantorDust.
      * @return this.
      */
-    CantorDust &operator=(CantorDust &&other) noexcept;
+    CantorDust &operator=(CantorDust && other) noexcept;
 
     /**
      * Assignment operator.
