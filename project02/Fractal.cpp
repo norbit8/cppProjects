@@ -1,8 +1,13 @@
 // Fractal.cpp
 
-#define SIERPINSKICARPET 1
-#define SIERPINSKISIEVE 2
-#define CANTORDUST 3
+#define SIERPINSKICARPET 1 /** Sierpinski carpet number */
+#define SIERPINSKISIEVE 2 /** Sierpinski sieve number */
+#define CANTORDUST 3 /** Cantor dust number */
+#define HASH_TAG '#' /** Hash tag is the way we represent a drawn point in the fractal */
+#define SPACE ' ' /** Space char constant */
+#define MAT3X3 3 /** Matrix 3 by 3 constant */
+#define MAT2X2 2 /**  Matrix 2 by 2 constant */
+
 
 #include "Fractal.h"
 #include <iostream>
@@ -32,6 +37,82 @@ Fractal *Fractal::create(int type , int height)
 }
 
 /**
+ * A static function ("file private") which generates 2d array on the heap
+ * representing the sierpinski carpet fractal
+ * @return 2d heap allocated memory of char array.
+ */
+static char **sierpinskiCarpetBase()
+{
+    char **mat = new char *[MAT3X3];
+    for (int i = 0; i < MAT3X3; i++)
+    {
+        mat[i] = new char[MAT3X3];
+        for (int j = 0; j < MAT3X3; j++)
+        {
+            if (i == 1 && j == 1)
+            {
+                mat[i][j] = SPACE;
+            }
+            else
+            {
+                mat[i][j] = HASH_TAG;
+            }
+        }
+    }
+    return mat;
+}
+
+/**
+ * A static function ("file private") which generates 2d array on the heap
+ * representing the sierpinski sieve fractal
+ * @return 2d heap allocated memory of char array.
+ */
+static char **sierpinskiSieveBase()
+{
+    char **mat = new char *[MAT2X2];
+    for (int i = 0; i < MAT2X2; i++)
+    {
+        mat[i] = new char[MAT2X2];
+        for (int j = 0; j < MAT2X2; j++)
+        {
+            if (i == 1 && j == 1)
+            {
+                mat[i][j] = SPACE;
+            }
+            else
+            {
+                mat[i][j] = HASH_TAG;
+            }
+        }
+    }
+    return mat;
+}
+
+/**
+ * A static function ("file private") which generates 2d array on the heap
+ * representing the cantor dust fractal
+ * @return 2d heap allocated memory of char array.
+ */
+static char **cantorDustBase()
+{
+    char **mat = new char *[MAT3X3];
+    for (int i = 0; i < MAT3X3; i++)
+    {
+        mat[i] = new char[MAT3X3]();
+        for (int j = 0; j < MAT3X3; j++)
+        {
+            mat[i][j] = SPACE;
+        }
+    }
+    // Encoding the HASH TAGS ('#') in their right place to crate the basic cantor dust fractal.
+    mat[0][0] = HASH_TAG;
+    mat[0][2] = HASH_TAG;
+    mat[2][0] = HASH_TAG;
+    mat[2][2] = HASH_TAG;
+    return mat;
+}
+
+/**
  * This method allocate a memory for 2d matrices representing the base of each
  * fractal.
  * @param type The type of the fractal. (1/2/3).
@@ -41,60 +122,15 @@ char **getMatBase(int type)
 {
     if (type == SIERPINSKICARPET)
     {
-        char **mat = new char *[3];
-        for (int i = 0; i < 3; i++)
-        {
-            mat[i] = new char[3];
-            for (int j = 0; j < 3; j++)
-            {
-                if (i == 1 && j == 1)
-                {
-                    mat[i][j] = ' ';
-                }
-                else
-                {
-                    mat[i][j] = '#';
-                }
-            }
-        }
-        return mat;
+        return sierpinskiCarpetBase();
     }
     if (type == SIERPINSKISIEVE)
     {
-        char **mat = new char *[2];
-        for (int i = 0; i < 2; i++)
-        {
-            mat[i] = new char[2];
-            for (int j = 0; j < 2; j++)
-            {
-                if (i == 1 && j == 1)
-                {
-                    mat[i][j] = ' ';
-                }
-                else
-                {
-                    mat[i][j] = '#';
-                }
-            }
-        }
-        return mat;
+        return sierpinskiSieveBase();
     }
     if (type == CANTORDUST)
     {
-        char **mat = new char *[3];
-        for (int i = 0; i < 3; i++)
-        {
-            mat[i] = new char[3]();
-            for (int j = 0; j < 3; j++)
-            {
-                mat[i][j] = ' ';
-            }
-        }
-        mat[0][0] = '#';
-        mat[0][2] = '#';
-        mat[2][0] = '#';
-        mat[2][2] = '#';
-        return mat;
+        return cantorDustBase();
     }
     return nullptr;
 }
@@ -133,14 +169,14 @@ char **matHelper(int type , int level)
             newMat[i] = new char[times]();
             for (int j = 0; j < times; j++)
             {
-                if (mat[i % fillOne][j % fillOne] == '#' &&
-                    mat[(i / fillOne)][(j / fillOne)] == '#')
+                if (mat[i % fillOne][j % fillOne] == HASH_TAG &&
+                    mat[(i / fillOne)][(j / fillOne)] == HASH_TAG)
                 {
-                    newMat[i][j] = '#';
+                    newMat[i][j] = HASH_TAG;
                 }
                 else
                 {
-                    newMat[i][j] += ' ';
+                    newMat[i][j] += SPACE;
                 }
             }
         }

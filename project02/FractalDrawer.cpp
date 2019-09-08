@@ -19,7 +19,7 @@
 #define CANTORDUST 3 /** Cantor Dust code */
 #define FRACTAL_UPPER_BOUND 6 /** Fractal height upper bound */
 #define FRACTAL_LOWER_BOUND 1 /** Fractal height lower bound */
-
+#define ALLOC_FAILED "Memory allocation failed"
 /**
  * This method verifies the user input and return false if the program should exit (failure)
  * and true otherwise. (this method also prints the error if ones occur)
@@ -148,7 +148,7 @@ bool addToVec(const std::string &line , std::vector<Fractal *> &fracVec)
     {
         return false;
     }
-    Fractal *frac = Fractal::create(fracNum , height);
+    Fractal *frac = Fractal::create(fracNum , height); // can throw bad alloc exception
     fracVec.push_back(frac);
     return true;
 }
@@ -171,6 +171,7 @@ int main(int argc , char *argv[])
     std::ifstream inFile(argv[FILE_PATH]);
     std::string line;
     std::deque<std::string> lst;
+
     while (std::getline(inFile , line))
     {
         if (!validLine(line))
@@ -181,8 +182,21 @@ int main(int argc , char *argv[])
     }
     for (const std::string &str: lst)
     {
-        if (!addToVec(str , fracVec))
+        try
         {
+            if (!addToVec(str , fracVec)) // addToVec creates a new vector which is on the heap
+            {
+                return EXIT_FAILURE;
+            }
+        }
+        catch (std::bad_alloc& e)
+        {
+            std::cerr << ALLOC_FAILED << std::endl;
+            return EXIT_FAILURE;
+        }
+        catch (...)
+        {
+            std::cerr << ALLOC_FAILED << std::endl;
             return EXIT_FAILURE;
         }
     }
