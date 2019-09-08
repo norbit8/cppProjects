@@ -266,7 +266,7 @@ void CantorDust::draw()
  * @param other rvalue-reference to another sierpinski sieve.
  * @return this.
  */
-SierpinskiSieve &SierpinskiSieve::operator=(SierpinskiSieve &&other) noexcept
+SierpinskiSieve &SierpinskiSieve::operator=(SierpinskiSieve && other) noexcept
 {
     if (this != &other)
     {
@@ -294,7 +294,7 @@ SierpinskiSieve &SierpinskiSieve::operator=(const SierpinskiSieve &other)
  * @param other rvalue-reference to another SierpinskiCarpet.
  * @return this.
  */
-SierpinskiCarpet &SierpinskiCarpet::operator=(SierpinskiCarpet &&other) noexcept
+SierpinskiCarpet &SierpinskiCarpet::operator=(SierpinskiCarpet && other) noexcept
 {
     if (this != &other)
     {
@@ -336,7 +336,7 @@ CantorDust &CantorDust::operator=(const CantorDust &other)
  * @param other reference to another CantorDust.
  * @return this.
  */
-CantorDust &CantorDust::operator=(CantorDust &&other) noexcept
+CantorDust &CantorDust::operator=(CantorDust && other) noexcept
 {
     if (this != &other)
     {
