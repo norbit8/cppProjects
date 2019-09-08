@@ -1,13 +1,12 @@
 // Fractal.cpp
-
-#define SIERPINSKICARPET 1 /** Sierpinski carpet number */
-#define SIERPINSKISIEVE 2 /** Sierpinski sieve number */
-#define CANTORDUST 3 /** Cantor dust number */
+// ---- constants ----
 #define HASH_TAG '#' /** Hash tag is the way we represent a drawn point in the fractal */
 #define SPACE ' ' /** Space char constant */
-#define MAT3X3 3 /** Matrix 3 by 3 constant */
-#define MAT2X2 2 /**  Matrix 2 by 2 constant */
-
+static const int SIERPINSKICARPET = 1; /** Sierpinski carpet number */
+static const int SIERPINSKISIEVE = 2; /** Sierpinski sieve number */
+static const int CANTORDUST = 3; /** Cantor dust number */
+static const int MAT3X3 = 3; /** Matrix 3 by 3 constant */
+static const int MAT2X2 = 2; /**  Matrix 2 by 2 constant */
 
 #include "Fractal.h"
 #include <iostream>
@@ -267,7 +266,7 @@ void CantorDust::draw()
  * @param other rvalue-reference to another sierpinski sieve.
  * @return this.
  */
-SierpinskiSieve &SierpinskiSieve::operator=(SierpinskiSieve && other) noexcept
+SierpinskiSieve &SierpinskiSieve::operator=(SierpinskiSieve &&other) noexcept
 {
     if (this != &other)
     {
@@ -295,7 +294,7 @@ SierpinskiSieve &SierpinskiSieve::operator=(const SierpinskiSieve &other)
  * @param other rvalue-reference to another SierpinskiCarpet.
  * @return this.
  */
-SierpinskiCarpet &SierpinskiCarpet::operator=(SierpinskiCarpet && other) noexcept
+SierpinskiCarpet &SierpinskiCarpet::operator=(SierpinskiCarpet &&other) noexcept
 {
     if (this != &other)
     {
@@ -337,7 +336,7 @@ CantorDust &CantorDust::operator=(const CantorDust &other)
  * @param other reference to another CantorDust.
  * @return this.
  */
-CantorDust &CantorDust::operator=(CantorDust && other) noexcept
+CantorDust &CantorDust::operator=(CantorDust &&other) noexcept
 {
     if (this != &other)
     {

@@ -1,0 +1,20 @@
+C++ exercise 2 Tester v_1.1
+Author: Mattan Yeroushalmi
+
+Simply xtract the archive to the folder including your project files and run from terminal.
+This tester is meant to be run on the aquarium computers.
+
+To compare your output with school output use the command 
+
+"vimdiff school_<test_num> student_<test_num>"
+
+from the solutions folder. "test_num" appears when running the tester
+and it will say fail if there is a mismatch.
+
+Thank you Nadav Har-Tuv for supplying 28 of the test files.
+
+Don't delete the solutions folder or you will get an error when running the tester.
+
+
+V1.1
+For people using boost - the command is "tester b" and will not compile your files for you. You should complie them into a file called DrawFractal

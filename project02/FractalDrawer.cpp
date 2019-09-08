@@ -7,19 +7,22 @@
 #include "Fractal.h"
 #include <fstream>
 // --------- constants ---------
-#define FILE_PATH 1 /** The argument number that the files path should be located at */
-#define INPUT_COUNT 2 /** Number of input (-1) that the user should provide */
 #define USAGE "Usage: FractalDrawer <file path>" /** USAGE error message. */
-#define INVALID_INPUT "Invalid input" /** Invalid input error message */
-#define COMMA ',' /** Comma char */
-#define COLUMNS 1 /** The number of commas which implies that the columns are 2 */
 #define SPACE ' ' /** Space char */
-#define SIERPINSKISIEVE 1 /** Sierpinski Sieve code */
-#define SIERPINSKICARPET 2 /** Sierpinski Carpet code*/
-#define CANTORDUST 3 /** Cantor Dust code */
-#define FRACTAL_UPPER_BOUND 6 /** Fractal height upper bound */
-#define FRACTAL_LOWER_BOUND 1 /** Fractal height lower bound */
 #define ALLOC_FAILED "Memory allocation failed" /** The message for failed mem alloc */
+#define INVALID_INPUT "Invalid input" /** Invalid input error message */
+/** The argument number that the files path should be located at */
+static const int FILE_PATH = 1;
+static const int INPUT_COUNT = 2; /** Number of input (-1) that the user should provide */
+static const char COMMA = ','; /** Comma char */
+static const int COLUMNS = 1; /** The number of commas which implies that the columns are 2 */
+static const int SIERPINSKISIEVE = 1; /** Sierpinski Sieve code */
+static const int SIERPINSKICARPET = 2; /** Sierpinski Carpet code*/
+static const int CANTORDUST = 3; /** Cantor Dust code */
+static const int FRACTAL_UPPER_BOUND = 6; /** Fractal height upper bound */
+static const int FRACTAL_LOWER_BOUND = 1; /** Fractal height lower bound */
+static const int MULTI_10 = 10; /** Multiply by 10 the number I construct from input */
+
 /**
  * This method verifies the user input and return false if the program should exit (failure)
  * and true otherwise. (this method also prints the error if ones occur)
@@ -102,6 +105,17 @@ bool verifyInput(int fractalNum , int height)
     return true;
 }
 
+int convertStringToInt(std::string &str)
+{
+    int num = 0;
+    for (char ch: str)
+    {
+        num *= MULTI_10;
+        num += ch - '0';
+    }
+    return num;
+}
+
 /**
  * This function gets a line from the file and a refference to the fractals vector
  * and adds a new fractal to the vector.
@@ -120,7 +134,7 @@ bool addToVec(const std::string &line , std::vector<Fractal *> &fracVec)
         {
             try
             {
-                fracNum = stoi(newStr);
+                fracNum = convertStringToInt(newStr);
             }
             catch (...)
             {
@@ -136,7 +150,7 @@ bool addToVec(const std::string &line , std::vector<Fractal *> &fracVec)
     }
     try
     {
-        height = stoi(newStr);
+        height = convertStringToInt(newStr);
     }
     catch (...)
     {
@@ -189,7 +203,7 @@ int main(int argc , char *argv[])
                 return EXIT_FAILURE;
             }
         }
-        catch (std::bad_alloc& e)
+        catch (std::bad_alloc &e)
         {
             std::cerr << ALLOC_FAILED << std::endl;
             return EXIT_FAILURE;

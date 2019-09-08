@@ -13,124 +13,11 @@
   <component name="ChangeListManager">
     <list default="true" id="72fda4ef-17ea-47b1-beb5-601e8b360d94" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../project01/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../project01/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Fractal.h.gch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Fractal.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Fractal.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Fractal.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FractalDrawer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/FractalDrawer.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FractalDrawer.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TESTER_README.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/checker.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cpp_ex2.exe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cpp_ex2.tar" beforeDir="false" afterPath="$PROJECT_DIR$/cpp_ex2.tar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/run_tester.bat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test01.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test02.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test03.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tester.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tester_files/good_input/big_pic.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tester_files/good_input/empty_file.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tester_files/good_input/just_pic_1.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tester_files/good_input/just_pic_2.in" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tester_files/good_input/just_pic_3.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tester_files/good_input/lot_of_line.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tester_files/good_input/one_line" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tester_files/good_input/small_1.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tester_files/good_input/small_2.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tester_files/invalid_input/an_dif_chice.in" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tester_files/invalid_input/anderlones.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tester_files/invalid_input/deg_0.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tester_files/invalid_input/degree_more_then_6.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tester_files/invalid_input/dot.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tester_files/invalid_input/empty_line.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tester_files/invalid_input/empty_lint_in_start..in" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tester_files/invalid_input/float_num1.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tester_files/invalid_input/float_num1.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tester_files/invalid_input/more_then_2_row.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tester_files/invalid_input/neg_chice.in" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tester_files/invalid_input/neg_degree.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tester_files/invalid_input/no_ligal_sigen.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tester_files/invalid_input/non_ligel_leter.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tester_files/invalid_input/short_line" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tester_files/invalid_input/slesh.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tester_files/invalid_input/space.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tester_files/invalid_input/space_in_line" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tester_files/invalid_input/zero_chice.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tester_files/system_out/BIG_PIC.TXT_SCHOOL_SOLUTION_OUTPUT.TXT" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tester_files/system_out/EMPTY_FILE.TXT_SCHOOL_SOLUTION_OUTPUT.TXT" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tester_files/system_out/JUST_PIC_2.IN_SCHOOL_SOLUTION_OUTPUT.TXT" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tester_files/system_out/JUST_PIC_3.CSV_SCHOOL_SOLUTION_OUTPUT.TXT" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tester_files/system_out/LOT_OF_LINE.CSV_SCHOOL_SOLUTION_OUTPUT.TXT" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tester_files/system_out/ONE_LINE_SCHOOL_SOLUTION_OUTPUT.TXT" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tester_files/system_out/SMALL_1.TXT_SCHOOL_SOLUTION_OUTPUT.TXT" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tester_files/system_out/SMALL_2.CSV_SCHOOL_SOLUTION_OUTPUT.TXT" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tester_files/system_out/empty.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tester_files/system_out/invalid.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tester_files/system_out/just_pic_1.txt_SCHOOL_SOLUTION_OUTPUT.TXT" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tester_files/system_out/num_of_parm.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tester_files/user_out/an_dif_chice.in_user_errors.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tester_files/user_out/an_dif_chice.in_user_output.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tester_files/user_out/anderlones.txt_user_errors.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tester_files/user_out/anderlones.txt_user_output.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tester_files/user_out/big_pic.txt_user_errors.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tester_files/user_out/big_pic.txt_user_output.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tester_files/user_out/deg_0.txt_user_errors.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tester_files/user_out/deg_0.txt_user_output.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tester_files/user_out/degree_more_then_6.txt_user_errors.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tester_files/user_out/degree_more_then_6.txt_user_output.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tester_files/user_out/dot.txt_user_errors.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tester_files/user_out/dot.txt_user_output.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tester_files/user_out/empty_file.txt_user_errors.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tester_files/user_out/empty_file.txt_user_output.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tester_files/user_out/empty_line.txt_user_errors.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tester_files/user_out/empty_line.txt_user_output.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tester_files/user_out/empty_lint_in_start..in_user_errors.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tester_files/user_out/empty_lint_in_start..in_user_output.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tester_files/user_out/float_num1.csv_user_errors.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tester_files/user_out/float_num1.csv_user_output.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tester_files/user_out/float_num1.txt_user_errors.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tester_files/user_out/float_num1.txt_user_output.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tester_files/user_out/just_pic_1.txt_user_errors.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tester_files/user_out/just_pic_1.txt_user_output.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tester_files/user_out/just_pic_2.in_user_errors.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tester_files/user_out/just_pic_2.in_user_output.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tester_files/user_out/just_pic_3.csv_user_errors.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tester_files/user_out/just_pic_3.csv_user_output.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tester_files/user_out/les_parm_user_errors.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tester_files/user_out/les_parm_user_output.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tester_files/user_out/lot_of_line.csv_user_errors.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tester_files/user_out/lot_of_line.csv_user_output.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tester_files/user_out/more_parm_user_errors.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tester_files/user_out/more_parm_user_output.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tester_files/user_out/more_then_2_row.txt_user_errors.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tester_files/user_out/more_then_2_row.txt_user_output.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tester_files/user_out/neg_chice.in_user_errors.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tester_files/user_out/neg_chice.in_user_output.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tester_files/user_out/neg_degree.txt_user_errors.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tester_files/user_out/neg_degree.txt_user_output.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tester_files/user_out/no_file.csv_user_errors.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tester_files/user_out/no_file.csv_user_output.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tester_files/user_out/no_file_user_errors.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tester_files/user_out/no_file_user_output.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tester_files/user_out/no_ligal_sigen.txt_user_errors.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tester_files/user_out/no_ligal_sigen.txt_user_output.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tester_files/user_out/non_ligel_leter.csv_user_errors.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tester_files/user_out/non_ligel_leter.csv_user_output.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tester_files/user_out/one_line_user_errors.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tester_files/user_out/one_line_user_output.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tester_files/user_out/short_line_user_errors.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tester_files/user_out/short_line_user_output.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tester_files/user_out/slesh.txt_user_errors.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tester_files/user_out/slesh.txt_user_output.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tester_files/user_out/small_1.txt_user_errors.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tester_files/user_out/small_1.txt_user_output.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tester_files/user_out/small_2.csv_user_errors.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tester_files/user_out/small_2.csv_user_output.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tester_files/user_out/space.txt_user_errors.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tester_files/user_out/space.txt_user_output.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tester_files/user_out/space_in_line_user_errors.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tester_files/user_out/space_in_line_user_output.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tester_files/user_out/zero_chice.txt_user_errors.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tester_files/user_out/zero_chice.txt_user_output.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/project02.dir/FractalDrawer.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/project02.dir/FractalDrawer.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/project02" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/project02" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -147,16 +34,16 @@
     <session id="-184705146">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="1" />
+          <entry key="project.closed" value="3" />
           <entry key="project.open.time.0" value="1" />
-          <entry key="project.open.time.5" value="1" />
-          <entry key="project.opened" value="2" />
+          <entry key="project.open.time.5" value="3" />
+          <entry key="project.opened" value="4" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="cpp" value="1" />
-          <entry key="csv" value="3" />
+          <entry key="csv" value="4" />
           <entry key="h" value="9" />
           <entry key="new" value="1" />
           <entry key="ostream" value="1" />
@@ -170,33 +57,33 @@
           <entry key="CMakeLists.txt" value="1" />
           <entry key="Disassembly" value="1" />
           <entry key="ObjectiveC" value="13" />
-          <entry key="PLAIN_TEXT" value="3" />
+          <entry key="PLAIN_TEXT" value="4" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="cpp" value="1423" />
-          <entry key="csv" value="60" />
+          <entry key="cpp" value="2048" />
+          <entry key="csv" value="72" />
           <entry key="txt" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CMakeLists.txt" value="1" />
-          <entry key="Doxygen file" value="2" />
-          <entry key="ObjectiveC" value="1421" />
-          <entry key="PLAIN_TEXT" value="60" />
+          <entry key="Doxygen file" value="9" />
+          <entry key="ObjectiveC" value="2039" />
+          <entry key="PLAIN_TEXT" value="72" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/FractalDrawer.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="21" column="87" selection-start-line="21" selection-start-column="87" selection-end-line="21" selection-end-column="87" />
+            <state relative-caret-position="180">
+              <caret line="12" column="25" lean-forward="true" selection-start-line="12" selection-start-column="25" selection-end-line="12" selection-end-column="25" />
               <folding>
                 <element signature="e#53#72#0" expanded="true" />
               </folding>
@@ -205,12 +92,21 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test01.csv">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="15">
+              <caret line="1" column="3" selection-start-line="1" selection-start-column="3" selection-end-line="1" selection-end-column="3" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Fractal.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1670">
-              <caret line="159" column="12" lean-forward="true" selection-start-line="159" selection-start-column="12" selection-end-line="159" selection-end-column="12" />
+            <state relative-caret-position="135">
+              <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
               <folding>
-                <element signature="e#364#384#0" expanded="true" />
+                <element signature="e#411#431#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -229,7 +125,7 @@
         <entry file="file://$PROJECT_DIR$/example.csv">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="15">
-              <caret line="1" column="3" lean-forward="true" selection-start-line="1" selection-start-column="3" selection-end-line="1" selection-end-column="3" />
+              <caret line="1" column="3" selection-start-line="1" selection-start-column="3" selection-end-line="1" selection-end-column="3" />
             </state>
           </provider>
         </entry>
@@ -242,6 +138,7 @@
       <find>INVALID</find>
       <find>mystring</find>
       <find>'#'</find>
+      <find>stoi</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -253,10 +150,11 @@
         <option value="$PROJECT_DIR$/README" />
         <option value="$PROJECT_DIR$/Fractal.h" />
         <option value="$PROJECT_DIR$/CMakeLists.txt" />
-        <option value="$PROJECT_DIR$/Fractal.cpp" />
         <option value="$PROJECT_DIR$/checker.csv" />
         <option value="$PROJECT_DIR$/example.csv" />
+        <option value="$PROJECT_DIR$/test01.csv" />
         <option value="$PROJECT_DIR$/FractalDrawer.cpp" />
+        <option value="$PROJECT_DIR$/Fractal.cpp" />
       </list>
     </option>
   </component>
@@ -278,7 +176,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -290,6 +187,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -319,7 +217,7 @@
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="project02" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="$PROJECT_DIR$/example.csv" PASS_PARENT_ENVS_2="true" PROJECT_NAME="project02" TARGET_NAME="project02" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="project02" RUN_TARGET_NAME="project02">
+    <configuration name="project02" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="$PROJECT_DIR$/test01.csv" PASS_PARENT_ENVS_2="true" PROJECT_NAME="project02" TARGET_NAME="project02" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="project02" RUN_TARGET_NAME="project02">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -344,12 +242,14 @@
       <workItem from="1567843389534" duration="18941000" />
       <workItem from="1567882267890" duration="6081000" />
       <workItem from="1567928410870" duration="356000" />
-      <workItem from="1567928782505" duration="7149000" />
+      <workItem from="1567928782505" duration="7303000" />
+      <workItem from="1567937991230" duration="232000" />
+      <workItem from="1567940019349" duration="3439000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="69983000" />
+    <option name="totallyTimeSpent" value="73808000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -364,12 +264,12 @@
     <frame x="0" y="28" width="1920" height="1028" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.28586724" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.29229122" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32814237" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32814237" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39933258" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -428,13 +328,6 @@
     <entry file="file:///usr/include/boost/filesystem/operations.hpp" />
     <entry file="file:///usr/include/c++/7/bits/istream.tcc" />
     <entry file="file:///usr/include/c++/7/bits/predefined_ops.h" />
-    <entry file="file://$PROJECT_DIR$/test03.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///usr/include/x86_64-linux-gnu/bits/mathcalls.h" />
     <entry file="file://$USER_HOME$/valgrind-3.15.0/coregrind/m_replacemalloc/vg_replace_malloc.c" />
     <entry file="file://$PROJECT_DIR$/../CMakeLists.txt">
@@ -514,13 +407,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Fractal.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2670">
-          <caret line="178" column="29" selection-start-line="178" selection-start-column="29" selection-end-line="178" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///usr/include/c++/8/ostream">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="192">
@@ -528,36 +414,46 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/checker.csv">
+    <entry file="file://$PROJECT_DIR$/checker.csv" />
+    <entry file="file://$PROJECT_DIR$/test03.csv" />
+    <entry file="file://$PROJECT_DIR$/test02.csv" />
+    <entry file="file://$PROJECT_DIR$/Fractal.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="3" selection-start-line="1" selection-start-column="3" selection-end-line="1" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Fractal.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1670">
-          <caret line="159" column="12" lean-forward="true" selection-start-line="159" selection-start-column="12" selection-end-line="159" selection-end-column="12" />
-          <folding>
-            <element signature="e#364#384#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="2670">
+          <caret line="178" column="29" selection-start-line="178" selection-start-column="29" selection-end-line="178" selection-end-column="29" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/example.csv">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
-          <caret line="1" column="3" lean-forward="true" selection-start-line="1" selection-start-column="3" selection-end-line="1" selection-end-column="3" />
+          <caret line="1" column="3" selection-start-line="1" selection-start-column="3" selection-end-line="1" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test01.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="3" selection-start-line="1" selection-start-column="3" selection-end-line="1" selection-end-column="3" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/FractalDrawer.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="87" selection-start-line="21" selection-start-column="87" selection-end-line="21" selection-end-column="87" />
+        <state relative-caret-position="180">
+          <caret line="12" column="25" lean-forward="true" selection-start-line="12" selection-start-column="25" selection-end-line="12" selection-end-column="25" />
           <folding>
             <element signature="e#53#72#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Fractal.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+          <folding>
+            <element signature="e#411#431#0" expanded="true" />
           </folding>
         </state>
       </provider>
