@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/cs/usr/yoav/semester03/cpp/cppProjects/project03/HashMap.hpp
+iostream
+-
+vector
+-
+exception
+-
+
+/cs/usr/yoav/semester03/cpp/cppProjects/project03/SpamDetector.cpp
+iostream
+-
+string
+-
+HashMap.hpp
+/cs/usr/yoav/semester03/cpp/cppProjects/project03/HashMap.hpp
+
