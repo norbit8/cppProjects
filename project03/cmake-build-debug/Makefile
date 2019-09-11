@@ -123,32 +123,32 @@ project03/fast:
 	$(MAKE) -f CMakeFiles/project03.dir/build.make CMakeFiles/project03.dir/build
 .PHONY : project03/fast
 
-main.o: main.cpp.o
+SpamDetector.o: SpamDetector.cpp.o
 
-.PHONY : main.o
+.PHONY : SpamDetector.o
 
 # target to build an object file
-main.cpp.o:
-	$(MAKE) -f CMakeFiles/project03.dir/build.make CMakeFiles/project03.dir/main.cpp.o
-.PHONY : main.cpp.o
+SpamDetector.cpp.o:
+	$(MAKE) -f CMakeFiles/project03.dir/build.make CMakeFiles/project03.dir/SpamDetector.cpp.o
+.PHONY : SpamDetector.cpp.o
 
-main.i: main.cpp.i
+SpamDetector.i: SpamDetector.cpp.i
 
-.PHONY : main.i
+.PHONY : SpamDetector.i
 
 # target to preprocess a source file
-main.cpp.i:
-	$(MAKE) -f CMakeFiles/project03.dir/build.make CMakeFiles/project03.dir/main.cpp.i
-.PHONY : main.cpp.i
+SpamDetector.cpp.i:
+	$(MAKE) -f CMakeFiles/project03.dir/build.make CMakeFiles/project03.dir/SpamDetector.cpp.i
+.PHONY : SpamDetector.cpp.i
 
-main.s: main.cpp.s
+SpamDetector.s: SpamDetector.cpp.s
 
-.PHONY : main.s
+.PHONY : SpamDetector.s
 
 # target to generate assembly for a file
-main.cpp.s:
-	$(MAKE) -f CMakeFiles/project03.dir/build.make CMakeFiles/project03.dir/main.cpp.s
-.PHONY : main.cpp.s
+SpamDetector.cpp.s:
+	$(MAKE) -f CMakeFiles/project03.dir/build.make CMakeFiles/project03.dir/SpamDetector.cpp.s
+.PHONY : SpamDetector.cpp.s
 
 # Help Target
 help:
@@ -159,9 +159,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... project03"
-	@echo "... main.o"
-	@echo "... main.i"
-	@echo "... main.s"
+	@echo "... SpamDetector.o"
+	@echo "... SpamDetector.i"
+	@echo "... SpamDetector.s"
 .PHONY : help
 
 

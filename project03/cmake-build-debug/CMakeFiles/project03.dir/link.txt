@@ -1,1 +1,1 @@
-/usr/bin/c++  -g   CMakeFiles/project03.dir/main.cpp.o  -o project03 
+/usr/bin/c++  -g   CMakeFiles/project03.dir/SpamDetector.cpp.o  -o project03 

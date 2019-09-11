@@ -57,27 +57,27 @@ include CMakeFiles/project03.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/project03.dir/flags.make
 
-CMakeFiles/project03.dir/main.cpp.o: CMakeFiles/project03.dir/flags.make
-CMakeFiles/project03.dir/main.cpp.o: ../main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/cs/usr/yoav/semester03/cpp/cppProjects/project03/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/project03.dir/main.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/project03.dir/main.cpp.o -c /cs/usr/yoav/semester03/cpp/cppProjects/project03/main.cpp
+CMakeFiles/project03.dir/SpamDetector.cpp.o: CMakeFiles/project03.dir/flags.make
+CMakeFiles/project03.dir/SpamDetector.cpp.o: ../SpamDetector.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/cs/usr/yoav/semester03/cpp/cppProjects/project03/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/project03.dir/SpamDetector.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/project03.dir/SpamDetector.cpp.o -c /cs/usr/yoav/semester03/cpp/cppProjects/project03/SpamDetector.cpp
 
-CMakeFiles/project03.dir/main.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/project03.dir/main.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /cs/usr/yoav/semester03/cpp/cppProjects/project03/main.cpp > CMakeFiles/project03.dir/main.cpp.i
+CMakeFiles/project03.dir/SpamDetector.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/project03.dir/SpamDetector.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /cs/usr/yoav/semester03/cpp/cppProjects/project03/SpamDetector.cpp > CMakeFiles/project03.dir/SpamDetector.cpp.i
 
-CMakeFiles/project03.dir/main.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/project03.dir/main.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /cs/usr/yoav/semester03/cpp/cppProjects/project03/main.cpp -o CMakeFiles/project03.dir/main.cpp.s
+CMakeFiles/project03.dir/SpamDetector.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/project03.dir/SpamDetector.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /cs/usr/yoav/semester03/cpp/cppProjects/project03/SpamDetector.cpp -o CMakeFiles/project03.dir/SpamDetector.cpp.s
 
 # Object files for target project03
 project03_OBJECTS = \
-"CMakeFiles/project03.dir/main.cpp.o"
+"CMakeFiles/project03.dir/SpamDetector.cpp.o"
 
 # External object files for target project03
 project03_EXTERNAL_OBJECTS =
 
-project03: CMakeFiles/project03.dir/main.cpp.o
+project03: CMakeFiles/project03.dir/SpamDetector.cpp.o
 project03: CMakeFiles/project03.dir/build.make
 project03: CMakeFiles/project03.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/cs/usr/yoav/semester03/cpp/cppProjects/project03/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable project03"

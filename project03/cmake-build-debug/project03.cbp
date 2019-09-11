@@ -84,7 +84,10 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/cs/usr/yoav/semester03/cpp/cppProjects/project03/main.cpp">
+		<Unit filename="/cs/usr/yoav/semester03/cpp/cppProjects/project03/HashMap.hpp">
+			<Option target="project03"/>
+		</Unit>
+		<Unit filename="/cs/usr/yoav/semester03/cpp/cppProjects/project03/SpamDetector.cpp">
 			<Option target="project03"/>
 		</Unit>
 		<Unit filename="/cs/usr/yoav/semester03/cpp/cppProjects/project03/CMakeLists.txt">
