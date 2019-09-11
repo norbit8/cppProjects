@@ -154,11 +154,11 @@ char **matHelper(int type , int level)
         int rowCol;
         if (type == 2)
         {
-            rowCol = 2;
+            rowCol = MAT2X2;
         }
         else
         {
-            rowCol = 3;
+            rowCol = MAT3X3;
         }
         int times = ceil(pow(rowCol , level));
         int fillOne = ceil(pow(rowCol , level - 1));
@@ -268,10 +268,7 @@ void CantorDust::draw()
  */
 SierpinskiSieve &SierpinskiSieve::operator=(SierpinskiSieve && other) noexcept
 {
-    if (this != &other)
-    {
-        _height = other._height;
-    }
+    std::swap(*this, other);
     return *this;
 }
 
@@ -296,10 +293,7 @@ SierpinskiSieve &SierpinskiSieve::operator=(const SierpinskiSieve &other)
  */
 SierpinskiCarpet &SierpinskiCarpet::operator=(SierpinskiCarpet && other) noexcept
 {
-    if (this != &other)
-    {
-        _height = other._height;
-    }
+    std::swap(*this, other);
     return *this;
 }
 
@@ -338,9 +332,6 @@ CantorDust &CantorDust::operator=(const CantorDust &other)
  */
 CantorDust &CantorDust::operator=(CantorDust && other) noexcept
 {
-    if (this != &other)
-    {
-        _height = other._height;
-    }
+    std::swap(*this, other);
     return *this;
 }

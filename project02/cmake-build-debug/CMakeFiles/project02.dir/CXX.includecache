@@ -6,6 +6,14 @@
 
 #IncludeRegexTransform: 
 
+/cs/usr/yoav/semester03/cpp/cppProjects/project02/Fractal.cpp
+Fractal.h
+/cs/usr/yoav/semester03/cpp/cppProjects/project02/Fractal.h
+iostream
+-
+cmath
+-
+
 /cs/usr/yoav/semester03/cpp/cppProjects/project02/Fractal.h
 
 /cs/usr/yoav/semester03/cpp/cppProjects/project02/FractalDrawer.cpp
