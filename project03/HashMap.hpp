@@ -7,31 +7,24 @@
 static const int STARTING_VALUE = 16; /** The default size of the table */
 static const double DEFAULT_ULOAD_FACTOR = 0.25; /** Default upper load factor */
 static const double DEFAULT_LLOAD_FACTOR = 0.75; /** Default lower load factor */
+static const int INCREASE_SIZE = 2;
+static const double DECREASE_SIZE = 0.5;
+static const char *BAD_SIZE_VEC = "Invalid input\n";
 
-//template<class T>
-//class iterator
-//{
-//public:
-//    iterator(T *N = nullptr) : _pointer(N)
-//    {}
-//    T& operator*(){ return _pointer->_data; }
-//    iterator& operator++(){ return _pointer->_next; } // pre
-//    iterator& operator++(T) {
-//        iterator old = _pointer;
-//        _pointer = _pointer->_next;
-//        return old;
-//    } // post
-//    bool operator==(iterator const &rhs) const {
-//        return this->_pointer == rhs._pointer;
-//    }
-//    bool operator!=(iterator const &rhs) const {
-//        return this->_pointer != rhs._pointer;
-//    }
-//
-//private:
-//    T *_pointer;
-//};
-
+/**
+ * BadVecInputException exception
+ */
+class BadVecInputException : public std::exception
+{
+    /**
+     * The what function override
+     * @return const char *
+     */
+    const char *what() const noexcept override
+    {
+        return BAD_SIZE_VEC;
+    }
+};
 
 using std::vector;
 
@@ -45,17 +38,29 @@ class HashMap
 {
 
 private:
-    typedef vector<std::pair<KeyT , ValueT>> bucket;
+    using bucket = vector<std::pair<KeyT , ValueT>>;
     vector<bucket> _table; /** The main hash map table */
     double _lowerLoadFactor; /** The lower load factor of the hash map */
     double _upperLoadFactor; /** The upper load factor of the hash map */
     int _size; /** The number of elements in the table */
+    int _capacity; /** The capacity of the table */
+
     /**
      * Hash function
      * @param key the key to hash.
      * @return the hashed res.
      */
-    int _getHash(KeyT key) const;
+    int _getHash(KeyT key , int) const;
+
+    /**
+     * This private function resizes the table and re-hashes all the items
+     */
+    void _resizeTable(bool);
+
+    /**
+     * re-hashing the elements of the table.
+     */
+    void _reHash(double);
 
 public:
     /**
@@ -96,7 +101,7 @@ public:
      * Gets the capacity of the table.
      * @return capacity of the table, (table.size()).
      */
-    int capacity() const;
+    const int& capacity() const;
 
     /**
      * Getter for the load factor.
@@ -152,10 +157,63 @@ public:
      */
     int bucketSize(KeyT key) const;
 
+    /**
+     * clears the table (erasing all the tables values)
+     * BUT(!) it won't change the capacity of the table.
+     * https://moodle2.cs.huji.ac.il/nu18/mod/forum/discuss.php?d=75102
+     */
     void clear();
 
+    /**
+    * const forward iterator implementation
+    */
+    class iterator
+    {
+    public:
+        iterator(vector<bucket> tbl = nullptr) : _tbl(tbl)
+        {
+            if (_tbl != nullptr)
+            {
+                for (auto index : _tbl.begin()).
+            }
+        }
 
-    //class iterator;
+        const std::pair<KeyT , ValueT> &operator*()
+        { return *_pairPtr; }
+
+        iterator &operator++()
+        {
+            for (int index = _i; index < _tbl.end(); ++index)
+            {
+                for ()
+            }
+        }
+
+        // pre
+        iterator &operator++(std::pair<KeyT , ValueT>);
+
+        bool operator==(iterator const &rhs) const
+        {
+            return this->_pointer == rhs._pointer;
+        }
+
+        bool operator!=(iterator const &rhs) const
+        {
+            return this->_pointer != rhs._pointer;
+        }
+
+    private:
+        int _i;
+        int _j;
+        vector<bucket> _tbl;
+        std::pair<KeyT , ValueT> *_pairPtr;
+    };
+
+    iterator begin()
+    { return iterator(, _table); }
+
+    iterator end()
+    { return iterator(nullptr); }
 
 };
 
@@ -166,11 +224,18 @@ public:
  */
 template<class KeyT , class ValueT>
 HashMap<KeyT , ValueT>::HashMap(double lowerLoadFactor , double upperLoadFactor):
+        _table(STARTING_VALUE) ,
         _lowerLoadFactor(lowerLoadFactor) ,
         _upperLoadFactor(upperLoadFactor) ,
-        _size(0)
+        _size(0) ,
+        _capacity(STARTING_VALUE)
 {
-    _table.resize(STARTING_VALUE);
+    // TODO: check if the lower load factor and upper load factor are valid (negative or weird)
+    if (lowerLoadFactor > upperLoadFactor) // revert order
+    {
+        _lowerLoadFactor = upperLoadFactor;
+        _upperLoadFactor = lowerLoadFactor;
+    }
 }
 
 /**
@@ -182,8 +247,14 @@ HashMap<KeyT , ValueT>::HashMap(double lowerLoadFactor , double upperLoadFactor)
 template<class KeyT , class ValueT>
 HashMap<KeyT , ValueT>::HashMap(vector<KeyT> keys , vector<ValueT> values)
 {
-    assert(keys.size() == values.size()); // TODO: convert to exception when known.
-    // TODO: implement by using insert.
+    if (keys.size() != values.size())
+    {
+        throw BadVecInputException();
+    }
+    for (int i = 0; i < keys.size(); ++i)
+    {
+        insert(keys[i] , values[i]);
+    }
 }
 
 /**
@@ -201,9 +272,9 @@ const int &HashMap<KeyT , ValueT>::size() const
  * @return capacity of the table, (table.size()).
  */
 template<class KeyT , class ValueT>
-int HashMap<KeyT , ValueT>::capacity() const
+const int &HashMap<KeyT , ValueT>::capacity() const
 {
-    return (int) _table.size();
+    return _capacity;
 }
 
 /**
@@ -242,11 +313,9 @@ bool HashMap<KeyT , ValueT>::insert(KeyT key , ValueT value)
     _size++;
     if (getLoadFactor() > _upperLoadFactor) // check that the current load factor is OK
     {
-        // TODO: implement resizeTable();
-        //_resizeTable();
-        std::cout << "need to resize" << std::endl;
+        _resizeTable(true);
     }
-    int index = _getHash(key);
+    int index = _getHash(key , capacity());
     _table[index].push_back(std::pair<KeyT , ValueT>(key , value)); // pushing the pair to the map
     return true;
 }
@@ -257,9 +326,9 @@ bool HashMap<KeyT , ValueT>::insert(KeyT key , ValueT value)
  * @return the hashed res.
  */
 template<class KeyT , class ValueT>
-int HashMap<KeyT , ValueT>::_getHash(KeyT key) const
+int HashMap<KeyT , ValueT>::_getHash(KeyT key , int capacity) const
 {
-    return (std::hash<KeyT>{}(key) & (HashMap::capacity() - 1));
+    return (std::hash<KeyT>{}(key) & (capacity - 1));
 }
 
 /**
@@ -272,7 +341,7 @@ int HashMap<KeyT , ValueT>::_getHash(KeyT key) const
 template<class KeyT , class ValueT>
 bool HashMap<KeyT , ValueT>::containsKey(const KeyT &key) const
 {
-    int index = _getHash(key);
+    int index = _getHash(key , capacity());
     for (auto i = _table[index].begin(); i != _table[index].end(); i++)
     {
         if (i->first == key) return true;
@@ -290,9 +359,9 @@ ValueT HashMap<KeyT , ValueT>::at(const KeyT &key) const
 {
     if (!containsKey(key))
     {
-        throw 1; // TODO: what should I throw?
+        throw (std::out_of_range(""));
     }
-    int index = _getHash(key);
+    int index = _getHash(key , capacity());
     for (auto i = _table[index].begin(); i != _table[index].end(); i++)
     {
         if (i->first == key)
@@ -314,12 +383,17 @@ ValueT HashMap<KeyT , ValueT>::at(const KeyT &key) const
 template<class KeyT , class ValueT>
 bool HashMap<KeyT , ValueT>::erase(KeyT key)
 {
-    int index = _getHash(key);
+    int index = _getHash(key , capacity());
     for (auto i = _table[index].begin(); i != _table[index].end(); i++)
     {
         if (i->first == key)
         {
-            _table[index].erase(i, i+1);
+            _table[index].erase(i , i + 1);
+            _size--;
+            if (getLoadFactor() > _upperLoadFactor) // check that the current load factor is OK
+            {
+                _resizeTable(false);
+            }
             return true;
         }
     }
@@ -334,6 +408,54 @@ bool HashMap<KeyT , ValueT>::erase(KeyT key)
 template<class KeyT , class ValueT>
 int HashMap<KeyT , ValueT>::bucketSize(KeyT key) const
 {
-    int index = _getHash(key);
+    int index = _getHash(key , capacity());
     return _table[index].size();
+}
+
+/**
+ * clears the table (erasing all the tables values)
+ * BUT(!) it won't change the capacity of the table.
+ * https://moodle2.cs.huji.ac.il/nu18/mod/forum/discuss.php?d=75102
+ */
+template<class KeyT , class ValueT>
+void HashMap<KeyT , ValueT>::clear()
+{
+    for (auto i = _table.begin(); i != _table.end(); ++i)
+    {
+        *i.clear(); // clearing each bucket.
+    }
+    _size = 0; // 0 elements in the table right now.
+}
+
+template<class KeyT , class ValueT>
+void HashMap<KeyT , ValueT>::_reHash(double resizeFactor)
+{
+    int newSize = (int) (capacity() * resizeFactor);
+    vector<bucket> tempTable((unsigned long) (newSize));
+    for (auto i = _table.begin(); i != _table.end(); ++i)
+    {
+        for (auto j = (*i).begin(); j != (*i).end(); ++j)
+        {
+            int hashIndex = _getHash(j->first , newSize);
+            tempTable[hashIndex].push_back(std::pair<KeyT , ValueT>(j->first , j->second));
+        }
+    }
+    _table = tempTable;
+    _capacity = newSize;
+}
+
+/**
+ * This private function resizes the table and re-hashes all the items
+ */
+template<class KeyT , class ValueT>
+void HashMap<KeyT , ValueT>::_resizeTable(bool increase)
+{
+    if (increase) // increase the size
+    {
+        _reHash(INCREASE_SIZE);
+    }
+    else // decrease size
+    {
+        _reHash(DECREASE_SIZE);
+    }
 }

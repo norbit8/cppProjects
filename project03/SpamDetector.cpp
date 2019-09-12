@@ -10,5 +10,10 @@ int main()
     badWords.insert(std::to_string(2), "jacob");
     badWords.insert(std::to_string(3), "levy");
     badWords.erase(std::to_string(2));
+
+    for (auto i : badWords)
+    {
+
+    }
     std::cout << badWords.containsKey("2") << std::endl;
 }
