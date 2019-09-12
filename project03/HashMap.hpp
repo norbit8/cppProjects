@@ -164,56 +164,56 @@ public:
      */
     void clear();
 
-    /**
-    * const forward iterator implementation
-    */
-    class iterator
-    {
-    public:
-        iterator(vector<bucket> tbl = nullptr) : _tbl(tbl)
-        {
-            if (_tbl != nullptr)
-            {
-                for (auto index : _tbl.begin()).
-            }
-        }
-
-        const std::pair<KeyT , ValueT> &operator*()
-        { return *_pairPtr; }
-
-        iterator &operator++()
-        {
-            for (int index = _i; index < _tbl.end(); ++index)
-            {
-                for ()
-            }
-        }
-
-        // pre
-        iterator &operator++(std::pair<KeyT , ValueT>);
-
-        bool operator==(iterator const &rhs) const
-        {
-            return this->_pointer == rhs._pointer;
-        }
-
-        bool operator!=(iterator const &rhs) const
-        {
-            return this->_pointer != rhs._pointer;
-        }
-
-    private:
-        int _i;
-        int _j;
-        vector<bucket> _tbl;
-        std::pair<KeyT , ValueT> *_pairPtr;
-    };
-
-    iterator begin()
-    { return iterator(, _table); }
-
-    iterator end()
-    { return iterator(nullptr); }
+//    /**
+//    * const forward iterator implementation
+//    */
+//    class iterator
+//    {
+//    public:
+//        iterator(vector<bucket> tbl = nullptr) : _tbl(tbl)
+//        {
+//            if (_tbl != nullptr)
+//            {
+//                for ()
+//            }
+//        }
+//
+//        const std::pair<KeyT , ValueT> &operator*()
+//        { return *_pairPtr; }
+//
+//        iterator &operator++()
+//        {
+//            for (int index = _i; index < _tbl.end(); ++index)
+//            {
+//                for ()
+//            }
+//        }
+//
+//        // pre
+//        iterator &operator++(std::pair<KeyT , ValueT>);
+//
+//        bool operator==(iterator const &rhs) const
+//        {
+//            return this->_pointer == rhs._pointer;
+//        }
+//
+//        bool operator!=(iterator const &rhs) const
+//        {
+//            return this->_pointer != rhs._pointer;
+//        }
+//
+//    private:
+//        int _i;
+//        int _j;
+//        vector<bucket> _tbl;
+//        std::pair<KeyT , ValueT> *_pairPtr;
+//    };
+//
+//    iterator begin()
+//    { return iterator(, _table); }
+//
+//    iterator end()
+//    { return iterator(nullptr); }
 
 };
 
