@@ -1,4 +1,4 @@
-/usr/local/APP/jetbrains/clion/2018.2.1/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /cs/usr/yoav/semester03/cpp/cppProjects/project03
+/opt/clion-2019.1.4/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/mercydude/University/SUMMER_CPP/cppProjects/project03
 -- Configuring done
 -- Generating done
--- Build files have been written to: /cs/usr/yoav/semester03/cpp/cppProjects/project03/cmake-build-debug
+-- Build files have been written to: /home/mercydude/University/SUMMER_CPP/cppProjects/project03/cmake-build-debug

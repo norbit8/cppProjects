@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/cs/usr/yoav/semester03/cpp/cppProjects/project03/HashMap.hpp
+/home/mercydude/University/SUMMER_CPP/cppProjects/project03/HashMap.hpp
 iostream
 -
 vector
@@ -14,11 +14,11 @@ vector
 exception
 -
 
-/cs/usr/yoav/semester03/cpp/cppProjects/project03/SpamDetector.cpp
+/home/mercydude/University/SUMMER_CPP/cppProjects/project03/SpamDetector.cpp
 iostream
 -
 string
 -
 HashMap.hpp
-/cs/usr/yoav/semester03/cpp/cppProjects/project03/HashMap.hpp
+/home/mercydude/University/SUMMER_CPP/cppProjects/project03/HashMap.hpp
 

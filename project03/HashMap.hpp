@@ -11,6 +11,10 @@ static const int INCREASE_SIZE = 2;
 static const double DECREASE_SIZE = 0.5;
 static const char *BAD_SIZE_VEC = "Invalid input\n";
 
+using std::vector;
+using std::cout;
+using std::endl;
+
 /**
  * BadVecInputException exception
  */
@@ -26,7 +30,6 @@ class BadVecInputException : public std::exception
     }
 };
 
-using std::vector;
 
 /**
  * Generic HashMap
@@ -101,7 +104,7 @@ public:
      * Gets the capacity of the table.
      * @return capacity of the table, (table.size()).
      */
-    const int& capacity() const;
+    const int &capacity() const;
 
     /**
      * Getter for the load factor.
@@ -164,56 +167,130 @@ public:
      */
     void clear();
 
-//    /**
-//    * const forward iterator implementation
-//    */
-//    class iterator
-//    {
-//    public:
-//        iterator(vector<bucket> tbl = nullptr) : _tbl(tbl)
-//        {
-//            if (_tbl != nullptr)
-//            {
-//                for ()
-//            }
-//        }
-//
-//        const std::pair<KeyT , ValueT> &operator*()
-//        { return *_pairPtr; }
-//
-//        iterator &operator++()
-//        {
-//            for (int index = _i; index < _tbl.end(); ++index)
-//            {
-//                for ()
-//            }
-//        }
-//
-//        // pre
-//        iterator &operator++(std::pair<KeyT , ValueT>);
-//
-//        bool operator==(iterator const &rhs) const
-//        {
-//            return this->_pointer == rhs._pointer;
-//        }
-//
-//        bool operator!=(iterator const &rhs) const
-//        {
-//            return this->_pointer != rhs._pointer;
-//        }
-//
-//    private:
-//        int _i;
-//        int _j;
-//        vector<bucket> _tbl;
-//        std::pair<KeyT , ValueT> *_pairPtr;
-//    };
-//
-//    iterator begin()
-//    { return iterator(, _table); }
-//
-//    iterator end()
-//    { return iterator(nullptr); }
+    /**
+    * const forward iterator implementation
+    */
+    class iterator
+    {
+    public:
+        /**
+         * default ctor
+         */
+        iterator()
+        {
+            vector<bucket> emptyTable(1);
+            emptyTable[0].push_back(std::pair<KeyT , ValueT>());
+            _tbl = emptyTable;
+            _current = 0;
+        }
+
+        /**
+         * ctor
+         * @param table the hash map.
+         * @param current which element to start from.
+         */
+        iterator(const vector<bucket> &table , int current) : _tbl(table) , _current(current)
+        {}
+
+        const std::pair<KeyT , ValueT> &operator*()
+        {
+            int counter = 0;
+            for (auto i = _tbl.begin(); i != _tbl.end(); ++i)
+            {
+                for (auto j = i->begin(); j != i->end(); ++j)
+                {
+                    if (counter == _current)
+                    {
+                        return *j;
+                    }
+                    counter++;
+                }
+            }
+        }
+
+        /**
+         * operator overloading ++
+         * @return the updated iterator.(this)
+         */
+        iterator &operator++()
+        {
+            _current++;
+            return *this;
+        }
+
+        /**
+         * post ++ overloading
+         * @return the older iterator (before incrementing)
+         */
+        iterator &operator++(int)
+        {
+            iterator *oldIter = this;
+            _current++;
+            return *oldIter;
+        }
+
+        /**
+         * == operator
+         * @param rhs right hand side iterator.
+         * @return true if they are equal, false otherwise.
+         */
+        bool operator==(iterator const &rhs) const
+        {
+            return (this->_current == rhs._current && this->_tbl == rhs._tbl);
+        }
+
+        /**
+         * != operator
+         * @param rhs right hand side iterator.
+         * @return true if they are not equal, false otherwise.
+         */
+        bool operator!=(iterator const &rhs) const
+        {
+            return (this->_current != rhs._current || this->_tbl != rhs._tbl);
+        }
+
+    private:
+        vector<bucket> _tbl; /** The hash map */
+        int _current; /** Which elements we are probing right now */
+    };
+
+    /**
+     * Begin iterator
+     * @return a new iterator for HashMap
+     */
+    iterator begin() const
+    {
+        return iterator(_table , 0);
+    }
+
+    /**
+     * End
+     * @return An iterator with an end state.
+     */
+    iterator end() const
+    {
+        return iterator(_table , size());
+    }
+
+    /**
+     * Begin iterator
+     * @return a new iterator for HashMap
+     */
+    iterator cbegin() const
+    {
+        return iterator(_table , 0);
+    }
+
+    /**
+     * End
+     * @return An iterator with an end state.
+     */
+    iterator cend() const
+    {
+        return iterator(_table , size());
+    }
+
+    
 
 };
 
