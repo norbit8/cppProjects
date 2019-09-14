@@ -123,33 +123,6 @@ project03/fast:
 	$(MAKE) -f CMakeFiles/project03.dir/build.make CMakeFiles/project03.dir/build
 .PHONY : project03/fast
 
-HashMapTester.o: HashMapTester.cpp.o
-
-.PHONY : HashMapTester.o
-
-# target to build an object file
-HashMapTester.cpp.o:
-	$(MAKE) -f CMakeFiles/project03.dir/build.make CMakeFiles/project03.dir/HashMapTester.cpp.o
-.PHONY : HashMapTester.cpp.o
-
-HashMapTester.i: HashMapTester.cpp.i
-
-.PHONY : HashMapTester.i
-
-# target to preprocess a source file
-HashMapTester.cpp.i:
-	$(MAKE) -f CMakeFiles/project03.dir/build.make CMakeFiles/project03.dir/HashMapTester.cpp.i
-.PHONY : HashMapTester.cpp.i
-
-HashMapTester.s: HashMapTester.cpp.s
-
-.PHONY : HashMapTester.s
-
-# target to generate assembly for a file
-HashMapTester.cpp.s:
-	$(MAKE) -f CMakeFiles/project03.dir/build.make CMakeFiles/project03.dir/HashMapTester.cpp.s
-.PHONY : HashMapTester.cpp.s
-
 SpamDetector.o: SpamDetector.cpp.o
 
 .PHONY : SpamDetector.o
@@ -186,9 +159,6 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... project03"
-	@echo "... HashMapTester.o"
-	@echo "... HashMapTester.i"
-	@echo "... HashMapTester.s"
 	@echo "... SpamDetector.o"
 	@echo "... SpamDetector.i"
 	@echo "... SpamDetector.s"

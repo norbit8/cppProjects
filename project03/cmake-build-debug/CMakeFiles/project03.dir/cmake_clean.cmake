@@ -1,6 +1,5 @@
 file(REMOVE_RECURSE
   "CMakeFiles/project03.dir/SpamDetector.cpp.o"
-  "CMakeFiles/project03.dir/HashMapTester.cpp.o"
   "project03.pdb"
   "project03"
 )

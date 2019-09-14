@@ -3,6 +3,8 @@
 #include <iostream>
 #include <string>
 #include <fstream>
+#include <sstream>
+#include <algorithm>
 #include "HashMap.hpp"
 
 // --------- constants ---------
@@ -15,7 +17,76 @@ static const int THRESHOLD_ARG = 3; /** The argument number of the Message path 
 static const char *const INVALID_INPUT = "Invalid input"; /** Invalid input error message */
 static const char *const SPAM = "SPAM"; /** When spam email is detecteted */
 static const char *const NOT_SPAM = "NOT_SPAM"; /** When an email is not a spam */
+static const char COMMA = ','; /** Comma char */
+static const char SPACE = ' '; /** Space char */
+static const int COLUMNS = 1; /** The number of commas which implies that the columns are 2 */
+static const char SPACE_DELIMITER = ' '; /**  space delimiter to replace new line char*/
+static const char NEW_LINE = '\n'; /** remove from message all new line characters*/
+static const char NEW_LINE_WINDOWS = '\r'; /** remove new line ascii from windows */
 // -----------------------------
+
+/**
+ * This funcion verifies that the number of arguments are 4 (including the name of the file)
+ * @param argc number of arguments.
+ * @return true if so, false otherwise.
+ */
+inline bool numOfArgs(int argc)
+{
+    return argc == INPUT_COUNT;
+}
+
+/**
+ * Is legit digit verfies that the string given can be converted to a legitimate digit
+ * (positive natural number).
+ * @param strNum string number.
+ * @return true, or false.
+ */
+inline bool isLegitDigit(const char *strNum)
+{
+
+    std::string strNumber = strNum; // constructing a string from char.
+    for (char ch : strNumber)
+    {
+        if (!isdigit(ch))
+        {
+            return false;
+        }
+    }
+    return true;
+}
+
+/**
+ * This method verifies that the file is a legit one
+ * @return true if so, false otherwise.
+ */
+inline bool isLegitFile(const char *strNum)
+{
+    std::ifstream inFile1(strNum);
+    if (inFile1.fail())
+    {
+        std::cerr << INVALID_INPUT << std::endl;
+        return false;
+    }
+    return true;
+}
+
+/**
+ * Converts a string to a digit
+ * @param strNum some string
+ * @return the number.
+ */
+int convertToDigit(std::string & strNum)
+{
+    int number;
+    std::stringstream ss(strNum);
+    ss >> number;
+    if (number <= 0 || ss.fail() || !ss.eof())
+    {
+        std::cerr << INVALID_INPUT << std::endl;
+        throw badInputException();
+    }
+    return number;
+}
 
 /**
  * This method verifies the user input and return false if the program should exit (failure)
@@ -27,26 +98,128 @@ static const char *const NOT_SPAM = "NOT_SPAM"; /** When an email is not a spam 
  */
 bool checkValidity(int argc , char *argv[]) noexcept
 {
-    if (argc != INPUT_COUNT) // Incorrect number of arguments
+    if (!numOfArgs(argc) ||
+        !isLegitDigit(argv[THRESHOLD_ARG]) ||
+        !isLegitFile(argv[DATA_ARG]) ||
+        !isLegitFile(argv[MESSAGE_ARG]))
     {
         std::cerr << USAGE << std::endl;
-        return false;
-    }
-    std::string data , message;
-    std::string threshold;
-    std::ifstream inFile(argv[DATA_ARG]);
-    if (inFile.fail())
-    {
-        std::cerr << INVALID_INPUT << std::endl;
         return false;
     }
     return true;
 }
 
-bool isSpam(std::string &dataPath , std::string &string1 , std::string &string2)
+/**
+ * Checks if the file has a legal input, if it will return false.
+ * The function also prints the error if one occures.
+ * @param line A line from the given file.
+ * @return false if the line is illegal, true otherwise.
+ */
+bool lineSplitter(const std::string &line , std::string &badPhrase , int &rank)
 {
-    return false;
+    int counter = 0;
+    std::string strNum;
+    for (char ch : line) // iterating char by char to search for illegal ones.
+    {
+        if (counter == 0 && ch != COMMA) // before the comma
+        {
+            badPhrase += ch;
+        }
+        else if (ch != COMMA)
+        {
+            if(ch == SPACE)
+            {
+                return false;
+            }
+            strNum += ch;
+        }
+        else
+        {
+            counter++; // comma++
+        }
+    }
+    if(badPhrase.empty())
+    {
+        return false;
+    }
+    rank = convertToDigit(strNum);
+    return counter == COLUMNS;
 }
+
+/**
+ * loads the data into the map.
+ * @param dataPath The path to the data.
+ * @param map the map.
+ */
+void loadData(std::string &dataPath , HashMap<std::string , double>& map)
+{
+    std::ifstream inFile(dataPath);
+    std::string line;
+    while (std::getline(inFile , line))
+    {
+        std::string badPhrase;
+        int rank;
+        if (!lineSplitter(line , badPhrase , rank))
+        {
+            std::cout << INVALID_INPUT << std::endl;
+            throw badInputException();
+        }
+        map.insert(badPhrase, rank); // load line by line
+    }
+}
+
+/**
+ * Loads the mail to a string.
+ * @param mp
+ * @return
+ */
+std::string readMail(std::string& mp)
+{
+    std::ifstream inFile(mp);
+    std::string email;
+    std::string line;
+    while (std::getline(inFile , line))
+    {
+        email += line;
+    }
+    return email;
+}
+
+double scoreCounter(HashMap<std::string , double>& map, std::string &email)
+{
+    double counter = 0;
+    std::replace (email.begin(), email.end(), NEW_LINE , SPACE_DELIMITER);
+    std::replace (email.begin(), email.end(), NEW_LINE_WINDOWS , SPACE_DELIMITER);
+    for (const auto &p : map)
+    {
+        int occurrences = 0;
+        std::string::size_type pos = 0;
+        while ((pos = email.find(p.first, pos )) != std::string::npos)
+        {
+            ++ occurrences;
+            pos += p.first.length();
+        }
+        counter += (occurrences * p.second);
+    }
+    return counter;
+}
+
+/**
+ * This method returns true if the data is actually spam, false otherwise.
+ * @param dataPath The path to the data.
+ * @param messagePath The path to the message.
+ * @param thresholdStr threshold in string form.
+ * @return true if the message is a spam, false otherwise.
+ */
+bool isSpam(std::string &dataPath , std::string &messagePath , int threshold)
+{
+    HashMap<std::string , double> map;
+    loadData(dataPath , map);                   // Load the database to the hash table.
+    std::string email = readMail(messagePath); // Read the mail, and generate a string.
+    double totalScore = scoreCounter(map , email); // Rates the emails score.
+    return totalScore >= threshold;           // If the score is g.e. the threshold => spam
+}
+
 
 /**
  * The main function scans
@@ -61,11 +234,12 @@ int main(int argc , char *argv[])
     {
         return EXIT_FAILURE;
     }
-    std::string dataPath = argv[DATA_ARG];
-    std::string messagePath = argv[MESSAGE_ARG];
-    std::string threshold = argv[THRESHOLD_ARG];
     try
-    {
+    {   // run the spam test
+        std::string dataPath = argv[DATA_ARG];
+        std::string messagePath = argv[MESSAGE_ARG];
+        std::string thresholdStr = argv[THRESHOLD_ARG];
+        int threshold = convertToDigit(thresholdStr);
         if (isSpam(dataPath , messagePath , threshold)) // isSpam can throw
         {
             std::cout << SPAM << std::endl;

@@ -87,9 +87,6 @@
 		<Unit filename="/cs/usr/yoav/semester03/cpp/cppProjects/project03/HashMap.hpp">
 			<Option target="project03"/>
 		</Unit>
-		<Unit filename="/cs/usr/yoav/semester03/cpp/cppProjects/project03/HashMapTester.cpp">
-			<Option target="project03"/>
-		</Unit>
 		<Unit filename="/cs/usr/yoav/semester03/cpp/cppProjects/project03/SpamDetector.cpp">
 			<Option target="project03"/>
 		</Unit>

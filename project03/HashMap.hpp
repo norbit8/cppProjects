@@ -10,6 +10,7 @@ static const double DEFAULT_LLOAD_FACTOR = 0.75; /** Default lower load factor *
 static const int INCREASE_SIZE = 2; /** The size factor to increase the hash map */
 static const double DECREASE_SIZE = 0.5; /** The size factor to decrease the hash map */
 static const char *BAD_SIZE_VEC = "Invalid input\n"; /** Bad comparison exception string */
+static const char *BAD_INPUT = "Invalid input\n"; /** Bad comparison exception string */
 
 using std::vector;
 using std::cout;
@@ -28,6 +29,21 @@ class BadVecInputException : public std::exception
     const char *what() const noexcept override
     {
         return BAD_SIZE_VEC;
+    }
+};
+/**
+ * BadVecInputException exception,
+ * bad comparison of two vectors.
+ */
+class badInputException : public std::exception
+{
+    /**
+     * The what function override
+     * @return const char *
+     */
+    const char *what() const noexcept override
+    {
+        return BAD_INPUT;
     }
 };
 
@@ -416,7 +432,8 @@ HashMap<KeyT , ValueT>::HashMap(vector<KeyT> keys , vector<ValueT> values) :
     }
     for (int i = 0; i < keys.size(); ++i)
     {
-        insert(keys[i] , values[i]);
+        (*this)[keys[i]] = values[i]; // insert(keys[i] , values[i]); won't work because
+        // they wanted to get the last element in.
     }
 }
 
@@ -690,6 +707,10 @@ bool HashMap<KeyT , ValueT>::operator==(HashMap const &rhs) const
     {
         return false;
     }
+    if (rhs.size() == 0 && this->size() == 0)
+    {
+        return true;
+    }
     bool flag = false;
     for (auto item : rhs)
     {
@@ -698,7 +719,6 @@ bool HashMap<KeyT , ValueT>::operator==(HashMap const &rhs) const
         {
             if (item == innerItem)
             {
-
                 flag = true;
             }
         }
