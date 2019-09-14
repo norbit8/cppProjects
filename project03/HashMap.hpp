@@ -7,16 +7,17 @@
 static const int STARTING_VALUE = 16; /** The default size of the table */
 static const double DEFAULT_ULOAD_FACTOR = 0.25; /** Default upper load factor */
 static const double DEFAULT_LLOAD_FACTOR = 0.75; /** Default lower load factor */
-static const int INCREASE_SIZE = 2;
-static const double DECREASE_SIZE = 0.5;
-static const char *BAD_SIZE_VEC = "Invalid input\n";
+static const int INCREASE_SIZE = 2; /** The size factor to increase the hash map */
+static const double DECREASE_SIZE = 0.5; /** The size factor to decrease the hash map */
+static const char *BAD_SIZE_VEC = "Invalid input\n"; /** Bad comparison exception string */
 
 using std::vector;
 using std::cout;
 using std::endl;
 
 /**
- * BadVecInputException exception
+ * BadVecInputException exception,
+ * bad comparison of two vectors.
  */
 class BadVecInputException : public std::exception
 {
@@ -90,6 +91,17 @@ public:
     HashMap(vector<KeyT> keys , vector<ValueT> values);
 
     /**
+     * Copy ctor
+     * @param other other hash map.
+     */
+    HashMap(const HashMap &other);
+
+    /**
+     * Move ctor
+     */
+    HashMap(HashMap &&other) noexcept;
+
+    /**
      * Dtor.
      */
     ~HashMap() = default;
@@ -137,10 +149,20 @@ public:
 
     /**
      * gets a key and checks if it exists in the map it returns it.
+     * can throw exception if the key is not found.
      * @param key a key.
-     * @return
+     * @return the value for the key.
      */
-    ValueT at(const KeyT &key) const;
+    const ValueT &at(const KeyT &key) const;
+
+
+    /**
+     * gets a key and checks if it exists in the map it returns it.
+     * can throw exception if the key is not found.
+     * @param key a key.
+     * @return A value.
+     */
+    ValueT &at(const KeyT &key);
 
     /**
     * Erases a pair from the bucket.
@@ -202,6 +224,26 @@ public:
                     if (counter == _current)
                     {
                         return *j;
+                    }
+                    counter++;
+                }
+            }
+        }
+
+        /**
+         * Dereference operator.
+         * @return A pointer to the pair.
+         */
+        const std::pair<KeyT , ValueT> *operator->() const
+        {
+            int counter = 0;
+            for (auto i = _tbl.begin(); i != _tbl.end(); ++i)
+            {
+                for (auto j = i->begin(); j != i->end(); ++j)
+                {
+                    if (counter == _current)
+                    {
+                        return &(*j);
                     }
                     counter++;
                 }
@@ -290,7 +332,41 @@ public:
         return iterator(_table , size());
     }
 
-    
+    /**
+     * Subscript operator
+     * @param key any key
+     * @return they value of the key, if the key does'nt exist it will add the key to the table
+     * with a default value.
+     */
+    ValueT &operator[](KeyT key) noexcept;
+
+    /**
+    * Subscript operator
+    * @param key any key
+    * @return they value of the key, if the key does'nt exist it will add the key to the table
+    * with a default value.
+    */
+    const ValueT &operator[](KeyT key) const noexcept;
+
+    /**
+     * == operator, checks if two sets has the same elements
+     * @param rhs another hash map
+     * @return true if they have the same elements, false otherwise.
+     */
+    bool operator==(HashMap const &rhs) const;
+
+    /**
+     * != operator, checks if two sets doesn't have the same elements
+     * @param rhs another hash map
+     * @return false if they have the same elements, true otherwise.
+     */
+    bool operator!=(HashMap const &rhs) const;
+
+    /**
+     * operator = with swap.
+     * @return *this.
+     */
+    HashMap &operator=(HashMap);
 
 };
 
@@ -428,11 +504,12 @@ bool HashMap<KeyT , ValueT>::containsKey(const KeyT &key) const
 
 /**
  * gets a key and checks if it exists in the map it returns it.
+ * can throw exception if the key is not found.
  * @param key a key.
- * @return
+ * @return the value for the key.
  */
 template<class KeyT , class ValueT>
-ValueT HashMap<KeyT , ValueT>::at(const KeyT &key) const
+const ValueT &HashMap<KeyT , ValueT>::at(const KeyT &key) const
 {
     if (!containsKey(key))
     {
@@ -534,5 +611,155 @@ void HashMap<KeyT , ValueT>::_resizeTable(bool increase)
     else // decrease size
     {
         _reHash(DECREASE_SIZE);
+    }
+}
+
+/**
+ * gets a key and checks if it exists in the map it returns it.
+ * can throw exception if the key is not found.
+ * @param key a key.
+ * @return the value for the key.
+ */
+template<class KeyT , class ValueT>
+ValueT &HashMap<KeyT , ValueT>::at(const KeyT &key)
+{
+    if (!containsKey(key))
+    {
+        throw (std::out_of_range(""));
+    }
+    int index = _getHash(key , capacity());
+    for (auto i = _table[index].begin(); i != _table[index].end(); i++)
+    {
+        if (i->first == key)
+        {
+            return i->second;
+        }
+    }
+}
+
+/**
+ * Subscript operator
+ * @param key any key
+ * @return they value of the key, if the key does'nt exist it will add the key to the table
+ * with a default value.
+ */
+template<class KeyT , class ValueT>
+ValueT &HashMap<KeyT , ValueT>::operator[](KeyT key) noexcept
+{
+    if (containsKey(key))
+    {
+        return at(key);
+    }
+    else
+    {
+        ValueT val; // default value
+        insert(key , val);
+        return at(key);
+    }
+}
+
+/**
+ * == operator, checks if two sets has the same elements
+ * @param rhs another hash map
+ * @return true if they have the same elements, false otherwise.
+ */
+template<class KeyT , class ValueT>
+bool HashMap<KeyT , ValueT>::operator==(HashMap const &rhs) const
+{
+    if (rhs.size() != this->size())
+    {
+        return false;
+    }
+    bool flag = false;
+    for (auto item : rhs)
+    {
+        flag = false;
+        for (auto innerItem : *this)
+        {
+            if (item == innerItem)
+            {
+
+                flag = true;
+            }
+        }
+        if (!flag)
+        {
+            return false;
+        }
+    }
+    return flag;
+}
+
+/**
+ * != operator, checks if two sets doesn't have the same elements
+ * @param rhs another hash map
+ * @return false if they have the same elements, true otherwise.
+ */
+template<class KeyT , class ValueT>
+bool HashMap<KeyT , ValueT>::operator!=(HashMap const &rhs) const
+{
+    return !(*this == rhs);
+}
+
+/**
+ * operator = with swap.
+ * @return *this.
+ */
+template<class KeyT , class ValueT>
+HashMap<KeyT , ValueT> &HashMap<KeyT , ValueT>::operator=(HashMap other)
+{
+    swap(*this , other);
+    return *this;
+}
+
+/**
+ * Copy ctor
+ * @param other other hash map.
+ */
+template<class KeyT , class ValueT>
+HashMap<KeyT , ValueT>::HashMap(const HashMap &other) :
+        _table(other._table) ,
+        _lowerLoadFactor(other._lowerLoadFactor) ,
+        _upperLoadFactor(other._upperLoadFactor) ,
+        _size(other.size()) ,
+        _capacity(other.capacity())
+{}
+
+/**
+ * Move ctor
+ */
+template<class KeyT , class ValueT>
+HashMap<KeyT , ValueT>::HashMap(HashMap &&other) noexcept
+{
+    _table = other._table;
+    _lowerLoadFactor = other._lowerLoadFactor;
+    _upperLoadFactor = other._upperLoadFactor;
+    _size = other.size();
+    _capacity = other.capacity();
+    other._table = nullptr;
+    other._lowerLoadFactor = nullptr;
+    other._upperLoadFactor = nullptr;
+    other._size = nullptr;
+    other._capacity = nullptr;
+}
+
+/**
+ * Subscript operator
+ * @param key any key
+ * @return they value of the key, if the key does'nt exist it will add the key to the table
+ * with a default value.
+ */
+template<class KeyT , class ValueT>
+const ValueT &HashMap<KeyT , ValueT>::operator[](KeyT key) const noexcept
+{
+    if (containsKey(key))
+    {
+        return at(key);
+    }
+    else
+    {
+        ValueT val; // default value
+        insert(key , val);
+        return at(key);
     }
 }

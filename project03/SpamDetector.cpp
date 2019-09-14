@@ -16,10 +16,13 @@ int main()
 //        }
 //    }
     HashMap<std::string, std::string> badWords(0.25,0.5);
-    std::cout << badWords.size() << std::endl;
     badWords.insert(std::to_string(3), "yoav");
     badWords.insert(std::to_string(2), "jacob");
     badWords.insert(std::to_string(1), "levy");
+    HashMap<std::string, std::string> badWords2(0.25,0.5);
+    badWords2.insert(std::to_string(3), "yoav");
+    badWords2.insert(std::to_string(2), "jacob");
+    badWords2.insert(std::to_string(1), "levy");
 //    typename HashMap<std::string, std::string>::iterator k;
 //    k = badWords.begin();
 //    std::cout << (*k).second << std::endl;
@@ -27,8 +30,11 @@ int main()
 //    std::cout << (*k).second << std::endl;
 //    ++k;
 //    std::cout << (*k).second << std::endl;
-    for (auto i = badWords.begin(); i != badWords.end(); i++)
+    //for (auto i = badWords.begin(); i != badWords.end(); i++)
+    for (auto item : badWords)
     {
-        std::cout << (*i).second << std::endl;
+        std::cout << item.second << std::endl;
     }
+    std::cout << "------------" << std::endl;
+    std::cout << (badWords == badWords2) << std::endl;
 }
