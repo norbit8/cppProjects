@@ -31,7 +31,6 @@ class BadVecInputException : public std::exception
     }
 };
 
-
 /**
  * Generic HashMap
  * @tparam KeyT Some key.
@@ -99,7 +98,7 @@ public:
     /**
      * Move ctor
      */
-    HashMap(HashMap &&other) noexcept;
+    HashMap(HashMap &&other) noexcept = default;
 
     /**
      * Dtor.
@@ -145,7 +144,7 @@ public:
     * @param key the given key.
     * @return true if the key is inside the table, false otherwise.
     */
-    bool containsKey(const KeyT &key) const;
+    bool containsKey(KeyT const &key) const;
 
     /**
      * gets a key and checks if it exists in the map it returns it.
@@ -195,6 +194,8 @@ public:
     class iterator
     {
     public:
+        friend class HashMap<KeyT , ValueT>;
+
         /**
          * default ctor
          */
@@ -206,14 +207,11 @@ public:
             _current = 0;
         }
 
-        /**
-         * ctor
-         * @param table the hash map.
-         * @param current which element to start from.
-         */
-        iterator(const vector<bucket> &table , int current) : _tbl(table) , _current(current)
-        {}
 
+        /**
+         * Dereference operator.
+         * @return A pointer to the pair.
+         */
         const std::pair<KeyT , ValueT> &operator*()
         {
             int counter = 0;
@@ -228,11 +226,14 @@ public:
                     counter++;
                 }
             }
+            auto i = _tbl.begin();
+            auto j = i->begin();
+            return *j;
         }
 
         /**
-         * Dereference operator.
-         * @return A pointer to the pair.
+         * Right Arrow operator
+         * @return pointer to dereference of this.
          */
         const std::pair<KeyT , ValueT> *operator->() const
         {
@@ -264,7 +265,7 @@ public:
          * post ++ overloading
          * @return the older iterator (before incrementing)
          */
-        iterator &operator++(int)
+        iterator operator++(int)
         {
             iterator *oldIter = this;
             _current++;
@@ -294,6 +295,14 @@ public:
     private:
         vector<bucket> _tbl; /** The hash map */
         int _current; /** Which elements we are probing right now */
+
+        /**
+         * ctor
+         * @param table the hash map.
+         * @param current which element to start from.
+         */
+        iterator(const vector<bucket> &table , int current) : _tbl(table) , _current(current)
+        {}
     };
 
     /**
@@ -346,7 +355,7 @@ public:
     * @return they value of the key, if the key does'nt exist it will add the key to the table
     * with a default value.
     */
-    const ValueT &operator[](KeyT key) const noexcept;
+    const ValueT &operator[](KeyT const &key) const noexcept;
 
     /**
      * == operator, checks if two sets has the same elements
@@ -398,7 +407,8 @@ HashMap<KeyT , ValueT>::HashMap(double lowerLoadFactor , double upperLoadFactor)
  * @param values Values.
  */
 template<class KeyT , class ValueT>
-HashMap<KeyT , ValueT>::HashMap(vector<KeyT> keys , vector<ValueT> values)
+HashMap<KeyT , ValueT>::HashMap(vector<KeyT> keys , vector<ValueT> values) :
+        HashMap()
 {
     if (keys.size() != values.size())
     {
@@ -492,9 +502,13 @@ int HashMap<KeyT , ValueT>::_getHash(KeyT key , int capacity) const
  * @return true if the key is inside the table, false otherwise.
  */
 template<class KeyT , class ValueT>
-bool HashMap<KeyT , ValueT>::containsKey(const KeyT &key) const
+bool HashMap<KeyT , ValueT>::containsKey(KeyT const &key) const
 {
     int index = _getHash(key , capacity());
+    if (index >= _table.capacity())
+    {
+        return false;
+    }
     for (auto i = _table[index].begin(); i != _table[index].end(); i++)
     {
         if (i->first == key) return true;
@@ -542,9 +556,9 @@ bool HashMap<KeyT , ValueT>::erase(KeyT key)
     {
         if (i->first == key)
         {
-            _table[index].erase(i , i + 1);
+            _table[index].erase(i);
             _size--;
-            if (getLoadFactor() > _upperLoadFactor) // check that the current load factor is OK
+            if (getLoadFactor() < _lowerLoadFactor) // check that the current load factor is OK
             {
                 _resizeTable(false);
             }
@@ -576,7 +590,7 @@ void HashMap<KeyT , ValueT>::clear()
 {
     for (auto i = _table.begin(); i != _table.end(); ++i)
     {
-        *i.clear(); // clearing each bucket.
+        (*i).clear(); // clearing each bucket.
     }
     _size = 0; // 0 elements in the table right now.
 }
@@ -627,14 +641,19 @@ ValueT &HashMap<KeyT , ValueT>::at(const KeyT &key)
     {
         throw (std::out_of_range(""));
     }
-    int index = _getHash(key , capacity());
-    for (auto i = _table[index].begin(); i != _table[index].end(); i++)
+    else
     {
-        if (i->first == key)
+        int index = _getHash(key , capacity());
+        for (auto i = _table[index].begin(); i != _table[index].end(); i++)
         {
-            return i->second;
+            if (i->first == key)
+            {
+                return i->second;
+            }
         }
     }
+    auto i = _table[0].begin();
+    return i->second;
 }
 
 /**
@@ -666,7 +685,8 @@ ValueT &HashMap<KeyT , ValueT>::operator[](KeyT key) noexcept
 template<class KeyT , class ValueT>
 bool HashMap<KeyT , ValueT>::operator==(HashMap const &rhs) const
 {
-    if (rhs.size() != this->size())
+    // if the sizes are not the same
+    if (rhs.size() != this->size() || rhs.capacity() != this->capacity())
     {
         return false;
     }
@@ -726,31 +746,13 @@ HashMap<KeyT , ValueT>::HashMap(const HashMap &other) :
 {}
 
 /**
- * Move ctor
- */
-template<class KeyT , class ValueT>
-HashMap<KeyT , ValueT>::HashMap(HashMap &&other) noexcept
-{
-    _table = other._table;
-    _lowerLoadFactor = other._lowerLoadFactor;
-    _upperLoadFactor = other._upperLoadFactor;
-    _size = other.size();
-    _capacity = other.capacity();
-    other._table = nullptr;
-    other._lowerLoadFactor = nullptr;
-    other._upperLoadFactor = nullptr;
-    other._size = nullptr;
-    other._capacity = nullptr;
-}
-
-/**
  * Subscript operator
  * @param key any key
  * @return they value of the key, if the key does'nt exist it will add the key to the table
  * with a default value.
  */
 template<class KeyT , class ValueT>
-const ValueT &HashMap<KeyT , ValueT>::operator[](KeyT key) const noexcept
+const ValueT &HashMap<KeyT , ValueT>::operator[](KeyT const &key) const noexcept
 {
     if (containsKey(key))
     {
