@@ -113,7 +113,7 @@ public:
     /**
      * Move ctor
      */
-    HashMap(HashMap && other) noexcept;
+    HashMap(HashMap &&other) noexcept = default;
 
     /**
      * Dtor.
@@ -805,19 +805,4 @@ const ValueT &HashMap<KeyT , ValueT>::operator[](KeyT const &key) const noexcept
     }
 }
 
-/**
- * Move ctor
- * @tparam KeyT key.
- * @tparam ValueT value.
- * @param other other hashmap.
- */
-template<class KeyT , class ValueT>
-HashMap<KeyT , ValueT>::HashMap(HashMap && other) noexcept
-{
-    std::swap(_table , other._table);
-    _lowerLoadFactor = other._lowerLoadFactor;
-    _upperLoadFactor = other._upperLoadFactor;
-    _size = other.size();
-    _capacity = other.capacity();
 
-}
