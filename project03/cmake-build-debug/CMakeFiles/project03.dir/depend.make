@@ -4,3 +4,26 @@
 CMakeFiles/project03.dir/SpamDetector.cpp.o: ../HashMap.hpp
 CMakeFiles/project03.dir/SpamDetector.cpp.o: ../SpamDetector.cpp
 
+CMakeFiles/project03.dir/tests.cpp.o: ../lib/googletest-master/googletest/include/gtest/gtest-death-test.h
+CMakeFiles/project03.dir/tests.cpp.o: ../lib/googletest-master/googletest/include/gtest/gtest-matchers.h
+CMakeFiles/project03.dir/tests.cpp.o: ../lib/googletest-master/googletest/include/gtest/gtest-message.h
+CMakeFiles/project03.dir/tests.cpp.o: ../lib/googletest-master/googletest/include/gtest/gtest-param-test.h
+CMakeFiles/project03.dir/tests.cpp.o: ../lib/googletest-master/googletest/include/gtest/gtest-printers.h
+CMakeFiles/project03.dir/tests.cpp.o: ../lib/googletest-master/googletest/include/gtest/gtest-test-part.h
+CMakeFiles/project03.dir/tests.cpp.o: ../lib/googletest-master/googletest/include/gtest/gtest-typed-test.h
+CMakeFiles/project03.dir/tests.cpp.o: ../lib/googletest-master/googletest/include/gtest/gtest.h
+CMakeFiles/project03.dir/tests.cpp.o: ../lib/googletest-master/googletest/include/gtest/gtest_pred_impl.h
+CMakeFiles/project03.dir/tests.cpp.o: ../lib/googletest-master/googletest/include/gtest/gtest_prod.h
+CMakeFiles/project03.dir/tests.cpp.o: ../lib/googletest-master/googletest/include/gtest/internal/custom/gtest-port.h
+CMakeFiles/project03.dir/tests.cpp.o: ../lib/googletest-master/googletest/include/gtest/internal/custom/gtest-printers.h
+CMakeFiles/project03.dir/tests.cpp.o: ../lib/googletest-master/googletest/include/gtest/internal/gtest-death-test-internal.h
+CMakeFiles/project03.dir/tests.cpp.o: ../lib/googletest-master/googletest/include/gtest/internal/gtest-filepath.h
+CMakeFiles/project03.dir/tests.cpp.o: ../lib/googletest-master/googletest/include/gtest/internal/gtest-internal.h
+CMakeFiles/project03.dir/tests.cpp.o: ../lib/googletest-master/googletest/include/gtest/internal/gtest-param-util.h
+CMakeFiles/project03.dir/tests.cpp.o: ../lib/googletest-master/googletest/include/gtest/internal/gtest-port-arch.h
+CMakeFiles/project03.dir/tests.cpp.o: ../lib/googletest-master/googletest/include/gtest/internal/gtest-port.h
+CMakeFiles/project03.dir/tests.cpp.o: ../lib/googletest-master/googletest/include/gtest/internal/gtest-string.h
+CMakeFiles/project03.dir/tests.cpp.o: ../lib/googletest-master/googletest/include/gtest/internal/gtest-type-util.h
+CMakeFiles/project03.dir/tests.cpp.o: ../HashMap.hpp
+CMakeFiles/project03.dir/tests.cpp.o: ../tests.cpp
+
