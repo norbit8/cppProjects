@@ -4,13 +4,12 @@ yoav
 ######
 
 In this exercise I created a generic hash map data structure which has an iterator (which
-makes it iterable), the hash map is a vector of vectors of pairs where each vector is the bucket
-in the open hash implementation, and each pair hold a key and a value.
+makes it iterable), the hash maps bucket is vectors of pairs.
+We used the open hashing resolution, and each pair hold a key and a value.
 
 After I finished implementing the hash map I constructed the main file which is the
 SpamDetector.cpp, there I loaded a user input files and an integer number and scanned one file
 for spam words given the restricted words of the other file.
-
 
 This project contains the following files:
 1. README (this)

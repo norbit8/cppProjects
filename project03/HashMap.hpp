@@ -31,6 +31,7 @@ class BadVecInputException : public std::exception
         return BAD_SIZE_VEC;
     }
 };
+
 /**
  * BadVecInputException exception,
  * bad comparison of two vectors.
@@ -114,7 +115,7 @@ public:
     /**
      * Move ctor
      */
-    HashMap(HashMap &&other) noexcept = default;
+    HashMap(HashMap && other) noexcept = default;
 
     /**
      * Dtor.
@@ -528,7 +529,10 @@ bool HashMap<KeyT , ValueT>::containsKey(KeyT const &key) const
     }
     for (auto i = _table[index].begin(); i != _table[index].end(); i++)
     {
-        if (i->first == key) return true;
+        if (i->first == key)
+        {
+            return true;
+        }
     }
     return false;
 }

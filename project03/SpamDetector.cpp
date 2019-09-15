@@ -19,10 +19,8 @@ static const char *const SPAM = "SPAM"; /** When spam email is detecteted */
 static const char *const NOT_SPAM = "NOT_SPAM"; /** When an email is not a spam */
 static const char COMMA = ','; /** Comma char */
 static const char SPACE = ' '; /** Space char */
+static const char NEXT_LINE = '\n'; /** New Line char */
 static const int COLUMNS = 1; /** The number of commas which implies that the columns are 2 */
-static const char SPACE_DELIMITER = ' '; /**  space delimiter to replace new line char*/
-static const char NEW_LINE = '\n'; /** remove from message all new line characters*/
-static const char NEW_LINE_WINDOWS = '\r'; /** remove new line ascii from windows */
 // -----------------------------
 
 /**
@@ -185,23 +183,29 @@ std::string readMail(std::string& mp)
     return email;
 }
 
+/**
+ * This method counts the score of the email by the rating of each phrase in the map.
+ * @param map Map of forbidden strings, and their rating.
+ * @param email The email.
+ * @return
+ */
 double scoreCounter(HashMap<std::string , double>& map, std::string &email)
 {
-    double counter = 0;
-    std::replace (email.begin(), email.end(), NEW_LINE , SPACE_DELIMITER);
-    std::replace (email.begin(), email.end(), NEW_LINE_WINDOWS , SPACE_DELIMITER);
-    for (const auto &p : map)
+    std::replace (email.begin(), email.end(), NEXT_LINE , SPACE); // replace new line with space
+    double score = 0;
+    size_t pos = 0;
+    for (auto const &pair : map)
     {
-        int occurrences = 0;
-        std::string::size_type pos = 0;
-        while ((pos = email.find(p.first, pos )) != std::string::npos)
+        pos = 0;
+        pos = email.find(pair.first, pos);
+        while (pos != std::string::npos)
         {
-            ++ occurrences;
-            pos += p.first.length();
+            pos += pair.first.length(); // add the length of the key to the position
+            score += pair.second;
+            pos = email.find(pair.first, pos);
         }
-        counter += (occurrences * p.second);
     }
-    return counter;
+    return score;
 }
 
 /**
@@ -219,7 +223,6 @@ bool isSpam(std::string &dataPath , std::string &messagePath , int threshold)
     double totalScore = scoreCounter(map , email); // Rates the emails score.
     return totalScore >= threshold;           // If the score is g.e. the threshold => spam
 }
-
 
 /**
  * The main function scans
