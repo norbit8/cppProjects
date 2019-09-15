@@ -59,7 +59,7 @@ class HashMap
 
 private:
     using bucket = vector<std::pair<KeyT , ValueT>>;
-    vector<bucket> _table; /** The main hash map table */
+    bucket *_table; /** The main hash map table */
     double _lowerLoadFactor; /** The lower load factor of the hash map */
     double _upperLoadFactor; /** The upper load factor of the hash map */
     int _size; /** The number of elements in the table */
@@ -85,8 +85,6 @@ private:
 public:
     /**
     * Default ctor, init's an empty hash map.
-    * @tparam KeyT Some Key.
-    * @tparam ValueT Some Value.
     */
     HashMap() : HashMap(DEFAULT_LLOAD_FACTOR , DEFAULT_ULOAD_FACTOR)
     {}
@@ -115,12 +113,12 @@ public:
     /**
      * Move ctor
      */
-    HashMap(HashMap && other) noexcept = default;
+    HashMap(HashMap &&other) noexcept = default;
 
     /**
      * Dtor.
      */
-    ~HashMap() = default;
+    ~HashMap();
 
     /**
      * Getter to size, the amount of items in the map.
@@ -218,12 +216,10 @@ public:
          */
         iterator()
         {
-            vector<bucket> emptyTable(1);
-            emptyTable[0].push_back(std::pair<KeyT , ValueT>());
-            _tbl = emptyTable;
+            _tbl = nullptr;
             _current = 0;
+            _len = 0;
         }
-
 
         /**
          * Dereference operator.
@@ -232,9 +228,9 @@ public:
         const std::pair<KeyT , ValueT> &operator*()
         {
             int counter = 0;
-            for (auto i = _tbl.begin(); i != _tbl.end(); ++i)
+            for (int i = 0; i < _len; ++i)
             {
-                for (auto j = i->begin(); j != i->end(); ++j)
+                for (auto j = _tbl[i].begin(); j != _tbl[i].end(); ++j)
                 {
                     if (counter == _current)
                     {
@@ -243,9 +239,6 @@ public:
                     counter++;
                 }
             }
-            auto i = _tbl.begin();
-            auto j = i->begin();
-            return *j;
         }
 
         /**
@@ -255,9 +248,9 @@ public:
         const std::pair<KeyT , ValueT> *operator->() const
         {
             int counter = 0;
-            for (auto i = _tbl.begin(); i != _tbl.end(); ++i)
+            for (int i = 0; i < _len; ++i)
             {
-                for (auto j = i->begin(); j != i->end(); ++j)
+                for (auto j = _tbl[i].begin(); j != _tbl[i].end(); ++j)
                 {
                     if (counter == _current)
                     {
@@ -282,7 +275,7 @@ public:
          * post ++ overloading
          * @return the older iterator (before incrementing)
          */
-        iterator operator++(int)
+        const iterator operator++(int)
         {
             iterator *oldIter = this;
             _current++;
@@ -310,15 +303,18 @@ public:
         }
 
     private:
-        vector<bucket> _tbl; /** The hash map */
+        bucket *_tbl; /** The hash map */
         int _current; /** Which elements we are probing right now */
-
+        int _len; /** The length of the table */
         /**
          * ctor
          * @param table the hash map.
          * @param current which element to start from.
          */
-        iterator(const vector<bucket> &table , int current) : _tbl(table) , _current(current)
+        iterator(bucket *table , int current , int len) :
+                _tbl(table) ,
+                _current(current) ,
+                _len(len)
         {}
     };
 
@@ -328,7 +324,7 @@ public:
      */
     iterator begin() const
     {
-        return iterator(_table , 0);
+        return iterator(_table , 0 , capacity());
     }
 
     /**
@@ -337,7 +333,7 @@ public:
      */
     iterator end() const
     {
-        return iterator(_table , size());
+        return iterator(_table , size() , capacity());
     }
 
     /**
@@ -346,7 +342,7 @@ public:
      */
     iterator cbegin() const
     {
-        return iterator(_table , 0);
+        return iterator(_table , 0 , capacity());
     }
 
     /**
@@ -355,7 +351,7 @@ public:
      */
     iterator cend() const
     {
-        return iterator(_table , size());
+        return iterator(_table , size() , capacity());
     }
 
     /**
@@ -403,7 +399,7 @@ public:
  */
 template<class KeyT , class ValueT>
 HashMap<KeyT , ValueT>::HashMap(double lowerLoadFactor , double upperLoadFactor):
-        _table(STARTING_VALUE) ,
+        _table(new bucket[STARTING_VALUE]) ,
         _lowerLoadFactor(lowerLoadFactor) ,
         _upperLoadFactor(upperLoadFactor) ,
         _size(0) ,
@@ -436,6 +432,17 @@ HashMap<KeyT , ValueT>::HashMap(vector<KeyT> keys , vector<ValueT> values) :
         (*this)[keys[i]] = values[i]; // insert(keys[i] , values[i]); won't work because
         // they wanted to get the last element in.
     }
+}
+
+/**
+ * dtor
+ * @tparam KeyT key
+ * @tparam ValueT value
+ */
+template<class KeyT , class ValueT>
+HashMap<KeyT , ValueT>::~HashMap()
+{
+    delete[] _table;
 }
 
 /**
@@ -523,7 +530,7 @@ template<class KeyT , class ValueT>
 bool HashMap<KeyT , ValueT>::containsKey(KeyT const &key) const
 {
     int index = _getHash(key , capacity());
-    if (index >= _table.capacity())
+    if (index >= capacity()) // could be out of range
     {
         return false;
     }
@@ -598,7 +605,7 @@ template<class KeyT , class ValueT>
 int HashMap<KeyT , ValueT>::bucketSize(KeyT key) const
 {
     int index = _getHash(key , capacity());
-    return _table[index].size();
+    return static_cast<int>(_table[index].size());
 }
 
 /**
@@ -609,9 +616,9 @@ int HashMap<KeyT , ValueT>::bucketSize(KeyT key) const
 template<class KeyT , class ValueT>
 void HashMap<KeyT , ValueT>::clear()
 {
-    for (auto i = _table.begin(); i != _table.end(); ++i)
+    for (int i = 0; i < capacity(); ++i)
     {
-        (*i).clear(); // clearing each bucket.
+        _table[i].clear(); // clearing each bucket.
     }
     _size = 0; // 0 elements in the table right now.
 }
@@ -619,16 +626,18 @@ void HashMap<KeyT , ValueT>::clear()
 template<class KeyT , class ValueT>
 void HashMap<KeyT , ValueT>::_reHash(double resizeFactor)
 {
-    int newSize = (int) (capacity() * resizeFactor);
-    vector<bucket> tempTable((unsigned long) (newSize));
-    for (auto i = _table.begin(); i != _table.end(); ++i)
+    auto newSize = (int) (capacity() * resizeFactor);
+    auto *tempTable = new bucket[newSize];
+    for (int i = 0; i < capacity(); ++i)
     {
-        for (auto j = (*i).begin(); j != (*i).end(); ++j)
+        for (auto j = _table[i].begin(); j != _table[i].end(); ++j)
         {
             int hashIndex = _getHash(j->first , newSize);
             tempTable[hashIndex].push_back(std::pair<KeyT , ValueT>(j->first , j->second));
         }
     }
+    delete[] _table;
+    _table = nullptr;
     _table = tempTable;
     _capacity = newSize;
 }
@@ -762,12 +771,17 @@ HashMap<KeyT , ValueT> &HashMap<KeyT , ValueT>::operator=(HashMap other)
  */
 template<class KeyT , class ValueT>
 HashMap<KeyT , ValueT>::HashMap(const HashMap &other) :
-        _table(other._table) ,
+        _table(new bucket[other.capacity()]) ,
         _lowerLoadFactor(other._lowerLoadFactor) ,
         _upperLoadFactor(other._upperLoadFactor) ,
         _size(other.size()) ,
         _capacity(other.capacity())
-{}
+{
+    for (int i = 0; i < other.capacity(); i++)
+    {
+        _table[i] = other._table[i];
+    }
+}
 
 /**
  * Subscript operator
@@ -789,3 +803,5 @@ const ValueT &HashMap<KeyT , ValueT>::operator[](KeyT const &key) const noexcept
         return at(key);
     }
 }
+
+
