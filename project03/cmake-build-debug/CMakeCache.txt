@@ -284,6 +284,18 @@ ProcessorCount_cmd_getconf:FILEPATH=/usr/bin/getconf
 //Path to a program.
 ProcessorCount_cmd_sysctl:FILEPATH=/sbin/sysctl
 
+//Value Computed by CMake
+Project03_BINARY_DIR:STATIC=/cs/usr/yoav/semester03/cpp/cppProjects/project03/cmake-build-debug
+
+//Value Computed by CMake
+Project03_SOURCE_DIR:STATIC=/cs/usr/yoav/semester03/cpp/cppProjects/project03
+
+//Value Computed by CMake
+cpp_ex3_BINARY_DIR:STATIC=/cs/usr/yoav/semester03/cpp/cppProjects/project03/cmake-build-debug
+
+//Value Computed by CMake
+cpp_ex3_SOURCE_DIR:STATIC=/cs/usr/yoav/semester03/cpp/cppProjects/project03
+
 //Path to a library.
 ex1_lib:FILEPATH=ex1_lib-NOTFOUND
 

@@ -21,6 +21,7 @@ static const char COMMA = ','; /** Comma char */
 static const char SPACE = ' '; /** Space char */
 static const char NEXT_LINE = '\n'; /** New Line char */
 static const int COLUMNS = 1; /** The number of commas which implies that the columns are 2 */
+static const char WINDOWS_LINE = '\r'; /** Windows new line */
 // -----------------------------
 
 /**
@@ -30,7 +31,12 @@ static const int COLUMNS = 1; /** The number of commas which implies that the co
  */
 inline bool numOfArgs(int argc)
 {
-    return argc == INPUT_COUNT;
+    if (argc != INPUT_COUNT)
+    {
+        std::cerr << USAGE << std::endl;
+        return false;
+    }
+    return true;
 }
 
 /**
@@ -47,6 +53,7 @@ inline bool isLegitDigit(const char *strNum)
     {
         if (!isdigit(ch))
         {
+            std::cerr << INVALID_INPUT << std::endl;
             return false;
         }
     }
@@ -73,12 +80,12 @@ inline bool isLegitFile(const char *strNum)
  * @param strNum some string
  * @return the number.
  */
-int convertToDigit(std::string & strNum)
+int convertToDigit(std::string &strNum)
 {
     int number;
     std::stringstream ss(strNum);
     ss >> number;
-    if (number <= 0 || ss.fail() || !ss.eof())
+    if (number < 0 || ss.fail() || !ss.eof())
     {
         std::cerr << INVALID_INPUT << std::endl;
         throw badInputException();
@@ -96,12 +103,20 @@ int convertToDigit(std::string & strNum)
  */
 bool checkValidity(int argc , char *argv[]) noexcept
 {
-    if (!numOfArgs(argc) ||
-        !isLegitDigit(argv[THRESHOLD_ARG]) ||
-        !isLegitFile(argv[DATA_ARG]) ||
-        !isLegitFile(argv[MESSAGE_ARG]))
+    if (!numOfArgs(argc))
     {
-        std::cerr << USAGE << std::endl;
+        return false;
+    }
+    if (!isLegitDigit(argv[THRESHOLD_ARG]))
+    {
+        return false;
+    }
+    if (!isLegitFile(argv[DATA_ARG]))
+    {
+        return false;
+    }
+    if (!isLegitFile(argv[MESSAGE_ARG]))
+    {
         return false;
     }
     return true;
@@ -113,10 +128,11 @@ bool checkValidity(int argc , char *argv[]) noexcept
  * @param line A line from the given file.
  * @return false if the line is illegal, true otherwise.
  */
-bool lineSplitter(const std::string &line , std::string &badPhrase , int &rank)
+bool lineSplitter(std::string &line , std::string &badPhrase , int &rank)
 {
     int counter = 0;
     std::string strNum;
+    line.erase(std::remove(line.begin() , line.end() , WINDOWS_LINE) , line.end());
     for (char ch : line) // iterating char by char to search for illegal ones.
     {
         if (counter == 0 && ch != COMMA) // before the comma
@@ -125,7 +141,7 @@ bool lineSplitter(const std::string &line , std::string &badPhrase , int &rank)
         }
         else if (ch != COMMA)
         {
-            if(ch == SPACE)
+            if (ch == SPACE)
             {
                 return false;
             }
@@ -136,7 +152,7 @@ bool lineSplitter(const std::string &line , std::string &badPhrase , int &rank)
             counter++; // comma++
         }
     }
-    if(badPhrase.empty())
+    if (badPhrase.empty())
     {
         return false;
     }
@@ -149,20 +165,22 @@ bool lineSplitter(const std::string &line , std::string &badPhrase , int &rank)
  * @param dataPath The path to the data.
  * @param map the map.
  */
-void loadData(std::string &dataPath , HashMap<std::string , double>& map)
+void loadData(std::string &dataPath , HashMap<std::string , double> &map)
 {
     std::ifstream inFile(dataPath);
     std::string line;
     while (std::getline(inFile , line))
     {
+        transform(line.begin() , line.end() , line.begin() , ::tolower);
         std::string badPhrase;
         int rank;
         if (!lineSplitter(line , badPhrase , rank))
         {
-            std::cout << INVALID_INPUT << std::endl;
+
+            std::cerr << INVALID_INPUT << std::endl;
             throw badInputException();
         }
-        map.insert(badPhrase, rank); // load line by line
+        map.insert(badPhrase , rank); // load line by line
     }
 }
 
@@ -171,15 +189,18 @@ void loadData(std::string &dataPath , HashMap<std::string , double>& map)
  * @param mp
  * @return
  */
-std::string readMail(std::string& mp)
+std::string readMail(std::string &mp)
 {
     std::ifstream inFile(mp);
-    std::string email;
     std::string line;
+    std::getline(inFile , line);
+    std::string email = line;
     while (std::getline(inFile , line))
     {
-        email += line;
+        line.erase(std::remove(line.begin() , line.end() , WINDOWS_LINE) , line.end());
+        email += SPACE + line;
     }
+    transform(email.begin() , email.end() , email.begin() , ::tolower);
     return email;
 }
 
@@ -189,20 +210,18 @@ std::string readMail(std::string& mp)
  * @param email The email.
  * @return
  */
-double scoreCounter(HashMap<std::string , double>& map, std::string &email)
+double scoreCounter(HashMap<std::string , double> &map , std::string &email)
 {
-    std::replace (email.begin(), email.end(), NEXT_LINE , SPACE); // replace new line with space
+    std::replace(email.begin() , email.end() , NEXT_LINE , SPACE); // replace new line with space
     double score = 0;
     size_t pos = 0;
     for (auto const &pair : map)
     {
         pos = 0;
-        pos = email.find(pair.first, pos);
-        while (pos != std::string::npos)
+        while ((pos = email.find(pair.first , pos)) != std::string::npos)
         {
             pos += pair.first.length(); // add the length of the key to the position
             score += pair.second;
-            pos = email.find(pair.first, pos);
         }
     }
     return score;
@@ -251,6 +270,20 @@ int main(int argc , char *argv[])
         {
             std::cout << NOT_SPAM << std::endl;
         }
+    }
+    catch (badInputException &e)
+    {
+        return EXIT_FAILURE;
+    }
+    catch (badFactorsException &e)
+    {
+        std::cerr << e.what() << std::endl;
+        return EXIT_FAILURE;
+    }
+    catch (BadVecInputException &e)
+    {
+        std::cerr << e.what() << std::endl;
+        return EXIT_FAILURE;
     }
     catch (...)
     {

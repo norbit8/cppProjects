@@ -5,12 +5,13 @@
 #include <exception>
 
 static const int STARTING_VALUE = 16; /** The default size of the table */
-static const double DEFAULT_ULOAD_FACTOR = 0.25; /** Default upper load factor */
-static const double DEFAULT_LLOAD_FACTOR = 0.75; /** Default lower load factor */
+static const double DEFAULT_ULOAD_FACTOR = 0.75; /** Default upper load factor */
+static const double DEFAULT_LLOAD_FACTOR = 0.25; /** Default lower load factor */
 static const int INCREASE_SIZE = 2; /** The size factor to increase the hash map */
 static const double DECREASE_SIZE = 0.5; /** The size factor to decrease the hash map */
 static const char *BAD_SIZE_VEC = "Invalid input\n"; /** Bad comparison exception string */
 static const char *BAD_INPUT = "Invalid input\n"; /** Bad comparison exception string */
+static const char *BAD_FACTOR = "Bad lower or upper load factors"; /** Invalid factors */
 
 using std::vector;
 using std::cout;
@@ -22,10 +23,11 @@ using std::endl;
  */
 class BadVecInputException : public std::exception
 {
+public:
     /**
-     * The what function override
-     * @return const char *
-     */
+        * The what function override
+        * @return const char *
+        */
     const char *what() const noexcept override
     {
         return BAD_SIZE_VEC;
@@ -38,6 +40,7 @@ class BadVecInputException : public std::exception
  */
 class badInputException : public std::exception
 {
+public:
     /**
      * The what function override
      * @return const char *
@@ -45,6 +48,23 @@ class badInputException : public std::exception
     const char *what() const noexcept override
     {
         return BAD_INPUT;
+    }
+};
+
+/**
+ * BadVecInputException exception,
+ * bad comparison of two vectors.
+ */
+class badFactorsException : public std::exception
+{
+public:
+    /**
+        * The what function override
+        * @return const char *
+        */
+    const char *what() const noexcept override
+    {
+        return BAD_FACTOR;
     }
 };
 
@@ -150,7 +170,7 @@ public:
      * @param value value.
      * @return true for success, false otherwise.
      */
-    bool insert(KeyT key , ValueT value);
+    bool insert(const KeyT &key , const ValueT &value);
 
     /**
     * Contains key is a method which returns true if the key is inside the table.
@@ -187,14 +207,14 @@ public:
     * @param key key.
     * @return true for success, false otherwise.
     */
-    bool erase(KeyT key);
+    bool erase(const KeyT &key);
 
     /**
      * Getter for the size of a specific bucket.
      * @param key a key.
      * @return integer which is the size of the bucket (vector).
      */
-    int bucketSize(KeyT key) const;
+    int bucketSize(const KeyT &key) const;
 
     /**
      * clears the table (erasing all the tables values)
@@ -260,6 +280,8 @@ public:
                     counter++;
                 }
             }
+            return (&_tbl[0][0]);
+
         }
 
         /**
@@ -389,7 +411,13 @@ public:
      * operator = with swap.
      * @return *this.
      */
-    HashMap &operator=(HashMap);
+    HashMap &operator=(const HashMap&);
+
+    /**
+     * operator = with swap.
+     * @return *this.
+     */
+    HashMap &operator=(HashMap && ) noexcept;
 
 };
 
@@ -400,18 +428,16 @@ public:
  */
 template<class KeyT , class ValueT>
 HashMap<KeyT , ValueT>::HashMap(double lowerLoadFactor , double upperLoadFactor):
-        _table(new bucket[STARTING_VALUE]) ,
         _lowerLoadFactor(lowerLoadFactor) ,
         _upperLoadFactor(upperLoadFactor) ,
         _size(0) ,
         _capacity(STARTING_VALUE)
 {
-    // TODO: check if the lower load factor and upper load factor are valid (negative or weird)
-    if (lowerLoadFactor > upperLoadFactor) // revert order
+    if (lowerLoadFactor <= 0 || upperLoadFactor >= 1 || lowerLoadFactor >= upperLoadFactor)
     {
-        _lowerLoadFactor = upperLoadFactor;
-        _upperLoadFactor = lowerLoadFactor;
+        throw badFactorsException();
     }
+    _table = new bucket[STARTING_VALUE];
 }
 
 /**
@@ -493,7 +519,7 @@ bool HashMap<KeyT , ValueT>::empty() const
  * @return true for success, false otherwise.
  */
 template<class KeyT , class ValueT>
-bool HashMap<KeyT , ValueT>::insert(KeyT key , ValueT value)
+bool HashMap<KeyT , ValueT>::insert(const KeyT &key , const ValueT &value)
 {
     if (containsKey(key)) // https://moodle2.cs.huji.ac.il/nu18/mod/forum/discuss.php?d=75091
     {
@@ -578,7 +604,7 @@ const ValueT &HashMap<KeyT , ValueT>::at(const KeyT &key) const
  * @return true for success, false otherwise.
  */
 template<class KeyT , class ValueT>
-bool HashMap<KeyT , ValueT>::erase(KeyT key)
+bool HashMap<KeyT , ValueT>::erase(const KeyT &key)
 {
     int index = _getHash(key , capacity());
     for (auto i = _table[index].begin(); i != _table[index].end(); i++)
@@ -603,9 +629,13 @@ bool HashMap<KeyT , ValueT>::erase(KeyT key)
  * @return integer which is the size of the bucket (vector).
  */
 template<class KeyT , class ValueT>
-int HashMap<KeyT , ValueT>::bucketSize(KeyT key) const
+int HashMap<KeyT , ValueT>::bucketSize(const KeyT &key) const
 {
     int index = _getHash(key , capacity());
+    if (_table[index].size() == 0)
+    {
+        throw badInputException();
+    }
     return static_cast<int>(_table[index].size());
 }
 
@@ -624,6 +654,12 @@ void HashMap<KeyT , ValueT>::clear()
     _size = 0; // 0 elements in the table right now.
 }
 
+/**
+ * Re hashing the table
+ * @tparam KeyT key
+ * @tparam ValueT value
+ * @param resizeFactor 2 or 0.5
+ */
 template<class KeyT , class ValueT>
 void HashMap<KeyT , ValueT>::_reHash(double resizeFactor)
 {
@@ -668,6 +704,10 @@ void HashMap<KeyT , ValueT>::_resizeTable(bool increase)
 template<class KeyT , class ValueT>
 ValueT &HashMap<KeyT , ValueT>::at(const KeyT &key)
 {
+    if (_table == nullptr)
+    {
+        throw (std::out_of_range(""));
+    }
     if (!containsKey(key))
     {
         throw (std::out_of_range(""));
@@ -760,11 +800,36 @@ bool HashMap<KeyT , ValueT>::operator!=(HashMap const &rhs) const
  * @return *this.
  */
 template<class KeyT , class ValueT>
-HashMap<KeyT , ValueT> &HashMap<KeyT , ValueT>::operator=(HashMap other)
+HashMap<KeyT , ValueT> &HashMap<KeyT , ValueT>::operator=(const HashMap & other)
 {
-    swap(*this , other);
+    delete[] _table;
+    _table = new bucket[other.capacity()];
+    _lowerLoadFactor = other._lowerLoadFactor;
+    _upperLoadFactor = other._upperLoadFactor;
+    _size = other.size();
+    _capacity = other.capacity();
+    for (int i = 0; i < other.capacity(); i++)
+    {
+        _table[i] = other._table[i];
+    }
     return *this;
 }
+
+/**
+ * operator = move
+ * @return *this.
+ */
+template<class KeyT , class ValueT>
+HashMap<KeyT , ValueT> &HashMap<KeyT , ValueT>::operator=(HashMap && other) noexcept
+{
+    std::swap(_table, other._table);
+    _lowerLoadFactor = other._lowerLoadFactor;
+    _upperLoadFactor = other._upperLoadFactor;
+    _size = other._size;
+    _capacity =  other._capacity;
+    return *this;
+}
+
 
 /**
  * Copy ctor
@@ -799,8 +864,6 @@ const ValueT &HashMap<KeyT , ValueT>::operator[](KeyT const &key) const noexcept
     }
     else
     {
-        ValueT val; // default value
-        insert(key , val);
         return at(key);
     }
 }
@@ -814,10 +877,10 @@ const ValueT &HashMap<KeyT , ValueT>::operator[](KeyT const &key) const noexcept
 template<class KeyT , class ValueT>
 HashMap<KeyT , ValueT>::HashMap(HashMap && other) noexcept
 {
-    std::swap(_table , other._table);
     _lowerLoadFactor = other._lowerLoadFactor;
     _upperLoadFactor = other._upperLoadFactor;
     _size = other.size();
     _capacity = other.capacity();
-
+    _table = other._table;
+    other._table = nullptr;
 }

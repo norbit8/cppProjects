@@ -6,5 +6,5 @@ CXX_FLAGS = -g   -Wall -Wshadow -Werror -Wno-error=dangling-else -DGTEST_HAS_PTH
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/cs/usr/yoav/semester03/cpp/cppProjects/project03/lib/pkgconfig -isystem /cs/usr/yoav/semester03/cpp/cppProjects/project03/lib/googletest-master/googlemock/include -isystem /cs/usr/yoav/semester03/cpp/cppProjects/project03/lib/googletest-master/googlemock -isystem /cs/usr/yoav/semester03/cpp/cppProjects/project03/lib/googletest-master/googletest/include -isystem /cs/usr/yoav/semester03/cpp/cppProjects/project03/lib/googletest-master/googletest 
+CXX_INCLUDES = -I/cs/usr/yoav/semester03/cpp/cppProjects/project03/C:/Users/yoav/semester03/cpp/cppProjects/project03 -isystem /cs/usr/yoav/semester03/cpp/cppProjects/project03/lib/googletest-master/googlemock/include -isystem /cs/usr/yoav/semester03/cpp/cppProjects/project03/lib/googletest-master/googlemock -isystem /cs/usr/yoav/semester03/cpp/cppProjects/project03/lib/googletest-master/googletest/include -isystem /cs/usr/yoav/semester03/cpp/cppProjects/project03/lib/googletest-master/googletest 
 

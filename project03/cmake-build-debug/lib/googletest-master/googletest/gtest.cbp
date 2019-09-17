@@ -24,7 +24,7 @@
 				<Option type="2"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/cs/usr/yoav/semester03/cpp/cppProjects/project03/lib/pkgconfig"/>
+					<Add directory="/cs/usr/yoav/semester03/cpp/cppProjects/project03/C:/Users/yoav/semester03/cpp/cppProjects/project03"/>
 					<Add directory="/cs/usr/yoav/semester03/cpp/cppProjects/project03/lib/googletest-master/googletest/include"/>
 					<Add directory="/cs/usr/yoav/semester03/cpp/cppProjects/project03/lib/googletest-master/googletest"/>
 					<Add directory="/usr/include/c++/8"/>
@@ -50,7 +50,7 @@
 				<Option type="2"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/cs/usr/yoav/semester03/cpp/cppProjects/project03/lib/pkgconfig"/>
+					<Add directory="/cs/usr/yoav/semester03/cpp/cppProjects/project03/C:/Users/yoav/semester03/cpp/cppProjects/project03"/>
 					<Add directory="/cs/usr/yoav/semester03/cpp/cppProjects/project03/lib/googletest-master/googletest/include"/>
 					<Add directory="/cs/usr/yoav/semester03/cpp/cppProjects/project03/lib/googletest-master/googletest"/>
 					<Add directory="/usr/include/c++/8"/>
@@ -76,7 +76,7 @@
 				<Option type="2"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/cs/usr/yoav/semester03/cpp/cppProjects/project03/lib/pkgconfig"/>
+					<Add directory="/cs/usr/yoav/semester03/cpp/cppProjects/project03/C:/Users/yoav/semester03/cpp/cppProjects/project03"/>
 					<Add directory="/cs/usr/yoav/semester03/cpp/cppProjects/project03/lib/googletest-master/googletest/include"/>
 					<Add directory="/cs/usr/yoav/semester03/cpp/cppProjects/project03/lib/googletest-master/googletest"/>
 					<Add directory="/usr/include/c++/8"/>
@@ -102,7 +102,7 @@
 				<Option type="2"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/cs/usr/yoav/semester03/cpp/cppProjects/project03/lib/pkgconfig"/>
+					<Add directory="/cs/usr/yoav/semester03/cpp/cppProjects/project03/C:/Users/yoav/semester03/cpp/cppProjects/project03"/>
 					<Add directory="/cs/usr/yoav/semester03/cpp/cppProjects/project03/lib/googletest-master/googletest/include"/>
 					<Add directory="/cs/usr/yoav/semester03/cpp/cppProjects/project03/lib/googletest-master/googletest"/>
 					<Add directory="/usr/include/c++/8"/>

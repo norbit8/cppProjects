@@ -10,7 +10,7 @@ set(CMAKE_CXX_COMPILER_ID "GNU")
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
-  "../lib/pkgconfig"
+  "../C:/Users/yoav/semester03/cpp/cppProjects/project03"
   "../lib/googletest-master/googletest/include"
   "../lib/googletest-master/googletest"
   )
