@@ -1,5 +1,6 @@
 # C++ projects (HUJI COURSE)
 All of the projects are from the cpp lab course @ Hebrew University of Jerusalem
+
 In each of the projects there is a README file which describes in details what the project was about,
 and how I implemented my design.
 
